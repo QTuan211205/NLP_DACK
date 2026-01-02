@@ -1,0 +1,8 @@
+chuyển đến thư mục cần chạy
+pip install -r requirements.txt
+python create_KG.py
+pip install google-generativeai
+pip install --upgrade google-generativeai
+pip install rank_bm25 sentence-transformers
+python llm.py (gốc)
+python hybrid_rag.py (đã cải tiến)
