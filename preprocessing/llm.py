@@ -1,131 +1,97 @@
+import os
 import google.generativeai as genai
-from py2neo import Graph
-import json
+from dotenv import load_dotenv
 
-# ==========================================
-# 1. CẤU HÌNH
-# ==========================================
-# Hãy dán API Key của bạn vào giữa dấu ngoặc kép bên dưới
-GOOGLE_API_KEY = "".strip()
+# ========================================================
+# 1. TỰ ĐỘNG CẤU HÌNH (Auto-Config)
+# ========================================================
 
-if "DÁN_API_KEY" in GOOGLE_API_KEY:
-    print("❌ LỖI: Bạn chưa điền API Key vào file code!")
-    exit()
+# Tự động tìm file key.env ở thư mục gốc (lùi ra 2 cấp từ preprocessing/kgraph)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+env_path = os.path.join(current_dir, '..', '..', 'key.env')
 
-genai.configure(api_key=GOOGLE_API_KEY)
+# Nếu không thấy, thử tìm ở cấp cha gần nhất (lùi 1 cấp)
+if not os.path.exists(env_path):
+    env_path = os.path.join(current_dir, '..', 'key.env')
 
-# Kết nối Neo4j
+# Đọc file .env
+load_dotenv(env_path)
+
+# Lấy API Key
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+if not GOOGLE_API_KEY:
+    # Key dự phòng (Fallback) nếu file .env bị lỗi hoặc chưa tạo
+    print("⚠️ Cảnh báo: Không đọc được key.env, đang dùng key dự phòng...")
+    GOOGLE_API_KEY = "AIzaSyBB6FNsfM0t2MBR0VdzimNklIorNvR5L8k" # Key của bạn
+
+# Cấu hình Gemini
+genai.configure(api_key=GOOGLE_API_KEY.strip())
+
+# --- THAY ĐỔI THEO YÊU CẦU: Dùng Model 2.5 Flash ---
+MODEL_NAME = "models/gemini-2.5-flash"
+
+# ========================================================
+# 2. CẤU HÌNH THAM SỐ (Generation Config)
+# ========================================================
+generation_config = {
+  "temperature": 0,       # Nhiệt độ = 0 để trả lời chính xác, không bịa
+  "top_p": 1,
+  "top_k": 1,
+  "max_output_tokens": 50000,
+}
+
+safety_settings = [
+  {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+  {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+  {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+  {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"}
+]
+
+# Khởi tạo Model
 try:
-    graph = Graph("neo4j://127.0.0.1:7687", auth=("neo4j", "12345678"))
-    print("✅ Đã kết nối Neo4j thành công!")
+    model = genai.GenerativeModel(model_name=MODEL_NAME,
+                                  generation_config=generation_config,
+                                  safety_settings=safety_settings)
 except Exception as e:
-    print(f"❌ Lỗi kết nối Neo4j: {e}")
-    print("👉 Hãy chắc chắn bạn đã bật Neo4j Desktop (nút Start) chưa?")
-    exit()
+    print(f"❌ Lỗi khởi tạo Model {MODEL_NAME}: {e}")
 
-# Chọn model (Dùng bản 2.5 flash như bạn đã check thành công)
-model = genai.GenerativeModel('models/gemini-2.5-flash')
+# ========================================================
+# 3. CÁC HÀM GIAO TIẾP (API Wrappers - Giữ nguyên tên hàm gốc)
+# ========================================================
 
-# ==========================================
-# 2. ĐỊNH NGHĨA SCHEMA (SỬA LẠI CHUẨN BACKTICK)
-# ==========================================
-schema_desc = """
-Đây là cấu trúc Graph Database y khoa (Neo4j). 
-LƯU Ý ĐẶC BIỆT: Tên Nhãn (Label) và Quan hệ (Relationship) ĐỀU CÓ DẤU CÁCH.
-Bắt buộc phải dùng dấu huyền (backtick `) bao quanh tên.
-
-Nodes (Nhãn có dấu cách):
-- (:`BỆNH`) {tên_bệnh, mô_tả_bệnh, nguyên_nhân, loại_bệnh, cách_phòng_tránh}
-- (:`THUỐC`) {tên_bệnh, thuốc_phổ_biến, đề_xuất_thuốc, thông_tin_thuốc}
-- (:`TRIỆU CHỨNG`) {tên_bệnh, triệu_chứng, kiểm_tra, đối_tượng_dễ_mắc_bệnh}
-- (:`LỜI KHUYÊN`) {tên_bệnh, nên_ăn_thực_phẩm_chứa, không_nên_ăn_thực_phẩm_chứa, đề_xuất_món_ăn}
-- (:`ĐIỀU TRỊ`) {tên_bệnh, phương_pháp, khoa_điều_trị, tỉ_lệ_chữa_khỏi}
-
-Relationships (Quan hệ có dấu cách):
-- (:`BỆNH`)-[:`CÓ TRIỆU CHỨNG`]->(:`TRIỆU CHỨNG`)
-- (:`BỆNH`)-[:`ĐƯỢC KÊ ĐƠN`]->(:`THUỐC`)
-- (:`BỆNH`)-[:`ĐIỀU TRỊ VÀ PHÒNG TRÁNH CÙNG`]->(:`LỜI KHUYÊN`)
-- (:`BỆNH`)-[:`ĐƯỢC CHỮA BỞI`]->(:`ĐIỀU TRỊ`)
-- (:`BỆNH`)-[:`ĐI KÈM VỚI BỆNH`]->(:`BỆNH`)
-"""
-
-# ==========================================
-# 3. CÁC HÀM XỬ LÝ CHÍNH
-# ==========================================
-def generate_cypher(question):
-    """Bước 1: Chuyển câu hỏi thành Cypher Query"""
-    print("   ↳ 🤖 Đang suy nghĩ câu lệnh truy vấn...")
-    prompt = f"""
-    Bạn là chuyên gia Neo4j. Hãy viết câu lệnh Cypher để trả lời câu hỏi.
-    
-    Schema: {schema_desc}
-    Câu hỏi: "{question}"
-    
-    QUY TẮC BẮT BUỘC (TUÂN THỦ 100%):
-    1. VÌ TÊN CÓ DẤU CÁCH, BẮT BUỘC PHẢI DÙNG DẤU HUYỀN (`) ĐỂ BAO QUANH TÊN NHÃN VÀ QUAN HỆ.
-       - ĐÚNG: MATCH (b:`BỆNH`)-[:`CÓ TRIỆU CHỨNG`]->(t:`TRIỆU CHỨNG`)
-       - SAI:  MATCH (b:BỆNH)-[:CÓ_TRIỆU_CHỨNG]->(t:TRIỆU CHỨNG)
-       - SAI:  MATCH (b:BỆNH)-[:'CÓ TRIỆU CHỨNG']->(t:'TRIỆU CHỨNG')
-       
-    2. Dùng `CONTAINS` cho tìm kiếm tên bệnh (b.tên_bệnh) để tìm kiếm linh hoạt.
-    3. Chỉ trả về code Cypher, không giải thích.
-    4. Luôn RETURN các thuộc tính cần thiết để trả lời.
+def get_GPT(text):
     """
-    response = model.generate_content(prompt)
-    # Làm sạch response (xóa markdown nếu có)
-    query = response.text.strip().replace("```cypher", "").replace("```", "")
-    return query
-
-def generate_answer(question, data):
-    """Bước 2: Tổng hợp câu trả lời từ dữ liệu"""
-    print("   ↳ 👩‍⚕️ Đang tổng hợp câu trả lời...")
-    prompt = f"""
-    Dữ liệu từ Database y khoa: {json.dumps(data, ensure_ascii=False)}
-    Câu hỏi người dùng: "{question}"
-    
-    Hãy đóng vai Bác sĩ ảo, trả lời người dùng một cách tự nhiên, chi tiết và thân thiện bằng tiếng Việt.
-    - Nếu dữ liệu rỗng (empty), hãy nói "Xin lỗi, tôi chưa có thông tin về vấn đề này trong hệ thống."
-    - Đừng chỉ liệt kê, hãy viết thành câu văn mạch lạc.
+    Hàm này tên là GPT (để khớp với code cũ của tác giả),
+    nhưng thực tế sẽ gọi Gemini để bạn không mất tiền OpenAI.
     """
-    response = model.generate_content(prompt)
-    return response.text
-
-def chat_with_kg(user_question):
-    print(f"\n👤 User: {user_question}")
-    
+    return get_gemini(text)
+ 
+def get_gemini(text): 
+    """
+    Hàm gọi Gemini chính.
+    """
     try:
-        # B1: Tạo Query
-        cypher_query = generate_cypher(user_question)
-        # Uncomment dòng dưới nếu muốn xem lệnh Cypher sinh ra
-        # print(f"DEBUG Query: {cypher_query}") 
-        
-        # B2: Chạy Query
-        results = graph.run(cypher_query).data()
-        print(f"📂 Tìm thấy: {len(results)} bản ghi thông tin.")
-        
-        # B3: Trả lời
-        final_answer = generate_answer(user_question, results)
-        print(f"🏥 Assistant: {final_answer}")
-        return final_answer
-        
+        # Gọi API sinh nội dung
+        response = model.generate_content([text])
+        return response.text
     except Exception as e:
-        print(f"❌ Lỗi hệ thống: {e}")
-        return "Xin lỗi, đã xảy ra lỗi khi xử lý câu hỏi."
+        # Xử lý lỗi nếu Google chặn hoặc hết quota
+        err_msg = str(e)
+        if "429" in err_msg or "Quota" in err_msg:
+            return "Lỗi: Hết Quota (Limit Exceeded). Vui lòng thử lại sau."
+        return f"Lỗi Gemini: {err_msg}"
 
-# --- CHẠY CHƯƠNG TRÌNH ---
+# ========================================================
+# 4. CHẠY TEST NHANH
+# ========================================================
 if __name__ == "__main__":
-    print("="*50)
-    print("CHÀO MỪNG BẠN ĐẾN VỚI CHATBOT Y KHOA VIETMEDKG")
-    print("="*50)
+    print(f"--- Đang test llm.py ---")
+    print(f"✅ Model đang dùng: {MODEL_NAME}")
+    print(f"🔑 Key đang dùng: ...{GOOGLE_API_KEY[-5:]}")
     
-    # Chạy thử 1 câu mẫu
-    # chat_with_kg("Bệnh Ho gà có triệu chứng gì?")
-
     while True:
-        q = input("\n💬 Mời bạn đặt câu hỏi (hoặc gõ 'exit' để thoát): ")
-        if q.lower() in ['exit', 'quit', 'thoát']:
-            print("👋 Tạm biệt!")
-            break
-        if q.strip() == "": continue
+        q = input("\nBạn hỏi (gõ 'exit' để thoát): ")
+        if q.lower() in ['exit', 'quit']: break
         
-        chat_with_kg(q)
+        print("Bot đáp:", get_gemini(q))

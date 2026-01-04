@@ -1,154 +1,153 @@
 from py2neo import Graph, Node, Relationship
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import math
 
-def uppercase_first_letter(text):
-    if isinstance(text, str):
-        return text.capitalize()  # Capitalize first letter of each word
-    else:
-        return text
-    
+# ==========================================
+# 1. CẤU HÌNH & KẾT NỐI
+# ==========================================
+# Kết nối Neo4j
+try:
+    # Lưu ý: Dùng bolt://127.0.0.1 cho kết nối ổn định trên máy cá nhân
+    graph = Graph("neo4j://127.0.0.1:7687", auth=("neo4j", "12345678"))
+    print("✅ Đã kết nối Neo4j thành công!")
+except Exception as e:
+    print(f"❌ Lỗi kết nối Neo4j: {e}")
+    exit()
+
 def clear_graph():
-    query = """
-    MATCH (n)
-    DETACH DELETE n
-    """
+    """Xóa toàn bộ dữ liệu cũ trong Database"""
+    print("⏳ Đang xóa dữ liệu cũ...")
+    query = "MATCH (n) DETACH DELETE n"
     graph.run(query)
-    print("Graph has been cleared...")
+    print("✅ Đã xóa sạch Graph!")
 
-def check_node_exists(graph, associated_disease):
-    tên_bệnh = associated_disease.capitalize()
-    query = """
-    MATCH (n:BỆNH {tên_bệnh: $tên_bệnh})
-    RETURN COUNT(n) > 0 AS node_exists
-    """
-    result = graph.run(query, tên_bệnh=tên_bệnh).data()
-    return result[0]["node_exists"] if result else False
+# ==========================================
+# 2. XỬ LÝ DỮ LIỆU
+# ==========================================
+def clean_text(text):
+    """Làm sạch dữ liệu: Xử lý nan/null/không có thông tin"""
+    if pd.isna(text) or text is None:
+        return None
+    text = str(text).strip()
+    if text.lower() in ['không có thông tin', 'nan', '']:
+        return None
+    return text
 
 def process_row(row):
-    disease_name = row['tên_bệnh']
-    disease_description = row['mô_tả_bệnh']
-    disease_category = row['loại_bệnh']
-    disease_prevention = row['cách_phòng_tránh']
-    disease_cause = row['nguyên_nhân']
-    disease_symptom = row['triệu_chứng']
-    people_easy_get = row['đối_tượng_dễ_mắc_bệnh']
-    associated_disease = row['bệnh_đi_kèm']
-    cure_method = row['phương_pháp']
-    cure_department = row['khoa_điều_trị']
-    cure_probability = row['tỉ_lệ_chữa_khỏi']
-    check_method = row['kiểm_tra']
-    nutrition_do_eat = row['nên_ăn_thực_phẩm_chứa']
-    nutrition_not_eat = row['không_nên_ăn_thực_phẩm_chứa']
-    nutrition_recommend_meal = row['đề_xuất_món_ăn']
-    drug_recommend = row['đề_xuất_thuốc']
-    drug_common = row['thuốc_phổ_biến']
-    drug_detail = row['thông_tin_thuốc']
-
-    if disease_name and disease_description and disease_category and disease_cause:
-        # Create disease node
-        disease_node = Node("BỆNH", tên_bệnh=disease_name, mô_tả_bệnh=disease_description, loại_bệnh=disease_category, nguyên_nhân=disease_cause)
-        graph.merge(disease_node, "BỆNH", "tên_bệnh")
-
-    if cure_method and cure_department and cure_probability:
-        # Create treatment node and relationship
-        treatment_node = Node("ĐIỀU TRỊ", tên_bệnh=disease_name, phương_pháp=cure_method, khoa_điều_trị=cure_department, tỉ_lệ_chữa_khỏi=cure_probability)
-        graph.merge(treatment_node, "ĐIỀU TRỊ", "tên_bệnh")
-        cured_rela = Relationship(disease_node, "ĐƯỢC CHỮA BỞI", treatment_node)
-        graph.create(cured_rela)
-
-    if disease_symptom and check_method and people_easy_get:
-        # Create symptom node and relationship
-        symptom_node = Node("TRIỆU CHỨNG", tên_bệnh=disease_name, triệu_chứng=disease_symptom, kiểm_tra=check_method, đối_tượng_dễ_mắc_bệnh=people_easy_get)
-        graph.merge(symptom_node, "TRIỆU CHỨNG", "tên_bệnh")
-        has_rela = Relationship(disease_node, "CÓ TRIỆU CHỨNG", symptom_node)
-        graph.create(has_rela)
-
-    if drug_recommend and drug_common and drug_detail:
-        # Create medication node and relationship
-        medication_node = Node("THUỐC", tên_bệnh=disease_name, thuốc_phổ_biến=drug_common, thông_tin_thuốc=drug_detail, đề_xuất_thuốc=drug_recommend)
-        graph.merge(medication_node, "THUỐC", "tên_bệnh")
-        prescribed_rela = Relationship(disease_node, "ĐƯỢC KÊ ĐƠN", medication_node)
-        graph.create(prescribed_rela)
-
-    if nutrition_do_eat and nutrition_not_eat and nutrition_recommend_meal and disease_prevention:
-        # Create nutrition node and relationship
-        nutrition_node = Node("LỜI KHUYÊN", tên_bệnh=disease_name, nên_ăn_thực_phẩm_chứa=nutrition_do_eat, đề_xuất_món_ăn=nutrition_recommend_meal, không_nên_ăn_thực_phẩm_chứa=nutrition_not_eat, cách_phòng_tránh=disease_prevention)
-        graph.merge(nutrition_node, "LỜI KHUYÊN", "tên_bệnh")
-        treated_rela = Relationship(disease_node, "ĐIỀU TRỊ VÀ PHÒNG TRÁNH CÙNG", nutrition_node)
-        graph.create(treated_rela)
-
-    if associated_disease:
-        # Trường hợp 1: Chỉ có 1 bệnh đi kèm (Chuỗi đơn, không có dấu ngoặc vuông)
-        if isinstance(associated_disease, str) and not '[' in associated_disease:
-            if check_node_exists(graph, uppercase_first_letter(associated_disease)):
-                return
-            
-            # Khởi tạo giá trị mặc định
-            associated_disease_description = None
-            associated_disease_category = None
-            associated_disease_cause = None
-
-            # Tìm thông tin bệnh đi kèm trong DataFrame (Dùng tên cột TIẾNG VIỆT)
-            # Sửa 'disease_name' -> 'tên_bệnh'
-            match_row = df_cn[df_cn['tên_bệnh'].str.lower() == associated_disease.lower()]
-            
-            if not match_row.empty:
-                assoc_row_data = match_row.iloc[0]
-                # Sửa các key tiếng Anh -> Tiếng Việt
-                associated_disease_description = assoc_row_data['mô_tả_bệnh']
-                associated_disease_category = assoc_row_data['loại_bệnh']
-                associated_disease_cause = assoc_row_data['nguyên_nhân']
-            
-            associated_disease_node = Node("BỆNH", tên_bệnh=uppercase_first_letter(associated_disease), mô_tả_bệnh=associated_disease_description, loại_bệnh=associated_disease_category, nguyên_nhân=associated_disease_cause)
-            graph.merge(associated_disease_node, "BỆNH", "tên_bệnh")
-            has_associated_rela = Relationship(disease_node, "ĐI KÈM VỚI BỆNH", associated_disease_node)
-            graph.create(has_associated_rela)
+    """Hàm xử lý từng dòng trong CSV"""
+    try:
+        # 1. Lấy thông tin cơ bản của HOẠT CHẤT
+        ten_hoat_chat = clean_text(row.get('Ten_Hoat_Chat'))
+        
+        # Nếu không có tên hoạt chất thì bỏ qua dòng này
+        if not ten_hoat_chat:
             return
 
-        # Trường hợp 2: Có danh sách bệnh đi kèm (Dạng list ['Bệnh A', 'Bệnh B'])
-        try:
-            associated_disease = associated_disease.replace("[", "").replace("]", "").replace("'", "").replace('"', "")  # Làm sạch dấu ngoặc và nháy
-            associated_disease_list = [item.strip() for item in associated_disease.split(',')]
+        ten_latin = clean_text(row.get('Ten_Latin'))
+        cong_thuc = clean_text(row.get('Cong_Thuc_Hoa_Hoc'))
+        mo_ta = clean_text(row.get('Mo_Ta_Chung'))
+        tinh_chat = clean_text(row.get('Tinh_Chat'))
+        bao_quan = clean_text(row.get('Bao_Quan'))
+        
+        # 2. Tạo Node HOẠT_CHẤT
+        hoat_chat_node = Node("HOẠT_CHẤT", 
+                              tên_hoạt_chất=ten_hoat_chat,
+                              tên_latin=ten_latin,
+                              công_thức_hóa_học=cong_thuc,
+                              mô_tả=mo_ta,
+                              tính_chất=tinh_chat,
+                              bảo_quản=bao_quan)
+        graph.merge(hoat_chat_node, "HOẠT_CHẤT", "tên_hoạt_chất")
 
-            if isinstance(associated_disease_list, list):
-                for associated_disease_name in associated_disease_list:
-                    # Sửa 'disease_name' -> 'tên_bệnh'
-                    associated_disease_row = df_cn[df_cn["tên_bệnh"] == uppercase_first_letter(associated_disease_name)]
-                    
-                    associated_disease_description = None
-                    associated_disease_category = None
-                    associated_disease_cause = None
+        # 3. Xử lý LOẠI THUỐC (Tạo node riêng để dễ truy vấn nhóm thuốc)
+        loai_thuoc = clean_text(row.get('Loai_Thuoc'))
+        if loai_thuoc:
+            # Tách nếu có nhiều loại (ví dụ ngăn cách bởi dấu phẩy, tuỳ dữ liệu)
+            # Ở đây giả sử mỗi dòng là 1 chuỗi mô tả loại thuốc
+            category_node = Node("LOẠI_THUỐC", tên_loại=loai_thuoc)
+            graph.merge(category_node, "LOẠI_THUỐC", "tên_loại")
+            
+            # Tạo quan hệ: Hoạt chất -> Thuộc nhóm -> Loại thuốc
+            rel_cat = Relationship(hoat_chat_node, "THUỘC_NHÓM", category_node)
+            graph.merge(rel_cat)
 
-                    if not associated_disease_row.empty:
-                        assoc_info = associated_disease_row.iloc[0]
-                        # Sửa các key tiếng Anh -> Tiếng Việt
-                        associated_disease_description = assoc_info['mô_tả_bệnh']
-                        associated_disease_category = assoc_info['loại_bệnh']
-                        associated_disease_cause = assoc_info['nguyên_nhân']
-                    
-                    if check_node_exists(graph, uppercase_first_letter(associated_disease_name)):
-                        # Nếu node đã tồn tại, vẫn cần tạo quan hệ rồi mới continue (hoặc logic của bạn là bỏ qua luôn)
-                        # Ở đây giữ nguyên logic cũ của bạn là bỏ qua
-                        continue
+        # 4. Xử lý THÔNG TIN KIỂM NGHIỆM/TIÊU CHUẨN
+        # Gom các trường kỹ thuật dài vào 1 node TIÊU_CHUẨN để Node chính đỡ nặng
+        dinh_tinh = clean_text(row.get('Dinh_Tinh'))
+        dinh_luong = clean_text(row.get('Dinh_Luong'))
+        ham_luong = clean_text(row.get('Ham_Luong_Yeu_Cau'))
+        tap_chat = clean_text(row.get('Tap_Chat_Va_Do_Tinh_Khiet'))
+        do_hoa_tan = clean_text(row.get('Do_Hoa_Tan'))
 
-                    associated_disease_node = Node("BỆNH", tên_bệnh=uppercase_first_letter(associated_disease_name), mô_tả_bệnh=associated_disease_description, loại_bệnh=associated_disease_category, nguyên_nhân=associated_disease_cause)
-                    graph.merge(associated_disease_node, "BỆNH", "tên_bệnh")
-                    has_associated_rela = Relationship(disease_node, "ĐI KÈM VỚI BỆNH", associated_disease_node)
-                    graph.create(has_associated_rela)
-        except Exception as e:
-            print(f"Error processing associated disease list: {e}")
+        # Chỉ tạo node tiêu chuẩn nếu có ít nhất 1 thông tin
+        if any([dinh_tinh, dinh_luong, ham_luong, tap_chat, do_hoa_tan]):
+            tieu_chuan_node = Node("TIÊU_CHUẨN",
+                                   thuộc_về_hoạt_chất=ten_hoat_chat, # Key để merge
+                                   hàm_lượng_yêu_cầu=ham_luong,
+                                   định_tính=dinh_tinh,
+                                   định_lượng=dinh_luong,
+                                   tạp_chất_và_độ_tinh_khiết=tap_chat,
+                                   độ_hòa_tan=do_hoa_tan)
+            graph.merge(tieu_chuan_node, "TIÊU_CHUẨN", "thuộc_về_hoạt_chất")
+            
+            # Tạo quan hệ: Hoạt chất -> Có tiêu chuẩn -> Tiêu chuẩn
+            rel_std = Relationship(hoat_chat_node, "CÓ_TIÊU_CHUẨN", tieu_chuan_node)
+            graph.merge(rel_std)
 
-if __name__ == "__main__": 
-    graph = Graph("bolt://127.0.0.1:7687", auth=("neo4j", "12345678"))
+    except Exception as e:
+        print(f"⚠️ Lỗi xử lý dòng {row.get('Ten_Hoat_Chat', 'Unknown')}: {e}")
+
+# ==========================================
+# 3. CHẠY CHƯƠNG TRÌNH
+# ==========================================
+if __name__ == "__main__":
+    # 1. Xóa dữ liệu cũ
     clear_graph()
-    df_cn = pd.read_csv(r'..\..\data\data_translated.csv', encoding="utf-8")
-    num_workers = 1
-    # Process each row in parallel using ThreadPoolExecutor
-    with ThreadPoolExecutor(max_workers=num_workers) as executor:
-        futures = [executor.submit(process_row, row) for index, row in df_cn.iterrows()]
-        for future in as_completed(futures):
-            try:
-                future.result()  # Retrieve and handle exceptions if any
-            except Exception as e:
-                print(f"Error processing row: {e}")
+
+    # 2. Đọc file CSV
+    # LƯU Ý: Thay đổi đường dẫn file CSV nếu cần
+    csv_path = r'..\..\data\data_midterm.csv'  
+    
+    try:
+        print(f"⏳ Đang đọc file CSV từ: {csv_path}")
+        df = pd.read_csv(csv_path, encoding='utf-8')
+        
+        # Kiểm tra xem các cột có đúng tên không
+        expected_columns = ['Ten_Hoat_Chat', 'Ten_Latin', 'Cong_Thuc_Hoa_Hoc', 
+                            'Mo_Ta_Chung', 'Tinh_Chat', 'Dinh_Tinh', 'Dinh_Luong', 
+                            'Bao_Quan', 'Loai_Thuoc', 'Ham_Luong_Yeu_Cau', 
+                            'Tap_Chat_Va_Do_Tinh_Khiet', 'Do_Hoa_Tan']
+        
+        # In ra các cột thực tế để debug nếu lỗi
+        # print("Columns in CSV:", df.columns.tolist())
+
+        print(f"📂 Tìm thấy {len(df)} dòng dữ liệu.")
+        
+        # 3. Chạy import song song
+        # Giảm số worker xuống 1 nếu máy yếu hoặc gặp lỗi Lock Database
+        num_workers = 4 
+        print("🚀 Bắt đầu nạp dữ liệu vào Neo4j...")
+        
+        with ThreadPoolExecutor(max_workers=num_workers) as executor:
+            futures = [executor.submit(process_row, row) for index, row in df.iterrows()]
+            
+            # Thanh tiến trình đơn giản
+            count = 0
+            total = len(df)
+            for future in as_completed(futures):
+                count += 1
+                if count % 10 == 0:
+                    print(f"   ...Đã xử lý {count}/{total} dòng")
+                try:
+                    future.result()
+                except Exception as e:
+                    print(f"❌ Lỗi thread: {e}")
+
+        print("✅ HOÀN THÀNH NẠP DỮ LIỆU!")
+
+    except FileNotFoundError:
+        print(f"❌ Không tìm thấy file CSV tại: {csv_path}")
+        print("👉 Hãy chắc chắn bạn đã lưu file dữ liệu mới và sửa đường dẫn trong code.")
+    except Exception as e:
+        print(f"❌ Lỗi không mong muốn: {e}")

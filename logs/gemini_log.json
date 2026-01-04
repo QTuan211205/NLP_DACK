@@ -1,0 +1,22 @@
+[
+    {
+        "question": "Công thức hóa học của ACID ASCORBIC là gì?",
+        "answer": "Công thức hóa học của ACID ASCORBIC là C6H8O6.",
+        "cypher_used": "Xem trong log console"
+    },
+    {
+        "question": "Công thức hóa học của NANG ACID TRANEXAMIC?",
+        "answer": "Công thức hóa học của NANG ACID TRANEXAMIC là C8H15NO2.",
+        "cypher_used": "Xem trong log console"
+    },
+    {
+        "question": "Công thức hóa học của VIÊN NÉN AMIODARON là gì?",
+        "answer": "C25H29I2NO3.",
+        "cypher_used": "Xem trong log console"
+    },
+    {
+        "question": "Công thức hóa học của BẠC VITELINAT là gì?",
+        "answer": "Công thức hóa học của BẠC VITELINAT là None.",
+        "cypher_used": "Xem trong log console"
+    }
+]

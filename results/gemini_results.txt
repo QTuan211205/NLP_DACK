@@ -1,0 +1,3 @@
+BLEU: 0.0
+ROUGE: 0.0
+METEOR: 0.0

@@ -1,345 +1,226 @@
 import requests
-from requests.auth import HTTPBasicAuth
-
-# from config import SECTION_1_PROMPT
 import os
 import json
+import time
 from dotenv import load_dotenv
-from langchain_community.chat_models import AzureChatOpenAI
-from langchain.schema import (
-    HumanMessage,
-)
 
-import json
-import os
-from nltk.translate.bleu_score import sentence_bleu
+# --- IMPORTS ---
+import nltk
+from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from rouge import Rouge
 from nltk.translate.meteor_score import meteor_score
-import nltk
-from nltk.translate.bleu_score import SmoothingFunction
 
-nltk.download("wordnet")
+try:
+    nltk.data.find('corpora/wordnet')
+except LookupError:
+    nltk.download("wordnet")
 
-# Initialize ROUGE scorer
-rouge = Rouge()
-
-load_dotenv("key.env")
-access_token = ""
-
-import requests
-from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
-
-from langchain.chains import GraphCypherQAChain
 from langchain_community.graphs import Neo4jGraph
-
-# from langchain_openai import ChatOpenAI
-from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
-from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
-from langchain_core.example_selectors import SemanticSimilarityExampleSelector
-from langchain_community.vectorstores import Neo4jVector
-
-import langchain
-
+from langchain.chains import GraphCypherQAChain
 import google.generativeai as genai
 
+rouge = Rouge()
 
-uri = os.getenv("URI")
-user = os.getenv("USER")
-password = os.getenv("PASSWORD")
+# ==============================================================================
+# 1. CẤU HÌNH & KẾT NỐI
+# ==============================================================================
 
-google_api_key = os.getenv("GOOGLE_API_KEY")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+env_path = os.path.join(current_dir, '..', 'key.env')
+load_dotenv(env_path)
 
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+NEO4J_URI = os.getenv("URI", "neo4j://127.0.0.1:7687")
+NEO4J_USER = os.getenv("USER", "neo4j")
+NEO4J_PASSWORD = os.getenv("PASSWORD", "12345678")
 
-embeddings = GoogleGenerativeAIEmbeddings(
-    model="models/embedding-001",
-    google_api_key=google_api_key,
-)
+if not GOOGLE_API_KEY:
+    print("❌ LỖI: Không tìm thấy GOOGLE_API_KEY.")
+    exit()
 
+genai.configure(api_key=GOOGLE_API_KEY)
+MODEL_NAME = "models/gemini-2.0-flash" # nhớ sửa model lại 
 
-graph = Neo4jGraph(url=uri, username=user, password=password)
+try:
+    graph = Neo4jGraph(url=NEO4J_URI, username=NEO4J_USER, password=NEO4J_PASSWORD)
+    graph.refresh_schema()
+    print("✅ Đã kết nối Neo4j! (Schema đã khớp với dữ liệu Tiếng Việt)")
+except Exception as e:
+    print(f"❌ Lỗi kết nối Neo4j: {e}")
+    exit()
 
+# ==============================================================================
+# 2. PROMPT & SCHEMA (QUAN TRỌNG NHẤT: DÙNG KEY TIẾNG VIỆT)
+# ==============================================================================
 
+# Ví dụ mẫu dạy Bot cách query sang bảng TIÊU_CHUẨN
 examples = [
     {
-        "question": "Phương pháp điều trị cho bệnh [U lympho sau phúc mạc] là gì?",
-        "query": "MATCH (b:ĐIỀU_TRỊ) WHERE b.tên_bệnh = 'U lympho sau phúc mạc' RETURN b",
+        "question": "Công thức hóa học của Aspirin là gì?",
+        # SỬA: Trả về cả tên hoạt chất để Bot biết công thức này của ai
+        "query": "MATCH (n:HOẠT_CHẤT) WHERE toLower(n.tên_hoạt_chất) CONTAINS toLower('ASPIRIN') RETURN n.tên_hoạt_chất,n.công_thức_hóa_học",
     },
     {
-        "question": "Nguyên nhân của bệnh [Chảy máu khoảng cách sau phúc mạc] là gì?",
-        "query": "MATCH (b:BỆNH) WHERE b.tên_bệnh = 'Chảy máu khoảng cách sau phúc mạc' RETURN b",
+        "question": "Công thức hóa học của Acid Ascorbic?",
+        "query": "MATCH (n:HOẠT_CHẤT) WHERE toLower(n.tên_hoạt_chất) CONTAINS toLower('ACID ASCORBIC') RETURN n.tên_hoạt_chất,n.công_thức_hóa_học",
     },
     {
-        "question": "Triệu chứng của bệnh [Chảy máu khoảng cách sau phúc mạc] là gì?",
-        "query": "MATCH (b:TRIỆU_CHỨNG) WHERE b.tên_bệnh = 'Chảy máu khoảng cách sau phúc mạc' RETURN b",
+        "question": "Mô tả chung về Paracetamol?",
+        "query": "MATCH (n:HOẠT_CHẤT) WHERE toLower(n.tên_hoạt_chất) CONTAINS toLower('PARACETAMOL') RETURN n.tên_hoạt_chất,n.mô_tả",
     },
     {
-        "question": "Những bệnh lý nào có thể xuất hiện khi có triệu chứng [Khóc và đau]?",
-        "query": "MATCH (b:TRIỆU_CHỨNG) WHERE b.triệu_chứng = 'Khóc và đau' RETURN b",
+        "question": "Yêu cầu về định lượng của Bột bó?",
+        "query": "MATCH (n:HOẠT_CHẤT)-[:CÓ_TIÊU_CHUẨN]->(t:TIÊU_CHUẨN) WHERE toLower(n.tên_hoạt_chất) CONTAINS toLower('BỘT BÓ') RETURN n.tên_hoạt_chất,t.định_lượng",
     },
     {
-        "question": "Có những loại thuốc phổ biến nào để điều trị bệnh [Chảy máu khoảng cách sau phúc mạc]?",
-        "query": "MATCH (b:THUỐC) WHERE b.tên_bệnh = 'Chảy máu khoảng cách sau phúc mạc' RETURN b",
+        "question": "Độ hòa tan của Glucose?",
+        "query": "MATCH (n:HOẠT_CHẤT)-[:CÓ_TIÊU_CHUẨN]->(t:TIÊU_CHUẨN) WHERE toLower(n.tên_hoạt_chất) CONTAINS toLower('GLUCOSE') RETURN n.tên_hoạt_chất,t.độ_hòa_tan",
     },
+    {
+        "question": "Bột bó thuộc loại thuốc nào?",
+        "query": "MATCH (n:HOẠT_CHẤT)-[:THUỘC_NHÓM]->(l:LOẠI_THUỐC) WHERE toLower(n.tên_hoạt_chất) CONTAINS toLower('BỘT BÓ') RETURN n.tên_hoạt_chất,l.tên_loại",
+    }
 ]
 
-# {
-#     "question": "Kiểm tra nào được sử dụng để chẩn đoán bệnh Chảy máu khoảng cách sau phúc mạc?",
-#     "query": "MATCH (b:BỆNH {tên_bệnh: 'Chảy máu khoảng cách sau phúc mạc'}) RETURN b.kiểm_tra AS diagnostic_tests",
-# },
-# {
-#     "question": "Bệnh U lympho sau phúc mạc thuộc loại bệnh nào?",
-#     "query": "MATCH (b:BỆNH {tên_bệnh: 'U lympho sau phúc mạc'}) RETURN b.loại_bệnh AS disease_type",
-# },
-# {
-#     "question": "Tỷ lệ chữa khỏi của bệnh Chảy máu khoảng cách sau phúc mạc là bao nhiêu?",
-#     "query": "MATCH (b:BỆNH {tên_bệnh: 'Chảy máu khoảng cách sau phúc mạc'}) RETURN b.tỉ_lệ_chữa_khỏi AS cure_rate",
-# },
-# {
-#     "question": "Các đối tượng dễ mắc bệnh Chảy máu khoảng cách sau phúc mạc là ai?",
-#     "query": "MATCH (b:BỆNH {tên_bệnh: 'Chảy máu khoảng cách sau phúc mạc'}) RETURN b.đối_tượng_dễ_mắc_bệnh AS susceptible_groups",
-# },
-# {
-#     "question": "Các khoa điều trị bệnh Chảy máu khoảng cách sau phúc mạc là gì?",
-#     "query": "MATCH (b:BỆNH {tên_bệnh: 'Chảy máu khoảng cách sau phúc mạc'}) RETURN b.khoa_điều_trị AS treatment_departments",
-# },
-# {
-#     "question": "Có những loại thuốc phổ biến nào để điều trị bệnh Chảy máu khoảng cách sau phúc mạc?",
-#     "query": "MATCH (b:BỆNH {tên_bệnh: 'Chảy máu khoảng cách sau phúc mạc'}) RETURN b.thuốc_phổ_biến AS common_medications",
-# },
-# {
-#     "question": "Các biện pháp phòng tránh bệnh Chảy máu khoảng cách sau phúc mạc là gì?",
-#     "query": "MATCH (b:BỆNH {tên_bệnh: 'Chảy máu khoảng cách sau phúc mạc'}) RETURN b.cách_phòng_tránh AS prevention_methods",
-# },
+# Khai báo cấu trúc đúng với Database hiện tại của bạn
+PREFIX = """
+    You are a Neo4j expert. Given an input question, create a syntactically correct Cypher query.
+    
+    My Database Schema (Tiếng Việt):
+    
+    1. Node: HOẠT_CHẤT
+       - tên_hoạt_chất
+       - tên_latin
+       - công_thức_hóa_học
+       - mô_tả
+       - bảo_quản
+       
+    2. Node: TIÊU_CHUẨN (Linked via :CÓ_TIÊU_CHUẨN)
+       - định_lượng
+       - định_tính
+       - độ_hòa_tan
+       - tạp_chất_và_độ_tinh_khiết
+       - hàm_lượng_yêu_cầu
 
+    3. Node: LOẠI_THUỐC (Linked via :THUỘC_NHÓM)
+       - tên_loại
 
-# Paths
-results_dir = "/Users/hoanganh692004/Desktop/products-knowledge-graph/results"
-logs_dir = "/Users/hoanganh692004/Desktop/products-knowledge-graph/logs"
-
-gemini_results_path = os.path.join(results_dir, "gemini_graph_cypher.txt")
-gemini_log_path = os.path.join(logs_dir, "gemini_graph_cypher.json")
-
-# Initialize lists to store scores
-gemini_scores = {"BLEU": [], "ROUGE": [], "METEOR": []}
-
-# Logs to store answers and scores
-gemini_log = []
-
-smoothing_function = SmoothingFunction().method1
-
-
-def get_scores(hypothesis, reference):
-    hypothesis_tokens = hypothesis.split()
-    reference_tokens = reference.split()
-    bleu = sentence_bleu(
-        [reference_tokens], hypothesis_tokens, smoothing_function=smoothing_function
-    )
-    rouge_score = rouge.get_scores(hypothesis, reference)[0]["rouge-l"]["f"]
-    meteor = meteor_score([reference_tokens], hypothesis_tokens)
-    return bleu, rouge_score, meteor
-
+    INSTRUCTIONS:
+    - Use `toLower()` for case-insensitive search.
+    - Use `CONTAINS` for fuzzy matching.
+    - IMPORTANT: Use the EXACT Vietnamese property names listed above (e.g. `n.tên_hoạt_chất`, `t.định_lượng`).
+    - If asked about quantitative standards (định lượng/hòa tan), YOU MUST JOIN with `[:CÓ_TIÊU_CHUẨN]`.
+    
+    Examples:
+"""
 
 example_prompt = PromptTemplate.from_template(
     "User input: {question}\nCypher query: {query}"
 )
-
-PREFIX = """
-    I have a knowledge graph for Vietnamese traditional medicine, where each node represents a disease "BỆNH", "ĐIỀU_TRỊ", "TRIỆU_CHỨNG", "THUỐC", "LỜI_KHUYÊN". Each node can have the following properties:
-    1. BỆNH
-        - mô_tả_bệnh
-        - loại_bệnh
-        - tên_bệnh
-        - nguyên_nhân
-    2. ĐIỀU_TRỊ
-        - khoa_điều_trị
-        - tỉ_lệ_chữa_khỏi
-        - tên_bệnh
-        - phương_pháp
-    3. TRIỆU_CHỨNG
-        - kiểm_tra
-        - đối_tượng_dễ_mắc_bệnh
-        - triệu_chứng
-        - tên_bệnh
-    4. THUỐC
-        - thuốc_phổ_biến
-        - thông_tin_thuốc
-        - đề_xuất_thuốc
-        - tên_bệnh
-    5. LỜI_KHUYÊN
-        - không_nên_ăn_thực_phẩm_chứa
-        - nên_ăn_thực_phẩm_chứa
-        - tên_bệnh
-        - cách_phòng_tránh
-        - đề_xuất_món_ăn
-    You are a Neo4j expert. Given an input question, create a syntactically correct Cypher query to run.\n\nHere is the schema information\n{schema}.\n\nBelow are a number of examples of questions and their corresponding Cypher queries.",
-    """
 
 prompt = FewShotPromptTemplate(
     examples=examples,
     example_prompt=example_prompt,
     prefix=PREFIX,
     suffix="User input: {question}\nCypher query: ",
-    input_variables=["question", "schema"],
+    input_variables=["question"],
 )
 
 gemini_chain = GraphCypherQAChain.from_llm(
-    ChatGoogleGenerativeAI(
-        model="gemini-pro",
-        google_api_key="AIzaSyCaNF1Yh50y3TKwWZvxUJ6tqmrJ8x0FSuE",
-    ),
+    ChatGoogleGenerativeAI(model=MODEL_NAME, google_api_key=GOOGLE_API_KEY, temperature=0),
     graph=graph,
     verbose=True,
     cypher_prompt=prompt,
+    allow_dangerous_requests=True
 )
 
+# ==============================================================================
+# 3. CHẠY THỰC NGHIỆM
+# ==============================================================================
 
-def write_log_entry(entry, file_path):
-    with open(file_path, "a") as f:
-        f.write(json.dumps(entry, ensure_ascii=False, indent=4) + ",\n")
+results_dir = "../results"
+logs_dir = "../logs"
+os.makedirs(results_dir, exist_ok=True)
+os.makedirs(logs_dir, exist_ok=True)
+gemini_results_path = os.path.join(results_dir, "gemini_results.txt")
+gemini_log_path = os.path.join(logs_dir, "gemini_log.json")
+gemini_log = []
 
-
-def run(chain, question):
-    return chain.run(question)
-
-
-def call_model_with_retry(model_func, prompt):
-    while True:
-        try:
-            result = model_func(prompt)
-            return result
-        except Exception as e:
-            print(f"Error: {e}. Retrying...")
-
-
-def get_gemini(text):
-
-    genai.configure(api_key=google_api_key)
-
-    # Set up the model
-    generation_config = {
-        "temperature": 0,
-        "top_p": 1,
-        "top_k": 1,
-        "max_output_tokens": 50000,
-    }
-
-    safety_settings = [
-        {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-        {
-            "category": "HARM_CATEGORY_HATE_SPEECH",
-            "threshold": "BLOCK_MEDIUM_AND_ABOVE",
-        },
-        {
-            "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-            "threshold": "BLOCK_MEDIUM_AND_ABOVE",
-        },
-        {
-            "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-            "threshold": "BLOCK_MEDIUM_AND_ABOVE",
-        },
-    ]
-
-    model = genai.GenerativeModel(
-        model_name="gemini-pro",
-        generation_config=generation_config,
-        safety_settings=safety_settings,
-    )
-    response = model.generate_content([text])
-    response = response.text
-
-    return response
-
-
-file_path = "data/benchmark/1_hop_500.json"
-
-# Read the JSON file
-with open(file_path, "r") as file:
-    data = json.load(file)
-
-
-def call_model_with_retry(model_func, prompt):
-    while True:
-        try:
-            result = model_func(prompt)
-            return result
-        except Exception as e:
-            print(f"Error: {e}. Retrying...")
-
-
-import time
-
-gemini_inference_times = []
-
-# Process the first 20 samples
-for i, x in enumerate(data[:20]):  # Limit to the first 20 samples
-    # Gemini inference
+def get_gemini_fallback(text):
     try:
-        start_time = time.time()
-        gemini_result = run(gemini_chain, x["question"])
-        end_time = time.time()
-        gemini_inference_times.append(end_time - start_time)
+        model = genai.GenerativeModel(MODEL_NAME)
+        return model.generate_content([text]).text
+    except: return "Lỗi kết nối Gemini."
+
+print("\n🚀 BẮT ĐẦU CHẠY THỬ NGHIỆM RAG (ĐÃ FIX SCHEMA TIẾNG VIỆT)...")
+
+# Bộ câu hỏi test
+data_test = [
+    # 1. Nhóm câu hỏi về ĐỊNH LƯỢNG (Yêu cầu Bot phải tìm trong bảng TIÊU_CHUẨN)
+    {
+        "question": "Yêu cầu định lượng đối với VIÊN NÉN ACID ACETYLSALICYLIC là gì?", 
+        "answer": "Hàm lượng C9H8O4 từ 95,0 % đến 105,0 % so với lượng ghi trên nhãn."
+    },
+    {
+        "question": "Giới hạn định lượng của ACID AMINOCAPROIC được quy định như thế nào?", 
+        "answer": "Hàm lượng C6H13NO2 phải đạt từ 99,0 % đến 101,0 %."
+    },
+    
+    # 2. Nhóm câu hỏi về TÍNH CHẤT / MÔ TẢ (Kiểm tra khả năng đọc hiểu văn bản dài)
+    {
+        "question": "Mô tả tính chất vật lý của ACID CITRIC NGẬM MỘT PHÂN TỬ NƯỚC?", 
+        "answer": "Tinh thể không màu hoặc bột kết tinh trắng, sủi bọt trong không khí khô."
+    },
+    {
+        "question": "Đặc điểm cảm quan của BỘT PHA HỖN DỊCH AZITHROMYCIN?", 
+        "answer": "Bột khô, tơi, màu trắng hoặc trắng ngà, mùi thơm đặc trưng."
+    },
+    
+    # 3. Nhóm câu hỏi về BẢO QUẢN (Dữ liệu nằm trực tiếp ở node HOẠT_CHẤT)
+    {
+        "question": "Cách bảo quản thuốc BẠC VITELINAT như thế nào?", 
+        "answer": "Đựng trong lọ màu, nút kín, để chỗ tối."
+    },
+    
+    # 4. Nhóm câu hỏi về ĐỊNH TÍNH (Nhận biết hoạt chất)
+    {
+        "question": "Phản ứng định tính để nhận biết ACID ASCORBIC?", 
+        "answer": "Làm mất màu dung dịch 2,6-diclorophenolindophenol hoặc tủa với bạc nitrat."
+    },
+    
+    # 5. Nhóm câu hỏi về PHÂN LOẠI (Mối quan hệ THUỘC_NHÓM)
+    {
+        "question": "BỘT PHA HỖN DỊCH AMOXICILIN VÀ ACID CLAVULANIC thuộc nhóm thuốc nào?", 
+        "answer": "Nhóm kháng sinh beta-lactam."
+    }
+]
+
+for i, x in enumerate(data_test):
+    print(f"\n🔹 Câu hỏi {i+1}: {x['question']}")
+    try:
+        # Chạy Chain
+        response = gemini_chain.invoke(x["question"])
+        gemini_result = response.get('result', str(response))
     except Exception as e:
-        print(f"An error occurred: {e}")
-        PROMPT = f"""
-        Bạn là một chuyên gia về y học cổ truyền Việt Nam. Hãy trả lời đúng trọng tâm câu hỏi, không cần bổ sung thêm thông tin.
-        Câu hỏi: {x["question"]}
-        """
-        start_time = time.time()
-        gemini_result = call_model_with_retry(get_gemini, PROMPT)
-        end_time = time.time()
-        gemini_inference_times.append(end_time - start_time)
-
-    reference = x["answer"]
-
-    if not gemini_result.strip():
-        gemini_result = f"Tôi không có thông tin về: {x['question']}"
-
-    # Calculate scores for Gemini
-    gemini_bleu, gemini_rouge, gemini_meteor = get_scores(gemini_result, reference)
-    gemini_scores["BLEU"].append(gemini_bleu)
-    gemini_scores["ROUGE"].append(gemini_rouge)
-    gemini_scores["METEOR"].append(gemini_meteor)
-
-    log_entry = {
+        print(f"   ⚠️ Lỗi Cypher: {e}")
+        gemini_result = get_gemini_fallback(f"Dược điển: {x['question']}")
+    
+    if "I don't know" in str(gemini_result):
+        gemini_result = "Không tìm thấy trong DB (Vẫn lỗi khớp tên)."
+        
+    print(f"✅ Trả lời: {gemini_result}")
+    
+    # Ghi log đơn giản
+    gemini_log.append({
         "question": x["question"],
         "answer": gemini_result,
-        "ground_truth": x["answer"],
-        "BLEU": gemini_bleu,
-        "ROUGE": gemini_rouge,
-        "METEOR": gemini_meteor,
-    }
+        "cypher_used": "Xem trong log console"
+    })
 
-    gemini_log.append(log_entry)
+# Lưu log
+with open(gemini_log_path, "w", encoding='utf-8') as f:
+    json.dump(gemini_log, f, ensure_ascii=False, indent=4)
 
-    write_log_entry(log_entry, gemini_log_path)
-
-# Calculate and print the average inference times
-average_gemini_inference_time = sum(gemini_inference_times) / len(
-    gemini_inference_times
-)
-
-print(f"Average Inference Time for Gemini: {average_gemini_inference_time} seconds")
-
-
-# Calculate mean scores and write to text files
-def write_mean_scores(scores, file_path):
-    mean_scores = {
-        metric: sum(values) / len(values) for metric, values in scores.items()
-    }
-    with open(file_path, "w") as f:
-        for metric, score in mean_scores.items():
-            f.write(f"{metric}: {score}\n")
-
-
-write_mean_scores(gemini_scores, gemini_results_path)
-
-
-# Write logs to JSON files
-def write_log(log, file_path):
-    with open(file_path, "w") as f:
-        json.dump(log, f, ensure_ascii=False, indent=4)
-
-
-write_log(gemini_log, gemini_log_path)
+print("\n🎉 HOÀN TẤT! Hãy kiểm tra kết quả phía trên.")
