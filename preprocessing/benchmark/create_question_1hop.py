@@ -1,3 +1,8 @@
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+
 from utils import read_json, save_json
 from preprocessing.llm import get_GPT
 import warnings
@@ -8,342 +13,208 @@ import json
 # Ignore all warnings
 warnings.filterwarnings("ignore")
 
-class Question_benh_to_X:
+# Class 1: Từ tên Hoạt chất hỏi về các thuộc tính (Drug -> Property)
+class Question_hoatchat_to_X:
     def __init__(self, input_filename, output_filename):
         self.input_filename = input_filename
         self.output_filename = output_filename
+        # Cập nhật theo các cột trong CSV của bạn
         self.relation_dict = {
-            "disease_description": "mô_tả",
-            "disease_category": "loại",
-            "disease_prevention": "cách_phòng_tránh",
-            "disease_cause": "nguyên_nhân",
-            "disease_symptom": "triệu_chứng",
-            "people_easy_get": "đối_tượng_dễ_mắc_bệnh",
-            "associated_disease": "bệnh_đi_kèm",
-            "cure_department": "khoa_điều_trị",
-            "cure_method": "phương_pháp_điều_trị",
-            "cure_probability": "tỉ_lệ_chữa_khỏi",
-            "check_method": "kiểm_tra",
-            "nutrition_do_eat": "thực_phẩm_nên_ăn",
-            "nutrition_not_eat": "thực_phẩm_không_nên_ăn",
-            "nutrition_recommend_eat": "món_ăn_được_đề_xuất",
-            "drug_recommend": "thuốc_đề_xuất",
-            "drug_common": "thuốc_phổ_biến",
-            "drug_detail": "thông_tin_về_thuốc"
+            "Ten_Latin": "tên_latin",
+            "Cong_Thuc_Hoa_Hoc": "công_thức_hóa_học",
+            "Mo_Ta_Chung": "mô_tả_chung",
+            "Tinh_Chat": "tính_chất",
+            "Dinh_Tinh": "định_tính",
+            "Dinh_Luong": "định_lượng",
+            "Bao_Quan": "bảo_quản",
+            "Loai_Thuoc": "loại_thuốc",
+            "Ham_Luong_Yeu_Cau": "hàm_lượng_yêu_cầu",
+            "Tap_Chat_Va_Do_Tinh_Khiet": "tạp_chất_và_độ_tinh_khiết",
+            "Do_Hoa_Tan": "độ_hòa_tan"
         }
 
     def process_data(self, data):
-        """
-        Replace relation values in data with new dictionary format.
-
-        Args:
-        - data (list): List of dictionaries containing medical information.
-
-        Returns:
-        - list: Processed data with updated relation values.
-        """
         for item in data:
             if item['relation'] in self.relation_dict:
                 item['relation'] = self.relation_dict[item['relation']]
         return data
 
     def create_question(self, item):
-        """
-        Create a question based on the given item.
-
-        Args:
-        - item (dict): Dictionary containing 'relation' and 'header' keys.
-
-        Returns:
-        - str or None: Generated question or None if relation is not recognized.
-        """
-        if item['relation'] == 'mô_tả':
-            return f"Mô tả về [{item['header']}]?"
-        elif item['relation'] == 'loại':
-            return f"[{item['header']}] thuộc loại bệnh nào?"
-        elif item['relation'] == 'cách_phòng_tránh':
-            return f"Cách phòng tránh [{item['header']}]?"
-        elif item['relation'] == 'nguyên_nhân':
-            return f"Nguyên nhân dẫn đến [{item['header']}]?"
-        elif item['relation'] == 'triệu_chứng':
-            return f"Triệu chứng của [{item['header']}]?"
-        elif item['relation'] == 'đối_tượng_dễ_mắc_bệnh':
-            return f"Đối tượng dễ mắc [{item['header']}]?"
-        elif item['relation'] == 'bệnh_đi_kèm':
-            return f"Các bệnh thường xảy ra cùng với [{item['header']}]?"
-        elif item['relation'] == 'khoa_điều_trị':
-            return f"Bạn có thể đến khoa nào để điều trị [{item['header']}]?"
-        elif item['relation'] == 'phương_pháp_điều_trị':
-            return f"Phương pháp điều trị [{item['header']}]?"
-        elif item['relation'] == 'tỉ_lệ_chữa_khỏi':
-            return f"Tỉ lệ chữa khỏi [{item['header']}]?"
-        elif item['relation'] == 'kiểm_tra':
-            return f"Bạn cần kiểm tra những gì khi mắc [{item['header']}]?"
-        elif item['relation'] == 'thực_phẩm_nên_ăn':
-            return f"Thực phẩm nên ăn trong quá trình chữa [{item['header']}]?"
-        elif item['relation'] == 'thực_phẩm_không_nên_ăn':
-            return f"Thực phẩm không nên ăn trong quá trình chữa [{item['header']}]?"
-        elif item['relation'] == 'món_ăn_được_đề_xuất':
-            return f"Món ăn nên ăn trong quá trình chữa [{item['header']}]?"
-        elif item['relation'] == 'thuốc_đề_xuất':
-            return f"Các loại thuốc được đề xuất khi chữa [{item['header']}]?"
-        elif item['relation'] == 'thuốc_phổ_biến':
-            return f"Các loại thuốc phổ biến được dùng để chữa [{item['header']}]?"
-        elif item['relation'] == 'thông_tin_về_thuốc':
-            return f"Thông tin chi tiết về thuốc để chữa [{item['header']}]?"
+        header = item['header']
+        rel = item['relation']
+        
+        if rel == 'tên_latin':
+            return f"Tên Latin của hoạt chất [{header}] là gì?"
+        elif rel == 'công_thức_hóa_học':
+            return f"Công thức hóa học của [{header}] được viết như thế nào?"
+        elif rel == 'mô_tả_chung':
+            return f"Mô tả chung về hoạt chất [{header}]?"
+        elif rel == 'tính_chất':
+            return f"Tính chất vật lý và hóa học của [{header}] như thế nào?"
+        elif rel == 'định_tính':
+            return f"Các phương pháp định tính của [{header}] là gì?"
+        elif rel == 'định_lượng':
+            return f"Cách tiến hành định lượng cho [{header}]?"
+        elif rel == 'bảo_quản':
+            return f"Yêu cầu bảo quản đối với hoạt chất [{header}] như thế nào?"
+        elif rel == 'loại_thuốc':
+            return f"Hoạt chất [{header}] thuộc nhóm hoặc loại thuốc nào?"
+        elif rel == 'hàm_lượng_yêu_cầu':
+            return f"Hàm lượng yêu cầu của chế phẩm [{header}] là bao nhiêu?"
+        elif rel == 'tạp_chất_và_độ_tinh_khiết':
+            return f"Tiêu chuẩn về tạp chất và độ tinh khiết của [{header}]?"
+        elif rel == 'độ_hòa_tan':
+            return f"Độ hòa tan của [{header}] trong các dung môi?"
         else:
             return None
 
     def generate_question(self, item):
+        # Đổi ngữ cảnh từ Bác sĩ sang Dược sĩ/Chuyên gia kiểm nghiệm
+        prompt = f"""Imagine you are a pharmacist or a drug quality control expert.
+        Based on the provided technical question [{item['question']}], create a natural, human-like question that a pharmacy student or a professional might ask. 
+        Return the question in JSON format, preserving the brackets [] around the entity.
+        If the answer is "Không có thông tin", return {{"question": ""}}.
+        Example: {{"question": "Bạn có thể cho biết công thức hóa học của hoạt chất [{item['header']}] không?"}}
         """
-        Generate a human-like question based on the given question text using GPT-3.
-
-        Args:
-        - item (dict): Dictionary containing 'question' key with bracketed entity.
-
-        Returns:
-        - str or None: Generated question or None if no valid response from GPT-3.
-        """
-        prompt = f"""Imagine you are a doctor managing a large number of patients and receiving numerous questions daily.
-        Based on the provided question [{item['question']}], create a human-like question that a patient might ask. 
-        Return the question in JSON format, preserving the brackets [] in the question. If the answer does not contain any specific information, 
-        such as "Không có thông tin cụ thể" or similar, return an empty JSON object
-            {{
-                {"question": ""}
-            }}.
-            You have to keep the bracket [] in the question. Especially, if the answer does not contain any information like "Không có thông tin cụ thể", etc, return {{}}"""
-
         result = get_GPT(prompt)
         try:
             result = eval(result[result.find('{'): result.rfind('}') + 1])
         except:
             return None
-
-        if result == {}:
+        if not result or result.get('question') == "":
             return None
         return result['question']
 
     def process_item(self, item):
-        """
-        Process an item to generate a human-like question and update the item with the question.
-
-        Args:
-        - item (dict): Dictionary containing 'question' and 'answer' keys.
-
-        Returns:
-        - dict or None: Updated item with generated question or None if no valid question could be generated.
-        """
-        if item['answer'] == "Không có thông tin":
+        if item['answer'] == "Không có thông tin" or not item['answer']:
             return None
-
+        raw_q = self.create_question(item)
+        if not raw_q: return None
+        item['question'] = raw_q
         generated_question = self.generate_question(item)
-        if generated_question is None:
-            return None
-
-        item['question'] = generated_question
-        return item
+        if generated_question:
+            item['question'] = generated_question
+            return item
+        return None
 
     def run_processing(self):
-        """
-        Load data, process each item to generate questions, and save valid items to output file.
-        """
         json_data = read_json(self.input_filename)
         processed_data = self.process_data(json_data)
-
         save_data = []
         with ThreadPoolExecutor(max_workers=10) as executor:
             future_to_item = {executor.submit(self.process_item, i): i for i in processed_data}
             for future in tqdm(as_completed(future_to_item), total=len(processed_data)):
                 item = future.result()
-                if item is not None:
+                if item:
                     save_data.append(item)
-                    save_json(save_data, self.output_filename)
+        save_json(save_data, self.output_filename)
 
-class Question_X_to_benh:
+# Class 2: Từ thuộc tính hỏi ngược lại tên hoạt chất (Property -> Drug)
+class Question_X_to_hoatchat:
     def __init__(self, input_filename, output_filename):
         self.input_filename = input_filename
         self.output_filename = output_filename
         self.relation_dict = {
-            "disease_description": "mô_tả",
-            "disease_category": "loại",
-            "disease_prevention": "cách_phòng_tránh",
-            "disease_cause": "nguyên_nhân",
-            "disease_symptom": "triệu_chứng",
-            "people_easy_get": "đối_tượng_dễ_mắc_bệnh",
-            "associated_disease": "bệnh_đi_kèm",
-            "cure_department": "khoa_điều_trị",
-            "cure_method": "phương_pháp_điều_trị",
-            "cure_probability": "tỉ_lệ_chữa_khỏi",
-            "check_method": "kiểm_tra",
-            "nutrition_do_eat": "thực_phẩm_nên_ăn",
-            "nutrition_not_eat": "thực_phẩm_không_nên_ăn",
-            "nutrition_recommend_eat": "món_ăn_được_đề_xuất",
-            "drug_recommend": "thuốc_đề_xuất",
-            "drug_common": "thuốc_phổ_biến",
-            "drug_detail": "thông_tin_về_thuốc"
+            "Ten_Latin": "tên_latin",
+            "Cong_Thuc_Hoa_Hoc": "công_thức_hóa_học",
+            "Mo_Ta_Chung": "mô_tả_chung",
+            "Tinh_Chat": "tính_chất",
+            "Dinh_Tinh": "định_tính",
+            "Dinh_Luong": "định_lượng",
+            "Bao_Quan": "bảo_quản",
+            "Loai_Thuoc": "loại_thuốc",
+            "Ham_Luong_Yeu_Cau": "hàm_lượng_yêu_cầu",
+            "Tap_Chat_Va_Do_Tinh_Khiet": "tạp_chất_và_độ_tinh_khiết",
+            "Do_Hoa_Tan": "độ_hòa_tan"
         }
 
     def process_data(self, data):
-        """
-        Replace relation values in data with new dictionary format.
-
-        Args:
-        - data (list): List of dictionaries containing medical information.
-
-        Returns:
-        - list: Processed data with updated relation values.
-        """
         for item in data:
             if item['relation'] in self.relation_dict:
                 item['relation'] = self.relation_dict[item['relation']]
         return data
 
     def create_question(self, item):
-        """
-        Create a question based on the given item.
-
-        Args:
-        - item (dict): Dictionary containing 'relation' and 'header' keys.
-
-        Returns:
-        - str or None: Generated question or None if relation is not recognized.
-        """
-        if item['relation'] == 'mô_tả':
-            return f"[{item['tail']}] là mô tả của bệnh gì?"
-        elif item['relation'] == 'loại':
-            return f"Các loại bệnh [{item['tail']}] có thể dùng để chỉ bệnh gì?"
-        elif item['relation'] == 'cách_phòng_tránh':
-            return f"Cách các phòng tránh [{item['tail']}] có thể được dùng cho bệnh gì?"
-        elif item['relation'] == 'nguyên_nhân':
-            return f"Các nguyên nhân [{item['tail']}] có thể dẫn đến bệnh gì?"
-        elif item['relation'] == 'triệu_chứng':
-            return f"Các triệu chứng [{item['tail']}] có thể dẫn đến bệnh gì?"
-        elif item['relation'] == 'đối_tượng_dễ_mắc_bệnh':
-            return f"Các đối tượng [{item['tail']}] thường dễ mắc các bệnh gì?"
-        elif item['relation'] == 'bệnh_đi_kèm':
-            return f"Các bệnh [{item['tail']}] xảy ra cùng lúc có thể là dấu hiệu của bệnh gì?"
-        elif item['relation'] == 'khoa_điều_trị':
-            return f"Bạn có thể đến khoa [{item['tail']}] để điều trị bệnh nào?"
-        elif item['relation'] == 'phương_pháp_điều_trị':
-            return f"Phương pháp điều trị [{item['tail']}] có thể dùng để điều trị bệnh nào?"
-        elif item['relation'] == 'kiểm_tra':
-            return f"Kiểm tra [{item['tail']}] khi bạn nghi ngờ mắc bệnh gì?"
-        elif item['relation'] == 'thực_phẩm_nên_ăn':
-            return f"Thực phẩm nên ăn [{item['tail']}] có thể trợ giúp trong quá trình chữa bệnh gì?"
-        elif item['relation'] == 'thực_phẩm_không_nên_ăn':
-            return f"Thực phẩm không nên ăn [{item['tail']}] có thể trợ giúp trong quá trình chữa bệnh gì?"
-        elif item['relation'] == 'món_ăn_được_đề_xuất':
-            return f"Món ăn nên ăn [{item['tail']}] có thể trợ giúp trong quá trình chữa bệnh gì?"
-        elif item['relation'] == 'thuốc_đề_xuất':
-            return f"Các loại thuốc [{item['tail']}] được đề xuất khi chữa bệnh gì?"
-        elif item['relation'] == 'thuốc_phổ_biến':
-            return f"Các loại thuốc phổ biến [{item['tail']}] được dùng để chữa bệnh gì?"
+        tail = item['tail']
+        rel = item['relation']
+        
+        if rel == 'tên_latin':
+            return f"Hoạt chất nào có tên Latin là [{tail}]?"
+        elif rel == 'công_thức_hóa_học':
+            return f"Chất nào được xác định bởi công thức hóa học [{tail}]?"
+        elif rel == 'loại_thuốc':
+            return f"Kể tên một loại thuốc thuộc nhóm [{tail}]?"
+        elif rel == 'bảo_quản':
+            return f"Hoạt chất nào yêu cầu điều kiện bảo quản là [{tail}]?"
+        elif rel == 'tính_chất':
+            return f"Dựa vào tính chất [{tail}], đây là hoạt chất gì?"
+        elif rel == 'độ_hòa_tan':
+            return f"Chất nào có đặc tính hòa tan là [{tail}]?"
         else:
-            return "NULL"
+            return f"Thông tin [{tail}] thuộc về hoạt chất nào?"
 
     def generate_question(self, text):
+        prompt = f"""Imagine you are a chemistry professor testing a student.
+        Create a natural question based on the fact: [{text}].
+        The answer to the question should be the name of a drug/chemical.
+        Requirements:
+        - Keep the bracket [] for the entity.
+        - If the content in [] is too long, summarize it within the brackets.
+        - Return JSON: {{"question": "..."}}.
         """
-        Generate a human-like question based on the given question text using GPT-3.
-
-        Args:
-        - text (str): Question text with entity in brackets.
-
-        Returns:
-        - str or None: Generated question or None if no valid response from GPT-3.
-        """
-        prompt = f"""Imagine you are a doctor, have a lot of patients and receive lots of questions everyday. 
-            Create a human-like question based on the given question [{text}] and return in json format: {{"question": ""}}.
-            For example: {{"question": "Bệnh nào có thể được mô tả trong [Bách khoa toàn thư về bệnh, nội khoa, huyết học]?"}}
-            You have to keep the bracket [] for entity (it is actually a node in knowledge graph so you have to preserve its content) in the question. 
-            Each question must have only 1 bracket. Specially, if the content inside the bracket [] do not contain any information like "Không có thông tin cụ thể",etc, return {{}}.
-            There are some requirements you need to know: 
-            - Length of questions must be less than 25 words. 
-            - The question should be smooth, in form of a sentence. 
-            For the content in bracket [], if the length is more than 20, you should do the following task: 
-                + For long string, you have to summarize and take one or few points to ask questions.
-                + For a list, you should take a few elements for creating questions. 
-                + Delete the name or name-related of disease as the answer is about the name of disease
-                + You have to retain the [] for entity and put adjusted content in.
-            - Consider adjusting carefully to ask informative, meaningful question 
-            - The entity inside bracket [] is really important, please do not miss it, you have to check for it before return the result. 
-            - Check if all the requirements are met or not, if not, read the requirements and do it again.
-            """
         result = get_GPT(prompt)
         try:
             result = eval(result[result.find('{'): result.rfind('}') + 1])
         except:
             return "NULL"
-
-        if result == {}:
-            return "NULL"
-        return result['question']
+        return result.get('question', "NULL")
 
     def process_item(self, item):
-        """
-        Process an item to generate a human-like question and update the item with the question.
-
-        Args:
-        - item (dict): Dictionary containing 'question' and 'answer' keys.
-
-        Returns:
-        - dict or None: Updated item with generated question or None if no valid question could be generated.
-        """
-        if item['answer'] == "Không có thông tin":
+        if item['answer'] == "Không có thông tin" or not item['tail']:
             return None
-
-        generated_question = self.generate_question(item['question'])
+        raw_q = self.create_question(item)
+        generated_question = self.generate_question(raw_q)
         if generated_question == "NULL":
             return None
-
         item['question'] = generated_question
         return item
 
     def run_processing(self):
-        """
-        Load data, process each item to generate questions, and save valid items to output file.
-        """
         json_data = read_json(self.input_filename)
         processed_data = self.process_data(json_data)
-
         save_data = []
         with ThreadPoolExecutor(max_workers=10) as executor:
             future_to_item = {executor.submit(self.process_item, i): i for i in processed_data}
             for future in tqdm(as_completed(future_to_item), total=len(processed_data)):
                 item = future.result()
-                if item is not None:
+                if item:
                     save_data.append(item)
-
         save_json(save_data, self.output_filename)
 
 def merge_json_files(file1, file2, output_file):
-    """
-    Merge two JSON files containing lists of dictionaries into a single JSON file.
-
-    Args:
-    - file1 (str): Path to the first JSON file.
-    - file2 (str): Path to the second JSON file.
-    - output_file (str): Path to the output JSON file where merged data will be saved.
-    """
-    # Read data from file1
     with open(file1, 'r', encoding='utf-8') as f:
         data1 = json.load(f)
-    
-    # Read data from file2
     with open(file2, 'r', encoding='utf-8') as f:
         data2 = json.load(f)
-    
-    # Merge data
     merged_data = data1 + data2
-    
-    # Write merged data to output_file
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(merged_data, f, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
-    generator1 = Question_benh_to_X('../../data/benchmark/triples.json', '../../data/benchmark/1hop_disease_to_X.json')
+    generator1 = Question_hoatchat_to_X(
+        '../../data/benchmark/triples.json', 
+        '../../data/benchmark/1hop_drug_to_X.json'
+    )
     generator1.run_processing()
-    generator2 = Question_X_to_benh('../../data/benchmark/triples.json', '../../data/benchmark/1hop_X_to_disease.json')
+
+    generator2 = Question_X_to_hoatchat(
+        '../../data/benchmark/triples.json', 
+        '../../data/benchmark/1hop_X_to_drug.json'
+    )
     generator2.run_processing()
-    merge_json_files('../../data/benchmark/1hop_disease_to_X.json', '../../data/benchmark/1hop_X_to_disease.json', '../../data/benchmark/1_hop.json')
 
-
+    merge_json_files(
+        '../../data/benchmark/1hop_drug_to_X.json', 
+        '../../data/benchmark/1hop_X_to_drug.json', 
+        '../../data/benchmark/1hop.json'
+    )

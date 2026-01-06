@@ -1,163 +1,146 @@
-from utils import read_json, save_json
-from preprocessing.llm import get_GPT
+import sys
+import os
+import warnings
 from collections import defaultdict
+from itertools import combinations
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
-import warnings
-from itertools import combinations
+import json
 
-# Ignore all warnings
+# Thêm đường dẫn thư mục gốc vào sys.path để Python tìm thấy package preprocessing và utils
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+
+from utils import read_json, save_json
+from preprocessing.llm import get_GPT
+
 warnings.filterwarnings("ignore")
 
-# Function to process data and replace relation values
 def process_data(data, relation_dict):
     for item in data:
         if item['relation'] in relation_dict:
             item['relation'] = relation_dict[item['relation']]
     return data
 
-# Function to create questions based on relations
 def create_question(i):
-    if i['relation_1'] == 'triệu_chứng' and i['relation_2'] == 'tỉ_lệ_chữa_khỏi':
-        question = f"Với những triệu chứng [{i['tail_1']}], tỉ lệ chữa khỏi bệnh là bao nhiêu?"
-    elif i['relation_1'] == 'nguyên_nhân' and i['relation_2'] == 'phương_pháp_điều_trị':
-        question = f"Những phương pháp điều trị bệnh với các nguyên nhân [{i['tail_1']}]?"
-    elif i['relation_1'] == 'bệnh_đi_kèm' and i['relation_2'] == 'phương_pháp_điều_trị':
-        question = f"Phương pháp điều trị của những bệnh đi kèm như [{i['tail_1']}]?"
-    elif i['relation_1'] == 'triệu_chứng' and i['relation_2'] == 'thực_phẩm_nên_ăn':
-        question = f"Với những triệu chứng [{i['tail_1']}], bệnh nhân nên ăn thực phẩm gì?"
-    elif i['relation_1'] == 'triệu_chứng' and i['relation_2'] == 'thực_phẩm_không_nên_ăn':
-        question = f"Với những triệu chứng [{i['tail_1']}], bệnh nhân không nên ăn thực phẩm gì?"
-    elif i['relation_1'] == 'triệu_chứng' and i['relation_2'] == 'món_ăn_được_đề_xuất':
-        question = f"Với những triệu chứng [{i['tail_1']}], bệnh nhân nên ăn những món ăn gì?"
-    elif i['relation_1'] == 'bệnh_đi_kèm' and i['relation_2'] == 'thực_phẩm_nên_ăn':
-        question = f"Nên ăn gì để tránh mắc phải những bệnh đi kèm như [{i['tail_1']}]?"
-    elif i['relation_1'] == 'bệnh_đi_kèm' and i['relation_2'] == 'thực_phẩm_không_nên_ăn':
-        question = f"Không nên ăn gì để tránh mắc phải những bệnh đi kèm như [{i['tail_1']}]?"
-    elif i['relation_1'] == 'loại_bệnh' and i['relation_2'] == 'khoa_điều_trị':
-        question = f"Loại bệnh [{i['tail_1']}] thì nên điều trị ở khoa nào?"
-    elif i['relation_1'] == 'triệu_chứng' and i['relation_2'] == 'kiểm_tra':
-        question = f"Gặp những triệu chứng [{i['tail_1']}] nên kiểm tra những bộ phận nào?"
-    elif i['relation_2'] == 'triệu_chứng' and i['relation_1'] == 'tỉ_lệ_chữa_khỏi':
-        question = f"Với những triệu chứng [{i['tail_2']}], tỉ lệ chữa khỏi bệnh là bao nhiêu?"
-    elif i['relation_2'] == 'nguyên_nhân' and i['relation_1'] == 'phương_pháp_điều_trị':
-        question = f"Những phương pháp điều trị bệnh với các nguyên nhân [{i['tail_2']}]?"
-    else:
-        return "NULL"
-    return question
+    rel1 = i['relation_1']
+    rel2 = i['relation_2']
+    t1 = i['tail_1']
 
-# Function to retrieve prompt using an AI model
+    if rel1 == 'công_thức_hóa_học' and rel2 == 'bảo_quản':
+        return f"Hoạt chất có công thức hóa học là [{t1}] yêu cầu điều kiện bảo quản như thế nào?"
+    elif rel1 == 'tên_latin' and rel2 == 'loại_thuốc':
+        return f"Thuốc có tên Latin [{t1}] thuộc nhóm dược lý nào?"
+    elif rel1 == 'công_thức_hóa_học' and rel2 == 'định_lượng':
+        return f"Phương pháp định lượng dành cho dược chất có công thức [{t1}] là gì?"
+    elif rel1 == 'tên_latin' and rel2 == 'tính_chất':
+        return f"Mô tả các tính chất vật lý của hoạt chất có tên Latin là [{t1}]?"
+    elif rel1 == 'công_thức_hóa_học' and rel2 == 'loại_thuốc':
+        return f"Dược chất mang công thức [{t1}] được phân vào loại thuốc nào?"
+    elif rel1 == 'tên_latin' and rel2 == 'độ_hòa_tan':
+        return f"Độ hòa tan của hoạt chất có tên Latin [{t1}] được quy định như thế nào?"
+    elif rel1 == 'tính_chất' and rel2 == 'định_tính':
+        return f"Với dược chất có tính chất [{t1}], quy trình định tính cụ thể là gì?"
+    elif rel1 == 'mô_tả_chung' and rel2 == 'bảo_quản':
+        return f"Dựa trên mô tả [{t1}], thuốc này cần được bảo quản ra sao?"
+    elif rel2 == 'công_thức_hóa_học' and rel1 == 'loại_thuốc':
+        return f"Loại thuốc [{t1}] thường có hoạt chất với công thức hóa học là gì?"
+    return "NULL"
+
 def get_prompt(text):
-    prompt = f"""Imagine you are a doctor, have a lot of patients and receive lots of questions everyday. 
-            Create a human-like question based on the given question [{text}] and return in json format: {{"question": ""}}.
-            You have to keep the bracket [] for entity in the question. Specially, if the content inside the bracket [] do not contain any specific information like "Không có thông tin cụ thể", "bệnh này", etc, return {{}}.
-            There are some requirements you need to know: 
-            - Length of questions have to be less than 25 words.
-            - The question should be smooth, in form of a sentence. 
-            For the content in bracket [], if the length is more than 20, you should do the following task: 
-                + For long string, you have to summarize and take one or few points to ask questions.
-                + For a list, you should take a few elements for creating questions. 
-                + The content in bracket [] must be a paraphrase, not sentences. 
-                + You have to retain the [] and put adjusted content in.
-            - Consider adjusting carefully to ask informative, meaningful question.
-            - The entity inside bracket [] is really important, please do not miss it, you have to check for it before return the result. 
+    # Đã chuyển toàn bộ chỉ thị sang tiếng Việt để AI trả lời tiếng Việt
+    prompt = f"""Bạn là một chuyên gia về dược phẩm và kiểm nghiệm thuốc.
+            Hãy tạo một câu hỏi tiếng Việt tự nhiên, chuyên sâu dựa trên bản thảo thô sau: [{text}].
+            
+            Trả về định dạng JSON: {{"question": ""}}.
+            
+            Yêu cầu bắt buộc:
+            - Phải trả lời bằng TIẾNG VIỆT.
+            - Giữ nguyên dấu ngoặc [] cho nội dung thực thể (entity).
+            - Nếu nội dung trong [] quá dài hoặc là một danh sách, hãy tóm tắt lại thành vài ý chính.
+            - Câu hỏi phải là một câu văn hoàn chỉnh, trôi chảy và mang tính chuyên môn.
+            - Độ dài câu hỏi phải ít hơn 30 từ.
+            - Nếu bản thảo thô không có thông tin cụ thể, trả về JSON rỗng {{}}.
             """
     result = get_GPT(prompt)
     try:
+        # Trích xuất JSON từ phản hồi của AI
         result = eval(result[result.find('{'): result.rfind('}') + 1])
     except:
         return "NULL"
-    if result == {}:
+    
+    if result == {} or not result.get('question'):
         return "NULL"
     return result['question']
 
-# Function to process each item in data
 def process_item(i):
-    if i['answer'] == "Không có thông tin":
+    if i['answer'] == "Không có thông tin" or not i['answer']:
         return None
     i['question'] = get_prompt(i['question'])
     if i['question'] == "NULL":
         return None
     return i
 
-# Main function to merge, process, and save data
 def main(input_filename, output_filename):
-    # Relation dictionary
     relation_dict = {
-        "disease_description": "mô_tả",
-        "disease_category": "loại",
-        "disease_prevention": "cách_phòng_tránh",
-        "disease_cause": "nguyên_nhân",
-        "disease_symptom": "triệu_chứng",
-        "people_easy_get": "đối_tượng_dễ_mắc_bệnh",
-        "associated_disease": "bệnh_đi_kèm",
-        "cure_department": "khoa_điều_trị",
-        "cure_method": "phương_pháp_điều_trị",
-        "cure_probability": "tỉ_lệ_chữa_khỏi",
-        "check_method": "kiểm_tra",
-        "nutrition_do_eat": "thực_phẩm_nên_ăn",
-        "nutrition_not_eat": "thực_phẩm_không_nên_ăn",
-        "nutrition_recommend_eat": "món_ăn_được_đề_xuất",
-        "drug_recommend": "thuốc_đề_xuất",
-        "drug_common": "thuốc_phổ_biến",
-        "drug_detail": "thông_tin_về_thuốc"
+        "Ten_Latin": "tên_latin",
+        "Cong_Thuc_Hoa_Hoc": "công_thức_hóa_học",
+        "Mo_Ta_Chung": "mô_tả_chung",
+        "Tinh_Chat": "tính_chất",
+        "Dinh_Tinh": "định_tính",
+        "Dinh_Luong": "định_lượng",
+        "Bao_Quan": "bảo_quản",
+        "Loai_Thuoc": "loại_thuốc",
+        "Do_Hoa_Tan": "độ_hòa_tan"
     }
 
-    # Load the JSON data
     json_data = read_json(input_filename)
-
-    # Process the data
     processed_data = process_data(json_data, relation_dict)
 
-    # Group data by header
     grouped_data = defaultdict(list)
     for item in processed_data:
         grouped_data[item['header']].append(item)
 
-    # Merge pairs of dictionaries
     merged_data = []
     for header, items in grouped_data.items():
-        # Check if there are pairs to merge
         if len(items) >= 2:
-            # Generate all possible pairs of items
             for item1, item2 in combinations(items, 2):
-                merged_item = {
+                merged_data.append({
                     'header': header,
                     'relation_1': item1['relation'],
                     'tail_1': item1['tail'],
                     'relation_2': item2['relation'],
                     'tail_2': item2['tail']
-                }
-                merged_data.append(merged_item)
+                })
+                merged_data.append({
+                    'header': header,
+                    'relation_1': item2['relation'],
+                    'tail_1': item2['tail'],
+                    'relation_2': item1['relation'],
+                    'tail_2': item1['tail']
+                })
 
-    # Create questions for merged data
-    data = []
+    data_to_gpt = []
     for i in merged_data:
         ques = create_question(i)
         if ques == "NULL":
             continue
-        data.append({
+        data_to_gpt.append({
             "question": ques,
-            "question_type": f"{i['relation_1']}_đến_{i['relation_2']}",
+            "question_type": f"{i['relation_1']}_to_{i['relation_2']}",
             "answer": i['tail_2'],
         })
 
-    # Process each item to get prompt questions
     save_data = []
     with ThreadPoolExecutor(max_workers=10) as executor:
-        future_to_item = {executor.submit(process_item, i): i for i in data}
-        for future in tqdm(as_completed(future_to_item), total=len(data)):
+        future_to_item = {executor.submit(process_item, i): i for i in data_to_gpt}
+        for future in tqdm(as_completed(future_to_item), total=len(data_to_gpt)):
             item = future.result()
             if item is not None:
                 save_data.append(item)
 
-    # Save processed data to output file
     save_json(save_data, output_filename)
 
-# Define input and output file names
-input_filename = '../../data/benchmark/triples.json'
-output_filename = '../../data/benchmark/2hop.json'
-
-# Execute main function
 if __name__ == "__main__":
-    main(input_filename, output_filename)
+    input_file = '../../data/benchmark/triples.json'
+    output_file = '../../data/benchmark/2hop.json'
+    main(input_file, output_file)

@@ -44,14 +44,26 @@ Make sure Neo4j is running and the connection information in `key.env` is correc
 
 ```bash
 cd preprocessing/kgraph
+python convert_docx_to_csv.py
 python create_KG.py
 ```
 
-### Step 3: Run RAG experiments
+### Step 3: Create question
+```bash
+cd ..
+cd benchmark
+python create_triple.py
+python create_question_1hop.py
+python create_question_2hop.py
+python create_multi_answer.py
+```
+
+### Step 4: Run experiments
 
 ```bash
 cd ..\..
-python experiments/RAG_gemini.py
+python experiments\zero_shot_gemini.py
+python experiments\RAG_gemini.py
 ```
 
 ## 5. Project Structure (Cấu trúc dự án)

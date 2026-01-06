@@ -22,14 +22,13 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 if not GOOGLE_API_KEY:
     # Key dự phòng (Fallback) nếu file .env bị lỗi hoặc chưa tạo
-    print("⚠️ Cảnh báo: Không đọc được key.env, đang dùng key dự phòng...")
-    GOOGLE_API_KEY = "AIzaSyBB6FNsfM0t2MBR0VdzimNklIorNvR5L8k" # Key của bạn
+    print("⚠️ Cảnh báo: Không đọc được key.env")
 
 # Cấu hình Gemini
 genai.configure(api_key=GOOGLE_API_KEY.strip())
 
-# --- THAY ĐỔI THEO YÊU CẦU: Dùng Model 2.5 Flash ---
-MODEL_NAME = "models/gemini-2.5-flash"
+# --- THAY ĐỔI THEO YÊU CẦU: Dùng Model 2.0 Flash ---
+MODEL_NAME = "models/gemini-2.0-flash"
 
 # ========================================================
 # 2. CẤU HÌNH THAM SỐ (Generation Config)

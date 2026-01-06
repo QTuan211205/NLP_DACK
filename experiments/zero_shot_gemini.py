@@ -1,203 +1,177 @@
-import google.generativeai as genai
-
-import requests
-from requests.auth import HTTPBasicAuth
-from langchain_google_genai import ChatGoogleGenerativeAI
-
-# from config import SECTION_1_PROMPT
 import os
 import json
+import time
+import nltk
+import warnings
+import pandas as pd
 from dotenv import load_dotenv
+from tqdm import tqdm
 
-import requests
-from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
-
-from nltk.translate.bleu_score import sentence_bleu
+# Thư viện tính toán điểm
+from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from rouge import Rouge
 from nltk.translate.meteor_score import meteor_score
-import nltk
-from nltk.translate.bleu_score import SmoothingFunction
 
+# Thư viện AI
+from langchain_google_genai import ChatGoogleGenerativeAI
+
+# Tắt cảnh báo
+warnings.filterwarnings("ignore")
+
+# Load môi trường
 load_dotenv("key.env")
-access_token = ""
-
-
-# Set up the model
-generation_config = {
-    "temperature": 0,
-    "top_p": 1,
-    "top_k": 1,
-    "max_output_tokens": 50000,
-}
-
-safety_settings = [
-    {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-    {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-    {
-        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-        "threshold": "BLOCK_MEDIUM_AND_ABOVE",
-    },
-    {
-        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-        "threshold": "BLOCK_MEDIUM_AND_ABOVE",
-    },
-]
-
-
-def requests_retry_session(
-    retries=5,
-    backoff_factor=1,
-    status_forcelist=(500, 502, 504),
-    session=None,
-):
-    session = session or requests.Session()
-    retry = Retry(
-        total=retries,
-        read=retries,
-        connect=retries,
-        backoff_factor=backoff_factor,
-        status_forcelist=status_forcelist,
-    )
-    adapter = HTTPAdapter(max_retries=retry)
-    session.mount("http://", adapter)
-    session.mount("https://", adapter)
-    return session
-
-
 google_api_key = os.getenv("GOOGLE_API_KEY")
 
+# Khởi tạo Model Gemini
 llm = ChatGoogleGenerativeAI(
-    model="gemini-pro",
-    temperature=0.7,
-    top_p=0.85,
-    google_api_key=google_api_key,
-    convert_system_message_to_human=True,
+    model="gemini-2.0-flash", # Hoặc gemini-pro tùy tài khoản của bạn
+    temperature=0, # Giữ temperature thấp để đánh giá tính chính xác
+    google_api_key=google_api_key
 )
-
 
 def get_gemini(text):
+    # Trích xuất nội dung từ AIMessage object
     response = llm.invoke([text])
-    # response = response.text
-
-    return response
-
-
-# Define the path to the JSON file
-file_path = "data/benchmark/resampled_1_hop.json"
-
-# Read the JSON file
-with open(file_path, "r") as file:
-    data = json.load(file)
-
-
-nltk.download("wordnet")
-
-# Initialize ROUGE scorer
-rouge = Rouge()
-
-# Paths
-results_dir = "results"
-logs_dir = "logs"
-
-gemini_results_path = os.path.join(results_dir, "gemini_zero_shot.txt")
-gemini_log_path = os.path.join(logs_dir, "gemini_zero_shot.json")
-
-# Initialize lists to store scores
-gemini_scores = {"BLEU": [], "ROUGE": [], "METEOR": []}
-
-# Logs to store answers and scores
-gemini_log = []
-
-
-smoothing_function = SmoothingFunction().method1
-
-
-def get_scores(hypothesis, reference):
-    hypothesis_tokens = hypothesis.split()
-    reference_tokens = reference.split()
-    bleu = sentence_bleu(
-        [reference_tokens], hypothesis_tokens, smoothing_function=smoothing_function
-    )
-    rouge_score = rouge.get_scores(hypothesis, reference)[0]["rouge-l"]["f"]
-    meteor = meteor_score([reference_tokens], hypothesis_tokens)
-    return bleu, rouge_score, meteor
-
+    return response.content
 
 def call_model_with_retry(model_func, prompt):
-    while True:
+    max_retries = 3
+    for attempt in range(max_retries):
         try:
-            result = model_func(prompt)
-            return result
+            return model_func(prompt)
         except Exception as e:
-            print(f"Error: {e}. Retrying...")
+            print(f"Lỗi: {e}. Đang thử lại lần {attempt+1}...")
+            time.sleep(2)
+    return ""
 
+# Tải tài nguyên NLTK
+nltk.download("wordnet")
+nltk.download("punkt")
 
-import time
+# Khởi tạo ROUGE
+rouge = Rouge()
+smoothing_function = SmoothingFunction().method1
 
-# Initialize lists to store inference times
-gemini_inference_times = []
-
-
-# Process the first 20 samples
-for i, x in enumerate(data[:10]):  # Limit to the first 20 samples
-    PROMPT = f"""
-    Bạn là một chuyên gia có kiến thức sâu rộng và kinh nghiệm thực tiễn trong lĩnh vực y học cổ truyền Việt Nam. Với nền tảng chuyên môn vững chắc, bạn sẽ cung cấp câu trả lời chính xác, súc tích và đi thẳng vào trọng tâm của câu hỏi được đưa ra.
-
-    Hãy đảm bảo rằng câu trả lời của bạn:
+def get_scores(hypothesis, reference):
+    if not hypothesis or not reference:
+        return 0, 0, 0
     
-    - Chỉ tập trung vào nội dung câu hỏi, không bổ sung thông tin không liên quan.
-    - Giữ độ chính xác cao, dựa trên nguyên tắc và lý thuyết của y học cổ truyền Việt Nam.
-    - Trình bày một cách rõ ràng, mạch lạc và dễ hiểu, tránh những thuật ngữ chuyên môn quá phức tạp (trừ khi cần thiết).
-    Câu hỏi cần trả lời: {x["question"]}
-    """
+    # Tokenize cho BLEU và METEOR
+    hypothesis_tokens = nltk.word_tokenize(hypothesis.lower())
+    reference_tokens = nltk.word_tokenize(reference.lower())
+    
+    # BLEU Score
+    bleu = sentence_bleu([reference_tokens], hypothesis_tokens, smoothing_function=smoothing_function)
+    
+    # ROUGE Score (Sử dụng chuỗi văn bản gốc)
+    try:
+        rouge_scores = rouge.get_scores(hypothesis.lower(), reference.lower())
+        rouge_score = rouge_scores[0]["rouge-l"]["f"]
+    except:
+        rouge_score = 0
+        
+    # METEOR Score
+    meteor = meteor_score([reference_tokens], hypothesis_tokens)
+    
+    return bleu, rouge_score, meteor
 
-    start_time = time.time()
-    gemini_result = call_model_with_retry(get_gemini, PROMPT)
+# Đường dẫn file và thư mục
+results_dir = "results"
+logs_dir = "logs"
+os.makedirs(results_dir, exist_ok=True)
+os.makedirs(logs_dir, exist_ok=True)
 
-    end_time = time.time()
-    gemini_inference_times.append(end_time - start_time)
+# ============================
+# CẤU HÌNH DATASET
+# ============================
 
-    reference = x["answer"]
+DATASETS = {
+    "1-hop": "data/benchmark/1hop.json",
+    "2-hop": "data/benchmark/2hop.json",
+}
 
-    gemini_bleu, gemini_rouge, gemini_meteor = get_scores(gemini_result, reference)
-    gemini_scores["BLEU"].append(gemini_bleu)
-    gemini_scores["ROUGE"].append(gemini_rouge)
-    gemini_scores["METEOR"].append(gemini_meteor)
-    gemini_log.append(
-        {
+test_limit = 200
+
+# ============================
+# HÀM CHẠY EVALUATION
+# ============================
+
+def run_zero_shot(dataset_name, file_path):
+    if not os.path.exists(file_path):
+        print(f"❌ Không tìm thấy file {file_path}")
+        return
+
+    with open(file_path, "r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    print(f"\n🚀 Bắt đầu Zero-shot {dataset_name} ({min(test_limit, len(data))} câu hỏi)")
+
+    scores = {"BLEU": [], "ROUGE": [], "METEOR": []}
+    logs = []
+    inference_times = []
+
+    for x in tqdm(data[:test_limit], desc=f"{dataset_name}"):
+
+        PROMPT = f"""
+        Bạn là một dược sĩ lâm sàng và chuyên gia về Dược điển Việt Nam. 
+        Hãy trả lời câu hỏi sau một cách chính xác, ngắn gọn và dựa trên kiến thức chuyên môn y dược.
+
+        - Trả lời thẳng vào vấn đề.
+        - Giữ độ chính xác cao về tên thuốc và công thức hóa học.
+        
+        Câu hỏi: {x["question"]}
+        """
+
+        start_time = time.time()
+        gemini_result = call_model_with_retry(get_gemini, PROMPT)
+        end_time = time.time()
+
+        inference_times.append(end_time - start_time)
+
+        reference = x["answer"]
+
+        bleu, rouge_val, meteor = get_scores(gemini_result, reference)
+
+        scores["BLEU"].append(bleu)
+        scores["ROUGE"].append(rouge_val)
+        scores["METEOR"].append(meteor)
+
+        logs.append({
+            "hop_type": dataset_name,
             "question": x["question"],
-            "answer": gemini_result,
-            "BLEU": gemini_bleu,
-            "ROUGE": gemini_rouge,
-            "METEOR": gemini_meteor,
-        }
-    )
+            "ground_truth": reference,
+            "model_answer": gemini_result,
+            "BLEU": bleu,
+            "ROUGE": rouge_val,
+            "METEOR": meteor,
+            "time": end_time - start_time
+        })
 
-average_gemini_inference_time = sum(gemini_inference_times) / len(
-    gemini_inference_times
-)
+    # ============================
+    # GHI KẾT QUẢ
+    # ============================
 
-print(f"Average Inference Time for Gemini: {average_gemini_inference_time} seconds")
+    avg_time = sum(inference_times) / len(inference_times)
 
+    result_path = os.path.join(results_dir, f"gemini_zero_shot_{dataset_name}.txt")
+    log_path = os.path.join(logs_dir, f"gemini_zero_shot_{dataset_name}.json")
 
-# Calculate mean scores and write to text files
-def write_mean_scores(scores, file_path):
-    mean_scores = {
-        metric: sum(values) / len(values) for metric, values in scores.items()
-    }
-    with open(file_path, "w") as f:
-        for metric, score in mean_scores.items():
-            f.write(f"{metric}: {score}\n")
+    with open(result_path, "w", encoding="utf-8") as f:
+        f.write(f"{dataset_name} Zero-shot Results\n")
+        f.write(f"Average inference time: {avg_time:.2f} seconds\n\n")
+        for metric, values in scores.items():
+            f.write(f"{metric}: {sum(values)/len(values):.4f}\n")
 
+    with open(log_path, "w", encoding="utf-8") as f:
+        json.dump(logs, f, ensure_ascii=False, indent=4)
 
-write_mean_scores(gemini_scores, gemini_results_path)
+    print(f"✅ Hoàn thành {dataset_name} | Avg time: {avg_time:.2f}s")
+    print(f"📄 Results: {result_path}")
+    print(f"🧾 Logs: {log_path}")
 
+# ============================
+# CHẠY CẢ 1-HOP & 2-HOP
+# ============================
 
-# Write logs to JSON files
-def write_log(log, file_path):
-    with open(file_path, "w") as f:
-        json.dump(log, f, ensure_ascii=False, indent=4)
-
-
-write_log(gemini_log, gemini_log_path)
+for hop_name, path in DATASETS.items():
+    run_zero_shot(hop_name, path)

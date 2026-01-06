@@ -1,0 +1,6 @@
+2-hop Zero-shot Results
+Average inference time: 2.86 seconds
+
+BLEU: 0.0173
+ROUGE: 0.2005
+METEOR: 0.1689
