@@ -43,12 +43,14 @@ Make sure Neo4j is running and the connection information in `key.env` is correc
 ### Step 2: Load data into Neo4j
 
 ```bash
-python preprocessing/kgraph/create_KG.py
+cd preprocessing/kgraph
+python create_KG.py
 ```
 
 ### Step 3: Run RAG experiments
 
 ```bash
+cd ..\..
 python experiments/RAG_gemini.py
 ```
 

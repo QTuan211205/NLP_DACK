@@ -1,22 +1,3306 @@
-[
-    {
-        "question": "Công thức hóa học của ACID ASCORBIC là gì?",
-        "answer": "Công thức hóa học của ACID ASCORBIC là C6H8O6.",
-        "cypher_used": "Xem trong log console"
-    },
-    {
-        "question": "Công thức hóa học của NANG ACID TRANEXAMIC?",
-        "answer": "Công thức hóa học của NANG ACID TRANEXAMIC là C8H15NO2.",
-        "cypher_used": "Xem trong log console"
-    },
-    {
-        "question": "Công thức hóa học của VIÊN NÉN AMIODARON là gì?",
-        "answer": "C25H29I2NO3.",
-        "cypher_used": "Xem trong log console"
-    },
-    {
-        "question": "Công thức hóa học của BẠC VITELINAT là gì?",
-        "answer": "Công thức hóa học của BẠC VITELINAT là None.",
-        "cypher_used": "Xem trong log console"
-    }
-]
+{
+    "1_hop_data": [
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ABACAVIR SULFAT là gì?",
+            "answer_ground_truth": "Công thức hóa học của ABACAVIR SULFAT là C14H18N6O2.1.",
+            "answer_model": "Công thức hóa học của ABACAVIR SULFAT là C14H18N6O2.1.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ABACAVIR SULFAT là gì?",
+            "answer_ground_truth": "Tên Latin của ABACAVIR SULFAT là Abacaviri sulfas.",
+            "answer_model": "Tên Latin của ABACAVIR SULFAT là Abacaviri sulfas.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ABACAVIR SULFAT có độ hòa tan ra sao?",
+            "answer_ground_truth": "ABACAVIR SULFAT có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.029642151188002917,
+                "rouge": 0.1333333285333335,
+                "meteor": 0.05208333333333333
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACEBUTOLOL HYDROCLORID là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACEBUTOLOL HYDROCLORID là không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.021239529438966134,
+                "rouge": 0.11111110666666683,
+                "meteor": 0.043859649122807015
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACEBUTOLOL HYDROCLORID là gì?",
+            "answer_ground_truth": "Tên Latin của ACEBUTOLOL HYDROCLORID là Acebutololi hydrochloridum.",
+            "answer_model": "Tên Latin của ACEBUTOLOL HYDROCLORID là Acebutololi hydrochloridum.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACEBUTOLOL HYDROCLORID có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACEBUTOLOL HYDROCLORID có độ hòa tan (Phụ lục 11.4) Thiết bị: Kiểu cánh khuấy. Môi trường hòa tan: 900 ml nước. Tốc độ quay: 50 r/min. Thời gian: 30 min. Cách tiến hành: Dung dịch thử: Sau thời gian hòa tan quy định, lấy một phần dịch hòa tan, lọc. Pha loãng nếu cần bằng nước. Dung dịch chuẩn: Cân chính xác một lượng acebutolol hydroclorid chuẩn, hòa tan trong nước để thu được dung dịch có nồng độ acebutolol tương đương với nồng độ acebutolol của dung dịch thử. Đo độ hấp thụ (Phụ lục 4.1) của dung dịch thử và dung dịch chuẩn ở bước sóng 232 nm (Phụ lục 4.1). Tính hàm lượng acebutolol, C18H28ClNO4, dựa vào độ hấp thụ của dung dịch chuẩn, dung dịch thử và hàm lượng C18H28ClNO4 trong acebutolol hydroclorid chuẩn. Yêu cầu: Không ít hơn 80 %(Q) lượng acebutolol, C18H28ClNO4, so với lượng ghi trên nhãn được hòa tan trong 30 min..",
+            "answer_model": "ACEBUTOLOL HYDROCLORID có độ hòa tan được xác định bằng thiết bị cánh khuấy, trong 900 ml nước, với tốc độ quay 50 vòng/phút trong 30 phút. Yêu cầu là không ít hơn 80%(Q) lượng acebutolol, C18H28ClNO4, so với lượng ghi trên nhãn phải được hòa tan trong 30 phút.",
+            "scores": {
+                "bleu": 0.057727123874595214,
+                "rouge": 0.35971222611666065,
+                "meteor": 0.23351196341259361
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACENOCOUMAROL là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACENOCOUMAROL là C19H15NO6.",
+            "answer_model": "Công thức hóa học của ACENOCOUMAROL là C19H15NO6.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACENOCOUMAROL là gì?",
+            "answer_ground_truth": "Tên Latin của ACENOCOUMAROL là Acenocoumarolum.",
+            "answer_model": "Tên Latin của ACENOCOUMAROL là Acenocoumarolum.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9976851851851852
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACENOCOUMAROL có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACENOCOUMAROL có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết ACENOCOUMAROL có độ hòa tan ra sao.",
+            "scores": {
+                "bleu": 0.5163977794943222,
+                "rouge": 0.555555550617284,
+                "meteor": 0.5616605616605616
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của VIÊN NÉN ACENOCOUMAROL là gì?",
+            "answer_ground_truth": "Công thức hóa học của VIÊN NÉN ACENOCOUMAROL là C19H15NO6.",
+            "answer_model": "Công thức hóa học của VIÊN NÉN ACENOCOUMAROL là C19H15NO6.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9995
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của VIÊN NÉN ACENOCOUMAROL là gì?",
+            "answer_ground_truth": "Tên Latin của VIÊN NÉN ACENOCOUMAROL là Tabellae Acenocoumaroli.",
+            "answer_model": "Tabellae Acenocoumaroli là tên Latin của VIÊN NÉN ACENOCOUMAROL.",
+            "scores": {
+                "bleu": 0.5,
+                "rouge": 0.5555555505555557,
+                "meteor": 0.7471655328798186
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "VIÊN NÉN ACENOCOUMAROL có độ hòa tan ra sao?",
+            "answer_ground_truth": "VIÊN NÉN ACENOCOUMAROL có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết độ hòa tan của VIÊN NÉN ACENOCOUMAROL.",
+            "scores": {
+                "bleu": 0.40465559506275994,
+                "rouge": 0.2999999950000001,
+                "meteor": 0.5160550458715595
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACETAZOLAMID là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACETAZOLAMID là C4H6N4O3S2.",
+            "answer_model": "Công thức hóa học của ACETAZOLAMID là C4H6N4O3S2.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACETAZOLAMID là gì?",
+            "answer_ground_truth": "Tên Latin của ACETAZOLAMID là Acetazolamidum.",
+            "answer_model": "Acetazolamidum là tên Latin của ACETAZOLAMID.",
+            "scores": {
+                "bleu": 0.316227766016838,
+                "rouge": 0.4999999950000001,
+                "meteor": 0.625
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACETAZOLAMID có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACETAZOLAMID có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.03501806396568503,
+                "rouge": 0.14285713795918387,
+                "meteor": 0.0574712643678161
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của VIÊN NÉN ACETAZOLAMID là gì?",
+            "answer_ground_truth": "Công thức hóa học của VIÊN NÉN ACETAZOLAMID là C4H6N4O3S2.",
+            "answer_model": "Công thức hóa học của VIÊN NÉN ACETAZOLAMID là C4H6N4O3S2.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9995
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của VIÊN NÉN ACETAZOLAMID là gì?",
+            "answer_ground_truth": "Tên Latin của VIÊN NÉN ACETAZOLAMID là Tabulettae Acetazolamidi.",
+            "answer_model": "Tên Latin của VIÊN NÉN ACETAZOLAMID là Tabulettae Acetazolamidi.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "VIÊN NÉN ACETAZOLAMID có độ hòa tan ra sao?",
+            "answer_ground_truth": "VIÊN NÉN ACETAZOLAMID có độ hòa tan (Phụ lục 11.4) Thiết bị: Kiểu giỏ quay Môi trường hòa tan: 900 ml dung dịch acid hydrocloric 0,01 M (TT). Tốc độ quay: 100 r/min. Thời gian: 60 min. Cách tiến hành: Sau thời gian hòa tan quy định, lấy một phần dịch hòa tan và lọc, loại bỏ dịch lọc đầu. Pha loãng dịch lọc với dung dịch acid hydrocloric 0,01 M (TT) nếu cần. Đo độ hấp thụ của dung dịch thu được ở bước sóng cực đại khoảng 265 nm, trong cốc đo dày 1 cm, song song đo độ hấp thụ của dung dịch chuẩn acetazolamid có cùng nồng độ trong dung dịch acid hydrocloric 0,01 M (TT), dùng dung dịch acid hydrocloric 0,01 M (TT) làm mẫu trắng. Tính hàm lượng acetazolamid, C4H6N4O3S2, đã hòa tan trong mỗi viên dựa vào độ hấp thụ đo được của dung dịch chuẩn, dung dịch thử và hàm lượng C4H6N4O3S2 trong acetazolamid chuẩn. Yêu cầu: Không được ít hơn 75 % (Q) lượng acetazolamid, C4H6N4O3S2, so với lượng ghi trên nhãn được hòa tan trong 60 min..",
+            "answer_model": "VIÊN NÉN ACETAZOLAMID có độ hòa tan theo (Phụ lục 11.4) với thiết bị kiểu giỏ quay, môi trường hòa tan là 900 ml dung dịch acid hydrocloric 0,01 M (TT), tốc độ quay 100 r/min, thời gian 60 min. Sau thời gian hòa tan quy định, lấy một phần dịch hòa tan và lọc, loại bỏ dịch lọc đầu. Pha loãng dịch lọc với dung dịch acid hydrocloric 0,01 M (TT) nếu cần. Đo độ hấp thụ của dung dịch thu được ở bước sóng cực đại khoảng 265 nm, trong cốc đo dày 1 cm, song song đo độ hấp thụ của dung dịch chuẩn acetazolamid có cùng nồng độ trong dung dịch acid hydrocloric 0,01 M (TT), dùng dung dịch acid hydrocloric 0,01 M (TT) làm mẫu trắng. Tính hàm lượng acetazolamid, C4H6N4O3S2, đã hòa tan trong mỗi viên dựa vào độ hấp thụ đo được của dung dịch chuẩn, dung dịch thử và hàm lượng C4H6N4O3S2 trong acetazolamid chuẩn. Yêu cầu: Không được ít hơn 75 % (Q) lượng acetazolamid, C4H6N4O3S2, so với lượng ghi trên nhãn được hòa tan trong 60 min.",
+            "scores": {
+                "bleu": 0.8950441437830529,
+                "rouge": 0.8918918868935153,
+                "meteor": 0.946289875451543
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACETYLCYSTEIN là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACETYLCYSTEIN là C5H9NO3S.",
+            "answer_model": "Công thức hóa học của ACETYLCYSTEIN là C5H9NO3S.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACETYLCYSTEIN là gì?",
+            "answer_ground_truth": "Tên Latin của ACETYLCYSTEIN là Acetylcystein.",
+            "answer_model": "Tên Latin của ACETYLCYSTEIN là Acetylcystein.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9976851851851852
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACETYLCYSTEIN có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACETYLCYSTEIN có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.03501806396568503,
+                "rouge": 0.14285713795918387,
+                "meteor": 0.0574712643678161
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của BỘT PHA HỖN DỊCH ACETYLCYSTEIN là gì?",
+            "answer_ground_truth": "Công thức hóa học của BỘT PHA HỖN DỊCH ACETYLCYSTEIN là C5H9NO3S.",
+            "answer_model": "Công thức hóa học của BỘT PHA HỖN DỊCH ACETYLCYSTEIN là C5H9NO3S.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9997106481481481
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của BỘT PHA HỖN DỊCH ACETYLCYSTEIN là gì?",
+            "answer_ground_truth": "Tên Latin của BỘT PHA HỖN DỊCH ACETYLCYSTEIN là Pulveres Acetylcysteini.",
+            "answer_model": "Tên Latin của BỘT PHA HỖN DỊCH ACETYLCYSTEIN là Pulveres Acetylcysteini.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "BỘT PHA HỖN DỊCH ACETYLCYSTEIN có độ hòa tan ra sao?",
+            "answer_ground_truth": "BỘT PHA HỖN DỊCH ACETYLCYSTEIN có độ hòa tan không có thông tin.",
+            "answer_model": "Không tìm thấy trong DB.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.040983606557377046
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của NANG ACETYLCYSTEIN là gì?",
+            "answer_ground_truth": "Công thức hóa học của NANG ACETYLCYSTEIN là C5H9NO3S.",
+            "answer_model": "Công thức hóa học của NANG ACETYLCYSTEIN là C5H9NO3S.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của NANG ACETYLCYSTEIN là gì?",
+            "answer_ground_truth": "Tên Latin của NANG ACETYLCYSTEIN là Capsulae Acetylcysteini.",
+            "answer_model": "Tên Latin của NANG ACETYLCYSTEIN là Capsulae Acetylcysteini.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "NANG ACETYLCYSTEIN có độ hòa tan ra sao?",
+            "answer_ground_truth": "NANG ACETYLCYSTEIN có độ hòa tan không có thông tin.",
+            "answer_model": "Không tìm thấy trong DB.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.052631578947368425
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACICLOVIR là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACICLOVIR là C8H11N5O3.",
+            "answer_model": "Công thức hóa học của ACICLOVIR là C8H11N5O3.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACICLOVIR là gì?",
+            "answer_ground_truth": "Tên Latin của ACICLOVIR là Aciclovirum.",
+            "answer_model": "Tên Latin của ACICLOVIR là Aciclovirum.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9976851851851852
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACICLOVIR có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACICLOVIR có độ hòa tan không có thông tin.",
+            "answer_model": "Đối với viên nén Aciclovir, độ hòa tan được thực hiện với thiết bị kiểu cánh khuấy, trong môi trường hòa tan là 900 ml dung dịch acid hydrocloric 0,1 M (TT), tốc độ quay 50 r/min, trong 45 phút. Yêu cầu là không được ít hơn 70 % (Q) lượng aciclovir, C8H11N5O3, so với lượng ghi trên nhãn được hòa tan trong 45 phút.",
+            "scores": {
+                "bleu": 0.04385290096535146,
+                "rouge": 0.10344827348394774,
+                "meteor": 0.2161815068493151
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của KEM ACICLOVIR là gì?",
+            "answer_ground_truth": "Công thức hóa học của KEM ACICLOVIR là C8H11N5O3.",
+            "answer_model": "Công thức hóa học của KEM ACICLOVIR là C8H11N5O3.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của KEM ACICLOVIR là gì?",
+            "answer_ground_truth": "Tên Latin của KEM ACICLOVIR là Cremoris Acicloviri.",
+            "answer_model": "Tên Latin của KEM ACICLOVIR là Cremoris Acicloviri.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "KEM ACICLOVIR có độ hòa tan ra sao?",
+            "answer_ground_truth": "KEM ACICLOVIR có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.029642151188002917,
+                "rouge": 0.1333333285333335,
+                "meteor": 0.05208333333333333
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của VIÊN NÉN ACICLOVIR là gì?",
+            "answer_ground_truth": "Công thức hóa học của VIÊN NÉN ACICLOVIR là C8H11N5O3.",
+            "answer_model": "Công thức hóa học của VIÊN NÉN ACICLOVIR là C8H11N5O3.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9995
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của VIÊN NÉN ACICLOVIR là gì?",
+            "answer_ground_truth": "Tên Latin của VIÊN NÉN ACICLOVIR là Tabellae Acicloviri.",
+            "answer_model": "Tên Latin của VIÊN NÉN ACICLOVIR là Tabellae Acicloviri.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "VIÊN NÉN ACICLOVIR có độ hòa tan ra sao?",
+            "answer_ground_truth": "VIÊN NÉN ACICLOVIR có độ hòa tan (Phụ lục 11.4) Thiết bị: Kiểu cánh khuấy. Môi trường hòa tan: 900 ml dung dịch acid hydrocloric 0,1 M (TT). Tốc độ quay: 50 r/min. Thời gian: 45 min. Cách tiến hành: Lấy một phần dung dịch môi trường sau khi hòa tan, lọc, bỏ 20 ml dịch lọc đầu, pha loãng dịch lọc bằng dung dịch acid hydrocloric 0,1 M (TT) (nếu cần). Đo độ hấp thụ ánh sáng của dung dịch thu được ở bước sóng hấp thụ cực đại 255 nm (Phụ lục 4.1), cốc đo dày 1 cm, dùng dung dịch acid hydrocloric 0,1 M (TT) làm mẫu trắng. Tính hàm lượng aciclovir, C8H11N5O3, theo A (1 %, 1 cm), lấy 560 là giá trị A (1 %, 1 cm) ở cực đại 255 nm. Yêu cầu: Không được ít hơn 70 % (Q) lượng aciclovir, C8H11N5O3, so với lượng ghi trên nhãn được hòa tan trong 45 min..",
+            "answer_model": "Độ hòa tan của VIÊN NÉN ACICLOVIR được mô tả như sau: (Phụ lục 11.4) Thiết bị: Kiểu cánh khuấy. Môi trường hòa tan: 900 ml dung dịch acid hydrocloric 0,1 M (TT). Tốc độ quay: 50 r/min. Thời gian: 45 min. Cách tiến hành: Lấy một phần dung dịch môi trường sau khi hòa tan, lọc, bỏ 20 ml dịch lọc đầu, pha loãng dịch lọc bằng dung dịch acid hydrocloric 0,1 M (TT) (nếu cần). Đo độ hấp thụ ánh sáng của dung dịch thu được ở bước sóng hấp thụ cực đại 255 nm (Phụ lục 4.1), cốc đo dày 1 cm, dùng dung dịch acid hydrocloric 0,1 M (TT) làm mẫu trắng. Tính hàm lượng aciclovir, C8H11N5O3, theo A (1 %, 1 cm), lấy 560 là giá trị A (1 %, 1 cm) ở cực đại 255 nm. Yêu cầu: Không được ít hơn 70 % (Q) lượng aciclovir, C8H11N5O3, so với lượng ghi trên nhãn được hòa tan trong 45 min.",
+            "scores": {
+                "bleu": 0.9455802146379299,
+                "rouge": 0.9736842055278548,
+                "meteor": 0.9845048160227037
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID ACETYLSALICYLIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID ACETYLSALICYLIC là C9H8O4.",
+            "answer_model": "Công thức hóa học của ACID ACETYLSALICYLIC là C9H8O4.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID ACETYLSALICYLIC là gì?",
+            "answer_ground_truth": "Tên Latin của ACID ACETYLSALICYLIC là Acidum acetylsalicylicum.",
+            "answer_model": "Tên Latin của ACID ACETYLSALICYLIC là Acidum acetylsalicylicum.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID ACETYLSALICYLIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID ACETYLSALICYLIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.029642151188002917,
+                "rouge": 0.1333333285333335,
+                "meteor": 0.05208333333333333
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của VIÊN NÉN ACID ACETYLSALICYLIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của VIÊN NÉN ACID ACETYLSALICYLIC là C9H8O4.",
+            "answer_model": "Công thức hóa học của VIÊN NÉN ACID ACETYLSALICYLIC là C9H8O4.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của VIÊN NÉN ACID ACETYLSALICYLIC là gì?",
+            "answer_ground_truth": "Tên Latin của VIÊN NÉN ACID ACETYLSALICYLIC là Tabellae Acidi acetylsalicylici.",
+            "answer_model": "Tên Latin của VIÊN NÉN ACID ACETYLSALICYLIC là Tabellae Acidi acetylsalicylici.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "VIÊN NÉN ACID ACETYLSALICYLIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "VIÊN NÉN ACID ACETYLSALICYLIC có độ hòa tan (Phụ lục 11.4) Thiết bị: Kiểu giỏ quay. Môi trường hòa tan: 500 ml dung dịch đệm pH 4,5. Pha dung dịch đệm pH 4,5: Hòa tan 29,9 g natri acetat (TT) trong nước, thêm 16,6 ml acid acetic băng (TT) và thêm nước vừa đủ 10 L. Tốc độ quay: 50 r/min. Thời gian: 45 min. Cách tiến hành: Lấy một lượng dung dịch hòa tan, lọc, bỏ 10 ml dịch lọc đầu. Đo độ hấp thụ ánh sáng ngay lập tức ở bước sóng 265 nm (Phụ lục 4.1) (nếu cần pha loãng dịch lọc với môi trường hòa tan để có nồng độ thích hợp), so với mẫu trắng là môi trường hòa tan. Song song đo độ hấp thụ ánh sáng của dung dịch acid acetylsalicylic chuẩn có nồng độ tương đương được pha trong môi trường hòa tan. Từ hàm lượng acid acetylsalicylic chuẩn, tính hàm lượng acid acetylsalicylic, C9H8O4, có trong dung dịch mẫu thử đã hòa tan. Yêu cầu: Không được ít hơn 70 % (Q) hàm lượng acid acetylsalicylic, C9H8O4, so với hàm lượng ghi trên nhãn được hòa tan trong 45 min. Giới hạn acid salicylic tự do Không được quá 3,0 %. Cân một lượng bột viên tương ứng với 0,2 g acid acetylsalicylic, lắc với 4 ml ethanol 96 % (TT) và pha loãng với nước đến 100 ml ở nhiệt độ không quá 10 °C. Lọc ngay bằng giấy lọc và lấy 50 ml dịch lọc vào ống so màu Nessler, thêm vào 1 ml dung dịch phèn sắt amoni 0,2 % (TT) mới pha, trộn đều và để yên trong 1 phút. Dung dịch này không được có màu tím đậm hơn màu của dung dịch mẫu [gồm 1 ml dung dịch phèn sắt amoni 0,2 % (TT) mới pha và hỗn hợp của 3 ml dung dịch acid salicylic 0,010 % (TT) mới pha, 2 ml ethanol 96 % (TT) và nước vừa đủ 50 ml]..",
+            "answer_model": "VIÊN NÉN ACID ACETYLSALICYLIC có độ hòa tan theo (Phụ lục 11.4) Thiết bị: Kiểu giỏ quay. Môi trường hòa tan: 500 ml dung dịch đệm pH 4,5. Pha dung dịch đệm pH 4,5: Hòa tan 29,9 g natri acetat (TT) trong nước, thêm 16,6 ml acid acetic băng (TT) và thêm nước vừa đủ 10 L. Tốc độ quay: 50 r/min. Thời gian: 45 min. Cách tiến hành: Lấy một lượng dung dịch hòa tan, lọc, bỏ 10 ml dịch lọc đầu. Đo độ hấp thụ ánh sáng ngay lập tức ở bước sóng 265 nm (Phụ lục 4.1) (nếu cần pha loãng dịch lọc với môi trường hòa tan để có nồng độ thích hợp), so với mẫu trắng là môi trường hòa tan. Song song đo độ hấp thụ ánh sáng của dung dịch acid acetylsalicylic chuẩn có nồng độ tương đương được pha trong môi trường hòa tan. Từ hàm lượng acid acetylsalicylic chuẩn, tính hàm lượng acid acetylsalicylic, C9H8O4, có trong dung dịch mẫu thử đã hòa tan. Yêu cầu: Không được ít hơn 70 % (Q) hàm lượng acid acetylsalicylic, C9H8O4, so với hàm lượng ghi trên nhãn được hòa tan trong 45 min. Giới hạn acid salicylic tự do Không được quá 3,0 %. Cân một lượng bột viên tương ứng với 0,2 g acid acetylsalicylic, lắc với 4 ml ethanol 96 % (TT) và pha loãng với nước đến 100 ml ở nhiệt độ không quá 10 °C. Lọc ngay bằng giấy lọc và lấy 50 ml dịch lọc vào ống so màu Nessler, thêm vào 1 ml dung dịch phèn sắt amoni 0,2 % (TT) mới pha, trộn đều và để yên trong 1 phút. Dung dịch này không được có màu tím đậm hơn màu của dung dịch mẫu [gồm 1 ml dung dịch phèn sắt amoni 0,2 % (TT) mới pha và hỗn hợp của 3 ml dung dịch acid salicylic 0,010 % (TT) mới pha, 2 ml ethanol 96 % (TT) và nước vừa đủ 50 ml].",
+            "scores": {
+                "bleu": 0.9926111623319442,
+                "rouge": 0.997118150619638,
+                "meteor": 0.9967464205238717
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của VIÊN NÉN BAO TAN TRONG RUỘT ACID là gì?",
+            "answer_ground_truth": "Công thức hóa học của VIÊN NÉN BAO TAN TRONG RUỘT ACID là C9H8O4.",
+            "answer_model": "Công thức hóa học của VIÊN NÉN BAO TAN TRONG RUỘT ACID là C9H8O4.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9998177842565598
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của VIÊN NÉN BAO TAN TRONG RUỘT ACID là gì?",
+            "answer_ground_truth": "Tên Latin của VIÊN NÉN BAO TAN TRONG RUỘT ACID là Tabellae Acidi acetylsalicylici.",
+            "answer_model": "Tên Latin của VIÊN NÉN BAO TAN TRONG RUỘT ACID là Tabellae Acidi acetylsalicylici.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9998177842565598
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "VIÊN NÉN BAO TAN TRONG RUỘT ACID có độ hòa tan ra sao?",
+            "answer_ground_truth": "VIÊN NÉN BAO TAN TRONG RUỘT ACID có độ hòa tan (Phụ lục 11.4) Giai đoạn trong môi trường acid Thiết bị: Kiểu giỏ quay. Môi trường hòa tan: 1000 ml dung dịch acid hydrocloric 0,1 M (TT). Tốc độ quay: 100 r/min. Thời gian: 2 h. Cách tiến hành: Sau thời gian quy định, lấy một phần dịch hòa tan, lọc. Pha loãng dịch lọc với môi trường hòa tan (nếu cần) và đo độ hấp thụ (Phụ lục 4.1) của dung dịch thu được ở bước sóng 276 nm với mẫu trắng là môi trường hòa tan. So sánh với dung dịch acid acetylsalicylic chuẩn có nồng độ tương đương pha trong cùng dung môi. Tính hàm lượng acid acetylsalicylic, C9H8O4, hòa tan trong mỗi viên dựa vào độ hấp thụ của dung dịch chuẩn, dung dịch thử và hàm lượng C9H8O4 trong acid acetylsalicylic chuẩn. Yêu cầu: Không được quá 10 % lượng acid acetylsalicylic, C9H8O4, so với lượng ghi trên nhãn hòa tan trong 2 h. Giai đoạn trong môi trường đệm Tiếp tục ngay sau khi kết thúc giai đoạn trong môi trường acid trên cùng mẫu thử. Thiết bị: Kiểu giỏ quay. Môi trường hòa tan: Đệm phosphat hỗn hợp pH 6.8 (TT). Tốc độ quay: 100 r/min. Thời gian: 45 min. Cách tiến hành: Thay thế dung dịch acid hydrocloric 0,1M trong bình thử độ hòa tan bằng 900 ml đệm phosphat hỗn hợp pH 6,8 (TT) đã làm nóng trước đến 37 °C ± 0.5 °C. Sau thời gian hòa tan quy định, lấy một phần dịch hòa tan, lọc. Pha loãng dịch lọc với môi trường hòa tan (nếu cần) và đo ngay độ hấp thụ (Phụ lục 4.1) của dung dịch thu được (dung dịch thử) ở bước sóng 265 nm với mẫu trắng là đệm phosphat hỗn hợp pH 6.8 (TT). So sánh với dung dịch acid acetylsalicylic chuẩn có nồng độ tương đương pha trong cùng dung môi. Tính hàm lượng acid acetylsalicylic, C9H8O4, hòa tan trong mỗi viên dựa vào độ hấp thụ của dung dịch chuẩn, dung dịch thử và hàm lượng C9H8O4 trong acid acetylsalicylic chuẩn. Yêu cầu: Không ít hơn 70 % (Q) lượng acid acetylsalicylic so với lượng ghi trên nhãn được hòa tan trong 45 min. Giới hạn acid salicylic tự do Không được quá 3,0 %. Phương pháp sắc ký lỏng (Phụ lục 5.3). Pha động: Acetonitril - dung dịch natri dihydrophosphat 0,05 M được chỉnh đến pH 2,0 bằng acid phosphoric (1:3)..",
+            "answer_model": "VIÊN NÉN BAO TAN TRONG RUỘT ACID có độ hòa tan như sau:\n\n*   **Giai đoạn trong môi trường acid:** Không được quá 10% lượng acid acetylsalicylic, C9H8O4, so với lượng ghi trên nhãn hòa tan trong 2 giờ.\n*   **Giai đoạn trong môi trường đệm:** Không ít hơn 70% (Q) lượng acid acetylsalicylic so với lượng ghi trên nhãn được hòa tan trong 45 phút.",
+            "scores": {
+                "bleu": 0.003495095511033237,
+                "rouge": 0.3041474622599758,
+                "meteor": 0.12072546484449329
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của VIÊN NÉN ASPIRIN VÀ CAFEIN là gì?",
+            "answer_ground_truth": "Công thức hóa học của VIÊN NÉN ASPIRIN VÀ CAFEIN là C9H8O4.",
+            "answer_model": "C9H8O4 là công thức hóa học của VIÊN NÉN ASPIRIN VÀ CAFEIN.",
+            "scores": {
+                "bleu": 0.6908492797077574,
+                "rouge": 0.749999995,
+                "meteor": 0.8300000000000002
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của VIÊN NÉN ASPIRIN VÀ CAFEIN là gì?",
+            "answer_ground_truth": "Tên Latin của VIÊN NÉN ASPIRIN VÀ CAFEIN là Tabellae Aspirini et Coffeini.",
+            "answer_model": "Tên Latin của VIÊN NÉN ASPIRIN VÀ CAFEIN là Tabellae Aspirini et Coffeini.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9997724169321802
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "VIÊN NÉN ASPIRIN VÀ CAFEIN có độ hòa tan ra sao?",
+            "answer_ground_truth": "VIÊN NÉN ASPIRIN VÀ CAFEIN có độ hòa tan (Phụ lục 11.4) Thiết bị: Kiểu cánh khuấy. Môi trường hòa tan: 500 ml dung dịch đệm acetat 0,05 M pH 4,5 được chuẩn bị như sau: Hòa tan 2,99 g natri acetat (TT) và 1,66 ml acid acetic băng (TT) trong nước và thêm nước vừa đủ 1000 ml. Tốc độ quay: 50 r/min. Thời gian: 45 min. Cách tiến hành: Sau thời gian hòa tan quy định, lấy một phần dịch hòa tan, lọc, bỏ 20 ml dịch lọc đầu. Tiến hành định lượng aspirin và cafein hòa tan bằng phương pháp sắc ký lỏng (Phụ lục 5.3) với pha động và điều kiện sắc ký như phần Định lượng. Chuẩn bị dung dịch aspirin chuẩn và cafein chuẩn trong môi trường hòa tan có nồng độ tương đương với nồng độ aspirin và cafein tương ứng trong dung dịch thử. Yêu cầu: Không ít hơn 75 % (Q) lượng aspirin, C9H8O4, so với lượng ghi trên nhãn được hòa tan trong 45 min. Không ít hơn 75 % (Q) lượng cafein, C8H10N4O2, so với lượng ghi trên nhãn được hòa tan trong 45 min..",
+            "answer_model": "Độ hòa tan của VIÊN NÉN ASPIRIN VÀ CAFEIN được thực hiện với thiết bị kiểu cánh khuấy, trong môi trường hòa tan là 500 ml dung dịch đệm acetat 0,05 M pH 4,5, với tốc độ quay 50 r/min trong 45 phút. Yêu cầu là không ít hơn 75 % (Q) lượng aspirin, C9H8O4, và không ít hơn 75 % (Q) lượng cafein, C8H10N4O2, so với lượng ghi trên nhãn phải được hòa tan trong 45 phút.",
+            "scores": {
+                "bleu": 0.14149737603435478,
+                "rouge": 0.48314606302234575,
+                "meteor": 0.33182481095284905
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID AMINOCAPROIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID AMINOCAPROIC là C6H13NO2.",
+            "answer_model": "Công thức hóa học của ACID AMINOCAPROIC là C6H13NO2.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID AMINOCAPROIC là gì?",
+            "answer_ground_truth": "Tên Latin của ACID AMINOCAPROIC là Acidum Aminocaproicum.",
+            "answer_model": "Tên Latin của ACID AMINOCAPROIC là Acidum Aminocaproicum.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID AMINOCAPROIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID AMINOCAPROIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết độ hòa tan của ACID AMINOCAPROIC.",
+            "scores": {
+                "bleu": 0.3334869235560669,
+                "rouge": 0.3333333283333334,
+                "meteor": 0.4505050505050505
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID ASCORBIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID ASCORBIC là C6H8O6.",
+            "answer_model": "Công thức hóa học của ACID ASCORBIC là C6H8O6.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID ASCORBIC là gì?",
+            "answer_ground_truth": "Tên Latin của ACID ASCORBIC là Acidum Ascorbicum.",
+            "answer_model": "Tên Latin của ACID ASCORBIC là Acidum Ascorbicum.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID ASCORBIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID ASCORBIC có độ hòa tan không có thông tin.",
+            "answer_model": "Không có thông tin về độ hòa tan của ACID ASCORBIC.",
+            "scores": {
+                "bleu": 0.40451991747794525,
+                "rouge": 0.39999999505,
+                "meteor": 0.6657910689028086
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của THUỐC TIÊM ACID ASCORBIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của THUỐC TIÊM ACID ASCORBIC là C6H8O6.",
+            "answer_model": "Công thức hóa học của THUỐC TIÊM ACID ASCORBIC là C6H8O6.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của THUỐC TIÊM ACID ASCORBIC là gì?",
+            "answer_ground_truth": "Tên Latin của THUỐC TIÊM ACID ASCORBIC là Injectio Acidi ascorbici.",
+            "answer_model": "Injectio Acidi ascorbici là tên Latin của THUỐC TIÊM ACID ASCORBIC.",
+            "scores": {
+                "bleu": 0.6030226891555273,
+                "rouge": 0.5454545404545454,
+                "meteor": 0.8030303030303031
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "THUỐC TIÊM ACID ASCORBIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "THUỐC TIÊM ACID ASCORBIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết độ hòa tan của THUỐC TIÊM ACID ASCORBIC.",
+            "scores": {
+                "bleu": 0.4606821198071898,
+                "rouge": 0.3636363586363637,
+                "meteor": 0.565083176127594
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của VIÊN NÉN ACID ASCORBIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của VIÊN NÉN ACID ASCORBIC là C6H8O6.",
+            "answer_model": "Công thức hóa học của VIÊN NÉN ACID ASCORBIC là C6H8O6.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của VIÊN NÉN ACID ASCORBIC là gì?",
+            "answer_ground_truth": "Tên Latin của VIÊN NÉN ACID ASCORBIC là Tabellae Acidi ascorbici.",
+            "answer_model": "Tên Latin của VIÊN NÉN ACID ASCORBIC là Tabellae Acidi ascorbici.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "VIÊN NÉN ACID ASCORBIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "VIÊN NÉN ACID ASCORBIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.021239529438966134,
+                "rouge": 0.11764705425605555,
+                "meteor": 0.043859649122807015
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID BENZOIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID BENZOIC là C7H6O2.",
+            "answer_model": "Công thức hóa học của ACID BENZOIC là C7H6O2.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID BENZOIC là gì?",
+            "answer_ground_truth": "Tên Latin của ACID BENZOIC là Acidum benzoicum.",
+            "answer_model": "Tên Latin của ACID BENZOIC là Acidum benzoicum.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID BENZOIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID BENZOIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết độ hòa tan của ACID BENZOIC.",
+            "scores": {
+                "bleu": 0.3334869235560669,
+                "rouge": 0.3333333283333334,
+                "meteor": 0.4505050505050505
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của THUỐC MỠ BENZOSALICYLIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của THUỐC MỠ BENZOSALICYLIC là C7H6O2.",
+            "answer_model": "Công thức hóa học của THUỐC MỠ BENZOSALICYLIC là C7H6O2.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9995
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của THUỐC MỠ BENZOSALICYLIC là gì?",
+            "answer_ground_truth": "Tên Latin của THUỐC MỠ BENZOSALICYLIC là Unguentum Benzosalicylici.",
+            "answer_model": "Tên Latin của THUỐC MỠ BENZOSALICYLIC là Unguentum Benzosalicylici.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "THUỐC MỠ BENZOSALICYLIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "THUỐC MỠ BENZOSALICYLIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.025091539267089076,
+                "rouge": 0.12499999531250018,
+                "meteor": 0.04761904761904762
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID BORIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID BORIC là không có thông tin.",
+            "answer_model": "Tôi không biết công thức hóa học của ACID BORIC.",
+            "scores": {
+                "bleu": 0.4227907428931841,
+                "rouge": 0.5454545404958678,
+                "meteor": 0.5863023175371843
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID BORIC là gì?",
+            "answer_ground_truth": "Tên Latin của ACID BORIC là Acidum boricum.",
+            "answer_model": "Tên Latin của ACID BORIC là Acidum boricum.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID BORIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID BORIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.029642151188002917,
+                "rouge": 0.1333333285333335,
+                "meteor": 0.05208333333333333
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của DUNG DỊCH ACID BORIC 3 % là gì?",
+            "answer_ground_truth": "Công thức hóa học của DUNG DỊCH ACID BORIC 3 % là không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.010904738014161919,
+                "rouge": 0.09090908694214893,
+                "meteor": 0.03333333333333333
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của DUNG DỊCH ACID BORIC 3 % là gì?",
+            "answer_ground_truth": "Tên Latin của DUNG DỊCH ACID BORIC 3 % là Solutio Acidi borici 3 %.",
+            "answer_model": "Solutio Acidi borici 3 % là tên Latin của DUNG DỊCH ACID BORIC 3 %.",
+            "scores": {
+                "bleu": 0.8944271909999159,
+                "rouge": 0.6153846103846154,
+                "meteor": 0.9905185185185185
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "DUNG DỊCH ACID BORIC 3 % có độ hòa tan ra sao?",
+            "answer_ground_truth": "DUNG DỊCH ACID BORIC 3 % có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết độ hòa tan của DUNG DỊCH ACID BORIC 3 %.",
+            "scores": {
+                "bleu": 0.5447877240951453,
+                "rouge": 0.4615384565384616,
+                "meteor": 0.6354916067146283
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của THUỐC MỠ ACID BORIC 10 % là gì?",
+            "answer_ground_truth": "Công thức hóa học của THUỐC MỠ ACID BORIC 10 % là không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.010904738014161919,
+                "rouge": 0.09090908694214893,
+                "meteor": 0.03333333333333333
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của THUỐC MỠ ACID BORIC 10 % là gì?",
+            "answer_ground_truth": "Tên Latin của THUỐC MỠ ACID BORIC 10 % là Unguentum Acidi borici 10 %.",
+            "answer_model": "Tên Latin của THUỐC MỠ ACID BORIC 10 % là Unguentum Acidi borici 10 %.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9998518518518519
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "THUỐC MỠ ACID BORIC 10 % có độ hòa tan ra sao?",
+            "answer_ground_truth": "THUỐC MỠ ACID BORIC 10 % có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết độ hòa tan của THUỐC MỠ ACID BORIC 10 %.",
+            "scores": {
+                "bleu": 0.5447877240951453,
+                "rouge": 0.4615384565384616,
+                "meteor": 0.6354916067146283
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID CITRIC NGẬM MỘT PHÂN TỬ NƯỚC là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID CITRIC NGẬM MỘT PHÂN TỬ NƯỚC là C6H8O7.",
+            "answer_model": "Công thức hóa học của ACID CITRIC NGẬM MỘT PHÂN TỬ NƯỚC là C6H8O7.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9998177842565598
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID CITRIC NGẬM MỘT PHÂN TỬ NƯỚC là gì?",
+            "answer_ground_truth": "Tên Latin của ACID CITRIC NGẬM MỘT PHÂN TỬ NƯỚC là Acidum citricum monohydricum.",
+            "answer_model": "Tên Latin của ACID CITRIC NGẬM MỘT PHÂN TỬ NƯỚC là Acidum citricum monohydricum.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9998177842565598
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID CITRIC NGẬM MỘT PHÂN TỬ NƯỚC có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID CITRIC NGẬM MỘT PHÂN TỬ NƯỚC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.012882425802602028,
+                "rouge": 0.09999999580000019,
+                "meteor": 0.03546099290780142
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID FOLIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID FOLIC là C19H19N7O6.",
+            "answer_model": "Công thức hóa học của ACID FOLIC là C19H19N7O6.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID FOLIC là gì?",
+            "answer_ground_truth": "Tên Latin của ACID FOLIC là Acidum folicum.",
+            "answer_model": "Acidum folicum là tên Latin của ACID FOLIC.",
+            "scores": {
+                "bleu": 0.42257712736425823,
+                "rouge": 0.4999999950000001,
+                "meteor": 0.703125
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID FOLIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID FOLIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.029642151188002917,
+                "rouge": 0.1333333285333335,
+                "meteor": 0.05208333333333333
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của VIÊN NÉN ACID FOLIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của VIÊN NÉN ACID FOLIC là C19H19N7O6.",
+            "answer_model": "Công thức hóa học của VIÊN NÉN ACID FOLIC là C19H19N7O6.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của VIÊN NÉN ACID FOLIC là gì?",
+            "answer_ground_truth": "Tên Latin của VIÊN NÉN ACID FOLIC là Tabellae Acidi folici.",
+            "answer_model": "Tên Latin của VIÊN NÉN ACID FOLIC là Tabellae Acidi folici.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "VIÊN NÉN ACID FOLIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "VIÊN NÉN ACID FOLIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết độ hòa tan của VIÊN NÉN ACID FOLIC.",
+            "scores": {
+                "bleu": 0.4606821198071898,
+                "rouge": 0.3636363586363637,
+                "meteor": 0.565083176127594
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID HYDROCLORIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID HYDROCLORIC là không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.021239529438966134,
+                "rouge": 0.11111110666666683,
+                "meteor": 0.043859649122807015
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID HYDROCLORIC là gì?",
+            "answer_ground_truth": "Tên Latin của ACID HYDROCLORIC là Acidum hydrochloricum.",
+            "answer_model": "Tên Latin của ACID HYDROCLORIC là Acidum hydrochloricum.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID HYDROCLORIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID HYDROCLORIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết độ hòa tan của ACID HYDROCLORIC.",
+            "scores": {
+                "bleu": 0.3334869235560669,
+                "rouge": 0.3333333283333334,
+                "meteor": 0.4505050505050505
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID HYDROCLORIC LOÃNG là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID HYDROCLORIC LOÃNG là không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.01797887351536103,
+                "rouge": 0.10526315357340738,
+                "meteor": 0.04065040650406504
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID HYDROCLORIC LOÃNG là gì?",
+            "answer_ground_truth": "Tên Latin của ACID HYDROCLORIC LOÃNG là Acidum hydrochloricum dilutum.",
+            "answer_model": "Tên Latin của ACID HYDROCLORIC LOÃNG là Acidum hydrochloricum dilutum.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9995
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID HYDROCLORIC LOÃNG có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID HYDROCLORIC LOÃNG có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.025091539267089076,
+                "rouge": 0.12499999531250018,
+                "meteor": 0.04761904761904762
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID MEFENAMIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID MEFENAMIC là C15H15NO2.",
+            "answer_model": "Công thức hóa học của ACID MEFENAMIC là C15H15NO2.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID MEFENAMIC là gì?",
+            "answer_ground_truth": "Tên Latin của ACID MEFENAMIC là Acid mefenamic.",
+            "answer_model": "Tên Latin của ACID MEFENAMIC là Acid mefenamic.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID MEFENAMIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID MEFENAMIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.029642151188002917,
+                "rouge": 0.1333333285333335,
+                "meteor": 0.05208333333333333
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của VIÊN NÉN ACID MEFENAMIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của VIÊN NÉN ACID MEFENAMIC là C15H15NO2.",
+            "answer_model": "Công thức hóa học của VIÊN NÉN ACID MEFENAMIC là C15H15NO2.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của VIÊN NÉN ACID MEFENAMIC là gì?",
+            "answer_ground_truth": "Tên Latin của VIÊN NÉN ACID MEFENAMIC là Tabellae Acidi mefenamici.",
+            "answer_model": "Tên Latin của VIÊN NÉN ACID MEFENAMIC là Tabellae Acidi mefenamici.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "VIÊN NÉN ACID MEFENAMIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "VIÊN NÉN ACID MEFENAMIC có độ hòa tan không có thông tin.",
+            "answer_model": "Không tìm thấy trong DB.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.04424778761061946
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID METHACRYLIC VÀ METHYL là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID METHACRYLIC VÀ METHYL là không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.01521878786487298,
+                "rouge": 0.09999999580000019,
+                "meteor": 0.03787878787878788
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID METHACRYLIC VÀ METHYL là gì?",
+            "answer_ground_truth": "Tên Latin của ACID METHACRYLIC VÀ METHYL là Acidi methacrylici et methylis methacrylatis polymerisatum (1 : 2).",
+            "answer_model": "Tên Latin của ACID METHACRYLIC VÀ METHYL là Acidi methacrylici et methylis methacrylatis polymerisatum (I : I).",
+            "scores": {
+                "bleu": 0.8467064217932224,
+                "rouge": 0.8823529361764706,
+                "meteor": 0.8813071895424837
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID METHACRYLIC VÀ METHYL có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID METHACRYLIC VÀ METHYL có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết độ hòa tan của ACID METHACRYLIC VÀ METHYL.",
+            "scores": {
+                "bleu": 0.4606821198071898,
+                "rouge": 0.3636363586363637,
+                "meteor": 0.565083176127594
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID NALIDIXIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID NALIDIXIC là C12H12N2O3.",
+            "answer_model": "Công thức hóa học của ACID NALIDIXIC là C12H12N2O3.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID NALIDIXIC là gì?",
+            "answer_ground_truth": "Tên Latin của ACID NALIDIXIC là Acid nalidixic.",
+            "answer_model": "Tên Latin của ACID NALIDIXIC là Acid nalidixic.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID NALIDIXIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID NALIDIXIC có độ hòa tan không có thông tin.",
+            "answer_model": "Đối với viên nén ACID NALIDIXIC, độ hòa tan được thực hiện với thiết bị kiểu cánh khuấy, trong môi trường hòa tan là 900 ml dung dịch đệm methanol-phosphat được pha chế bằng cách trộn 2,3 thể tích dung dịch natri hydroxyd 0,2 M với 2,5 thể tích dung dịch kali dihydrophosphat 0,2 M và 2,0 thể tích methanol, sau đó pha loãng thành 10 thể tích với nước và chỉnh đến pH 8,6 bằng dung dịch natri hydroxyd 0,1 M. Tốc độ quay là 60 vòng/phút và thời gian là 45 phút.\n\nCách tiến hành: Lấy một phần dung dịch môi trường sau khi hòa tan, lọc, bỏ 20 ml dịch lọc đầu. Pha loãng dịch lọc bằng môi trường hòa tan (nếu cần). Đo độ hấp thụ ánh sáng của dung dịch thử ở bước sóng hấp thụ cực đại 334 nm, dùng dung dịch môi trường hòa tan làm mẫu trắng. Tính hàm lượng acid nalidixic, C12H12N2O3, đã hòa tan trong mỗi viên theo A (1 %, 1 cm), lấy 494 là giá trị A (1 %, 1 cm) ở cực đại 334 nm.\n\nYêu cầu: Không được ít hơn 70 % (Q) lượng acid nalidixic, C12H12N2O3, so với lượng ghi trên nhãn được hòa tan trong 45 phút.",
+            "scores": {
+                "bleu": 0.0133102821380459,
+                "rouge": 0.05755395562341497,
+                "meteor": 0.12277227722772278
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của VIÊN NÉN ACID NALIDIXIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của VIÊN NÉN ACID NALIDIXIC là C12H12N2O3.",
+            "answer_model": "Công thức hóa học của VIÊN NÉN ACID NALIDIXIC là C12H12N2O3.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của VIÊN NÉN ACID NALIDIXIC là gì?",
+            "answer_ground_truth": "Tên Latin của VIÊN NÉN ACID NALIDIXIC là Tabellae Acidi nalidixici.",
+            "answer_model": "Tên Latin của VIÊN NÉN ACID NALIDIXIC là Tabellae Acidi nalidixici.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "VIÊN NÉN ACID NALIDIXIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "VIÊN NÉN ACID NALIDIXIC có độ hòa tan (Phụ lục 11.4) Thiết bị: Kiểu cánh khuấy. Môi trường hòa tan: 900 ml dung dịch đệm methanol-phosphat được pha như sau: Trộn 2,3 thể tích dung dịch natri hydroxyd 0,2 M (TT) với 2,5 thể tích dung dịch kali dihydrophosphat 0,2 M (TT) và 2,0 thể tích methanol. Pha loãng thành 10 thể tích với nước, chỉnh đến pH 8,6 bằng dung dịch natri hydroxyd 0,1 M (TT). Tốc độ quay: 60 r/min. Thời gian: 45 phút. Cách tiến hành: Lấy một phần dung dịch môi trường sau khi hòa tan, lọc, bỏ 20 ml dịch lọc đầu. Pha loãng dịch lọc bằng môi trường hòa tan (nếu cần). Đo độ hấp thụ ánh sáng của dung dịch thử ở bước sóng hấp thụ cực đại 334 nm (Phụ lục 4.1), cốc đo dày 1 cm, dùng dung dịch môi trường hòa tan làm mẫu trắng. Tính hàm lượng acid nalidixic, C12H12N2O3, đã hòa tan trong mỗi viên theo A (1 %, 1 cm), lấy 494 là giá trị A (1 %, 1 cm) ở cực đại 334 nm. Yêu cầu: Không được ít hơn 70 % (Q) lượng acid nalidixic, C12H12N2O3, so với lượng ghi trên nhãn được hòa tan trong 45 phút..",
+            "answer_model": "Độ hòa tan của VIÊN NÉN ACID NALIDIXIC được thực hiện theo Phụ lục 11.4, sử dụng thiết bị kiểu cánh khuấy. Môi trường hòa tan là 900 ml dung dịch đệm methanol-phosphat (pha từ natri hydroxyd 0,2 M, kali dihydrophosphat 0,2 M và methanol, pha loãng với nước và chỉnh pH đến 8,6). Tốc độ quay là 60 r/min trong 45 phút. Sau khi hòa tan, lấy một phần dung dịch, lọc, bỏ 20 ml dịch lọc đầu, sau đó pha loãng (nếu cần) và đo độ hấp thụ ánh sáng ở bước sóng cực đại 334 nm. Hàm lượng acid nalidixic, C12H12N2O3, đã hòa tan trong mỗi viên được tính theo A (1 %, 1 cm) với giá trị 494 ở cực đại 334 nm. Yêu cầu là không được ít hơn 70 % (Q) lượng acid nalidixic, C12H12N2O3, so với lượng ghi trên nhãn được hòa tan trong 45 phút.",
+            "scores": {
+                "bleu": 0.42140261380295063,
+                "rouge": 0.6328124950439454,
+                "meteor": 0.564635439567545
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID NICOTINIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID NICOTINIC là C6H5NO2.",
+            "answer_model": "Công thức hóa học của ACID NICOTINIC là C6H5NO2.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID NICOTINIC là gì?",
+            "answer_ground_truth": "Tên Latin của ACID NICOTINIC là Acidum nicotinicum.",
+            "answer_model": "Acidum nicotinicum là tên Latin của ACID NICOTINIC.",
+            "scores": {
+                "bleu": 0.42257712736425823,
+                "rouge": 0.4999999950000001,
+                "meteor": 0.703125
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID NICOTINIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID NICOTINIC có độ hòa tan (Phụ lục 11.4) Thiết bị: Kiểu cánh khuấy. Môi trường hòa tan: Dùng 40 ml ethanol (TT) và thêm dung dịch đệm phosphat pH 8,0 tới 800 ml. Dung dịch đệm phosphat pH 8,0: Hòa tan 5,59 g dikali hydrophosphat (TT) và 0,41 g kali dihydrophosphat (TT) trong 1000 ml nước. Tốc độ quay: 75 r/min. Thời gian: 45 min. Cách tiến hành: Dung dịch thử: Sau thời gian hòa tan qui định, lấy một phần dịch hòa tan, lọc. Pha loãng dịch lọc với dung dịch đệm phosphat pH 8,0 (TT) để thu được dung dịch có nồng độ 10 µg/ml. Dung dịch chuẩn: Cân chính xác khoảng 20 mg acid mefenamic chuẩn vào bình định mức 100 ml, thêm 5 ml ethanol (TT) để hòa tan, thêm dung dịch đệm phosphat pH 8,0 đến vạch, trộn đều. Pha loãng dung dịch thu được với dung dịch đệm phosphat pH 8,0 để thu được dung dịch có nồng độ 10 µg/ml. Đo độ hấp thụ của dung dịch thử và dung dịch chuẩn ở 286 nm (Phụ lục 4.1), dùng dung dịch đệm phosphat pH 8,0 làm mẫu trắng. Tính lượng acid mefenamic, C15H15NO2, được hòa tan trong mỗi viên. Yêu cầu: Không được ít hơn 60 % (Q) lượng acid mefenamic, C15H15NO2, so với lượng ghi trên nhãn được hòa tan trong 45 min..",
+            "answer_model": "ACID NICOTINIC có độ hòa tan theo phương pháp sau: Thiết bị: Kiểu cánh khuấy. Môi trường hòa tan: Dùng 40 ml ethanol (TT) và thêm dung dịch đệm phosphat pH 8,0 tới 800 ml. Dung dịch đệm phosphat pH 8,0: Hòa tan 5,59 g dikali hydrophosphat (TT) và 0,41 g kali dihydrophosphat (TT) trong 1000 ml nước. Tốc độ quay: 75 r/min. Thời gian: 45 min. Cách tiến hành: Dung dịch thử: Sau thời gian hòa tan qui định, lấy một phần dịch hòa tan, lọc. Pha loãng dịch lọc với dung dịch đệm phosphat pH 8,0 (TT) để thu được dung dịch có nồng độ 10 µg/ml. Dung dịch chuẩn: Cân chính xác khoảng 20 mg acid mefenamic chuẩn vào bình định mức 100 ml, thêm 5 ml ethanol (TT) để hòa tan, thêm dung dịch đệm phosphat pH 8,0 đến vạch, trộn đều. Pha loãng dung dịch thu được với dung dịch đệm phosphat pH 8,0 để thu được dung dịch có nồng độ 10 µg/ml. Đo độ hấp thụ của dung dịch thử và dung dịch chuẩn ở 286 nm (Phụ lục 4.1), dùng dung dịch đệm phosphat pH 8,0 làm mẫu trắng. Tính lượng acid mefenamic, C15H15NO2, được hòa tan trong mỗi viên. Yêu cầu: Không được ít hơn 60 % (Q) lượng acid mefenamic, C15H15NO2, so với lượng ghi trên nhãn được hòa tan trong 45 min.",
+            "scores": {
+                "bleu": 0.976336869931373,
+                "rouge": 0.9770992316415129,
+                "meteor": 0.9823325481515607
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID METHACRYLIC VÀ ETHYL ACRYLAT là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID METHACRYLIC VÀ ETHYL ACRYLAT là không có thông tin.",
+            "answer_model": "Tôi không biết công thức hóa học của ACID METHACRYLIC VÀ ETHYL ACRYLAT.",
+            "scores": {
+                "bleu": 0.5448706814187371,
+                "rouge": 0.6428571378826532,
+                "meteor": 0.6729729729729729
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID METHACRYLIC VÀ ETHYL ACRYLAT là gì?",
+            "answer_ground_truth": "Tên Latin của ACID METHACRYLIC VÀ ETHYL ACRYLAT là Acidi methacrylici et ethylis acrylatis polymerisatint (1 : 1).",
+            "answer_model": "Acidi methacrylici et ethylis acrylatis polymerisatint (1 : 1) là tên Latin của ACID METHACRYLIC VÀ ETHYL ACRYLAT.",
+            "scores": {
+                "bleu": 0.7669649888473705,
+                "rouge": 0.4999999950000001,
+                "meteor": 0.8859592013888888
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID METHACRYLIC VÀ ETHYL ACRYLAT có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID METHACRYLIC VÀ ETHYL ACRYLAT có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.01797887351536103,
+                "rouge": 0.11111110666666683,
+                "meteor": 0.04065040650406504
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của DỊCH PHÂN TÁN 30 % CỦA ACID METHACRYLIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của DỊCH PHÂN TÁN 30 % CỦA ACID METHACRYLIC là không có thông tin.",
+            "answer_model": "Tôi không biết công thức hóa học của DỊCH PHÂN TÁN 30 % CỦA ACID METHACRYLIC.",
+            "scores": {
+                "bleu": 0.6240195441936914,
+                "rouge": 0.7058823479584776,
+                "meteor": 0.7290073798284689
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của DỊCH PHÂN TÁN 30 % CỦA ACID METHACRYLIC là gì?",
+            "answer_ground_truth": "Tên Latin của DỊCH PHÂN TÁN 30 % CỦA ACID METHACRYLIC là Acidi methacrylici et ethyls acrylatis polymerisati 1 : 1 dispersio 30 per centum.",
+            "answer_model": "Tên Latin của DỊCH PHÂN TÁN 30 % CỦA ACID METHACRYLIC là Acidi methacrylici et ethyls acrylatis polymerisati 1 : 1 dispersio 30 per centum.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.999968
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "DỊCH PHÂN TÁN 30 % CỦA ACID METHACRYLIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "DỊCH PHÂN TÁN 30 % CỦA ACID METHACRYLIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.010904738014161919,
+                "rouge": 0.09523809115646274,
+                "meteor": 0.03333333333333333
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID METHACRYLIC VÀ METHYL là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID METHACRYLIC VÀ METHYL là không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.01521878786487298,
+                "rouge": 0.09999999580000019,
+                "meteor": 0.03787878787878788
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID METHACRYLIC VÀ METHYL là gì?",
+            "answer_ground_truth": "Tên Latin của ACID METHACRYLIC VÀ METHYL là Acidi methacrylici et methylis methacrylatis polymerisatum (I : I).",
+            "answer_model": "Tên Latin của ACID METHACRYLIC VÀ METHYL là Acidi methacrylici et methylis methacrylatis polymerisatum (I : I).",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.999898229187869
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID METHACRYLIC VÀ METHYL có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID METHACRYLIC VÀ METHYL có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết độ hòa tan của ACID METHACRYLIC VÀ METHYL.",
+            "scores": {
+                "bleu": 0.4606821198071898,
+                "rouge": 0.3636363586363637,
+                "meteor": 0.565083176127594
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID SALICYLIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID SALICYLIC là C7H6O3.",
+            "answer_model": "Công thức hóa học của ACID SALICYLIC là C7H6O3.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID SALICYLIC là gì?",
+            "answer_ground_truth": "Tên Latin của ACID SALICYLIC là Acidum salicylicium.",
+            "answer_model": "Tên Latin của ACID SALICYLIC là Acidum salicylicium.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID SALICYLIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID SALICYLIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.029642151188002917,
+                "rouge": 0.1333333285333335,
+                "meteor": 0.05208333333333333
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ACID TRANEXAMIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của ACID TRANEXAMIC là C8H15NO2.",
+            "answer_model": "Công thức hóa học của ACID TRANEXAMIC là C8H15NO2.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ACID TRANEXAMIC là gì?",
+            "answer_ground_truth": "Tên Latin của ACID TRANEXAMIC là Acidum tranexamicum.",
+            "answer_model": "Tên Latin của ACID TRANEXAMIC là Acidum tranexamicum.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ACID TRANEXAMIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "ACID TRANEXAMIC có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.029642151188002917,
+                "rouge": 0.1333333285333335,
+                "meteor": 0.05208333333333333
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của NANG ACID TRANEXAMIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của NANG ACID TRANEXAMIC là C8H15NO2.",
+            "answer_model": "Công thức hóa học của NANG ACID TRANEXAMIC là C8H15NO2.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9995
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của NANG ACID TRANEXAMIC là gì?",
+            "answer_ground_truth": "Tên Latin của NANG ACID TRANEXAMIC là Capsulae Acidi tranexamici.",
+            "answer_model": "Capsulae Acidi tranexamici",
+            "scores": {
+                "bleu": 0.055986791750361996,
+                "rouge": 0.4615384579881657,
+                "meteor": 0.20161290322580647
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "NANG ACID TRANEXAMIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "NANG ACID TRANEXAMIC có độ hòa tan Thiết bị: Kiểu cánh khuấy. Môi trường hòa tan: 900 ml nước. Tốc độ quay: 50 r/min. Thời gian: 15 min. Cách tiến hành: Phương pháp sắc ký lỏng (Phụ lục 5.3) với các điều kiện sắc ký như mô tả trong phần Định lượng. Dung dịch thử: Sau thời gian hòa tan qui định, lấy một phần dịch hòa tan, lọc. Pha loãng dịch lọc với nước để được dung dịch có nồng độ acid tranexamic khoảng 0,56 mg/ml. Dung dịch chuẩn: Cân chính xác khoảng 56 mg acid tranexamic chuẩn, hòa tan trong nước và thêm nước vừa đủ 100,0 ml. Tiến hành sắc ký lần lượt đối với dung dịch chuẩn và dung dịch thử với thể tích tiêm là 50 µl. Tính hàm lượng acid tranexamic hòa tan trong mỗi nang dựa vào diện tích pic của acid tranexamic trên sắc ký đồ thu được từ dung dịch thử, dung dịch chuẩn và hàm lượng C8H15NO2 của acid tranexamic chuẩn. Yêu cầu: Không ít hơn 80 % (Q) lượng acid tranexamic, C8H15NO2, so với lượng ghi trên nhãn được hòa tan trong 15 min..",
+            "answer_model": "NANG ACID TRANEXAMIC có độ hòa tan được thực hiện với thiết bị kiểu cánh khuấy, môi trường hòa tan là 900 ml nước, tốc độ quay 50 r/min trong 15 phút. Cách tiến hành là phương pháp sắc ký lỏng (Phụ lục 5.3) với các điều kiện sắc ký như mô tả trong phần Định lượng. Dung dịch thử được pha loãng với nước để có nồng độ acid tranexamic khoảng 0,56 mg/ml. Dung dịch chuẩn được chuẩn bị bằng cách cân chính xác khoảng 56 mg acid tranexamic chuẩn, hòa tan trong nước và thêm nước vừa đủ 100,0 ml. Tiến hành sắc ký lần lượt đối với dung dịch chuẩn và dung dịch thử với thể tích tiêm là 50 µl. Hàm lượng acid tranexamic hòa tan trong mỗi nang được tính dựa vào diện tích pic của acid tranexamic trên sắc ký đồ thu được từ dung dịch thử, dung dịch chuẩn và hàm lượng C8H15NO2 của acid tranexamic chuẩn. Yêu cầu là không ít hơn 80 % (Q) lượng acid tranexamic, C8H15NO2, so với lượng ghi trên nhãn được hòa tan trong 15 phút.",
+            "scores": {
+                "bleu": 0.7464894784798389,
+                "rouge": 0.7866108736681782,
+                "meteor": 0.841289122650147
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của VIÊN NÉN ACID TRANEXAMIC là gì?",
+            "answer_ground_truth": "Công thức hóa học của VIÊN NÉN ACID TRANEXAMIC là C8H15NO2.",
+            "answer_model": "Công thức hóa học của VIÊN NÉN ACID TRANEXAMIC là C8H15NO2.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của VIÊN NÉN ACID TRANEXAMIC là gì?",
+            "answer_ground_truth": "Tên Latin của VIÊN NÉN ACID TRANEXAMIC là Tabellae Acidi tranexamici.",
+            "answer_model": "Tên Latin của VIÊN NÉN ACID TRANEXAMIC là Tabellae Acidi tranexamici.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9996243425995492
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "VIÊN NÉN ACID TRANEXAMIC có độ hòa tan ra sao?",
+            "answer_ground_truth": "VIÊN NÉN ACID TRANEXAMIC có độ hòa tan (Phụ lục 11.4) Thiết bị: Kiểu cánh khuấy. Môi trường hòa tan: 900 ml nước. Tốc độ quay: 50 r/min. Thời gian: 15 min. Cách tiến hành: Tiến hành phương pháp sắc ký lỏng với các điều kiện sắc ký như mô tả ở mục Định lượng (Phụ lục 5.3). Dung dịch thử: Sau thời gian hòa tan qui định, lấy một phần dịch hòa tan, lọc. Pha loãng dịch lọc với nước để được dung dịch có nồng độ acid tranexamic khoảng 0,56 mg/ml. Dung dịch chuẩn: Cân chính xác khoảng 56 mg acid tranexamic chuẩn hòa tan trong nước và thêm nước vừa đủ 100,0 ml. Tiến hành sắc ký lần lượt đối với dung dịch chuẩn và dung dịch thử với thể tích tiêm là 50 µl. Tính hàm lượng acid tranexamic hòa tan trong mỗi viên dựa vào diện tích pic của acid tranexamic trên sắc ký đồ thu được từ dung dịch thử, dung dịch chuẩn và hàm lượng C8H15NO2 trong acid tranexamic chuẩn. Yêu cầu: Không ít hơn 80 % (Q) lượng acid tranexamic, C8H15NO2, so với lượng ghi trên nhãn được hòa tan trong 15 min..",
+            "answer_model": "Độ hòa tan của VIÊN NÉN ACID TRANEXAMIC được thực hiện theo Phụ lục 11.4 với thiết bị kiểu cánh khuấy. Môi trường hòa tan là 900 ml nước, tốc độ quay 50 r/min và thời gian 15 min. Cách tiến hành là phương pháp sắc ký lỏng với các điều kiện sắc ký như mô tả ở mục Định lượng (Phụ lục 5.3). Dung dịch thử được lấy sau thời gian hòa tan qui định, lọc và pha loãng với nước để được dung dịch có nồng độ acid tranexamic khoảng 0,56 mg/ml. Dung dịch chuẩn được chuẩn bị bằng cách cân chính xác khoảng 56 mg acid tranexamic chuẩn, hòa tan trong nước và thêm nước vừa đủ 100,0 ml. Tiến hành sắc ký lần lượt đối với dung dịch chuẩn và dung dịch thử với thể tích tiêm là 50 µl. Hàm lượng acid tranexamic hòa tan trong mỗi viên được tính dựa vào diện tích pic của acid tranexamic trên sắc ký đồ thu được từ dung dịch thử, dung dịch chuẩn và hàm lượng C8H15NO2 trong acid tranexamic chuẩn. Yêu cầu là không ít hơn 80 % (Q) lượng acid tranexamic, C8H15NO2, so với lượng ghi trên nhãn được hòa tan trong 15 min.",
+            "scores": {
+                "bleu": 0.7537173242880318,
+                "rouge": 0.817120617568169,
+                "meteor": 0.8834089833302965
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ADRENALIN là gì?",
+            "answer_ground_truth": "Công thức hóa học của ADRENALIN là C9H13NO3.",
+            "answer_model": "Công thức hóa học của ADRENALIN là C9H13NO3.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ADRENALIN là gì?",
+            "answer_ground_truth": "Tên Latin của ADRENALIN là Adrenalinum.",
+            "answer_model": "Adrenalinum là tên Latin của ADRENALIN.",
+            "scores": {
+                "bleu": 0.316227766016838,
+                "rouge": 0.4999999950000001,
+                "meteor": 0.625
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ADRENALIN có độ hòa tan ra sao?",
+            "answer_ground_truth": "ADRENALIN có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.03501806396568503,
+                "rouge": 0.14285713795918387,
+                "meteor": 0.0574712643678161
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ADRENALIN ACID TARTRAT là gì?",
+            "answer_ground_truth": "Công thức hóa học của ADRENALIN ACID TARTRAT là C9H13NO3.C4H6O6.",
+            "answer_model": "Công thức hóa học của ADRENALIN ACID TARTRAT là C9H13NO3.C4H6O6.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9995
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ADRENALIN ACID TARTRAT là gì?",
+            "answer_ground_truth": "Tên Latin của ADRENALIN ACID TARTRAT là Adrenalinum Acidum Tartratis.",
+            "answer_model": "Tên Latin của ADRENALIN ACID TARTRAT là Adrenalinum Acidum Tartratis.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9995
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ADRENALIN ACID TARTRAT có độ hòa tan ra sao?",
+            "answer_ground_truth": "ADRENALIN ACID TARTRAT có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.025091539267089076,
+                "rouge": 0.12499999531250018,
+                "meteor": 0.04761904761904762
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của THUỐC TIÊM ADRENALIN là gì?",
+            "answer_ground_truth": "Công thức hóa học của THUỐC TIÊM ADRENALIN là C9H13NO3.",
+            "answer_model": "Công thức hóa học của THUỐC TIÊM ADRENALIN là C9H13NO3.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9995
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của THUỐC TIÊM ADRENALIN là gì?",
+            "answer_ground_truth": "Tên Latin của THUỐC TIÊM ADRENALIN là Injectio Adrenalini.",
+            "answer_model": "Injectio Adrenalini là tên Latin của THUỐC TIÊM ADRENALIN.",
+            "scores": {
+                "bleu": 0.5,
+                "rouge": 0.5555555505555557,
+                "meteor": 0.7471655328798186
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "THUỐC TIÊM ADRENALIN có độ hòa tan ra sao?",
+            "answer_ground_truth": "THUỐC TIÊM ADRENALIN có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết độ hòa tan của THUỐC TIÊM ADRENALIN.",
+            "scores": {
+                "bleu": 0.40465559506275994,
+                "rouge": 0.2999999950000001,
+                "meteor": 0.5160550458715595
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ALBENDAZOL là gì?",
+            "answer_ground_truth": "Công thức hóa học của ALBENDAZOL là C12H15N3O2S.",
+            "answer_model": "Công thức hóa học của ALBENDAZOL là C12H15N3O2S.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ALBENDAZOL là gì?",
+            "answer_ground_truth": "Tên Latin của ALBENDAZOL là Albendazolum.",
+            "answer_model": "Albendazolum.",
+            "scores": {
+                "bleu": 0.002130725927060655,
+                "rouge": 0.2857142832653061,
+                "meteor": 0.0909090909090909
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ALBENDAZOL có độ hòa tan ra sao?",
+            "answer_ground_truth": "ALBENDAZOL có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.03501806396568503,
+                "rouge": 0.14285713795918387,
+                "meteor": 0.0574712643678161
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của VIÊN NÉN ALBENDAZOL là gì?",
+            "answer_ground_truth": "Công thức hóa học của VIÊN NÉN ALBENDAZOL là C12H15N3O2S.",
+            "answer_model": "Công thức hóa học của VIÊN NÉN ALBENDAZOL là C12H15N3O2S.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9995
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của VIÊN NÉN ALBENDAZOL là gì?",
+            "answer_ground_truth": "Tên Latin của VIÊN NÉN ALBENDAZOL là Tabellae Albendazoli.",
+            "answer_model": "Tabellae Albendazoli là tên Latin của VIÊN NÉN ALBENDAZOL.",
+            "scores": {
+                "bleu": 0.5,
+                "rouge": 0.5555555505555557,
+                "meteor": 0.7471655328798186
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "VIÊN NÉN ALBENDAZOL có độ hòa tan ra sao?",
+            "answer_ground_truth": "VIÊN NÉN ALBENDAZOL có độ hòa tan (Phụ lục 11.4) Thiết bị: Kiểu cánh khuấy. Môi trường hòa tan: 900 ml dung dịch acid hydrocloric 0,1 M (TT). Tốc độ quay: 75 r/min. Thời gian: 30 min. Dung dịch methanol acid: Lấy 50 ml methanol (TT) cho vào bình định mức 100 ml, thêm 2 ml acid hydrocloric (TT), pha loãng vừa đủ với methanol (TT) đến vạch. Dung dịch chuẩn: Cân chính xác khoảng 90 mg albendazol chuẩn cho vào bình định mức 250 ml, thêm 10 ml dung dịch methanol acid, lắc để hòa tan. Pha loãng với dung dịch acid hydrocloric 0,1 M (TT) vừa đủ đến vạch và lắc đều. Lấy 5,0 ml dung dịch này cho vào bình định mức 200 ml, pha loãng với dung dịch natri hydroxyd 0,1 M (TT) vừa đủ đến vạch, lắc đều. Cách tiến hành: Lấy một phần dung dịch môi trường sau khi hòa tan, lọc, bỏ 20 ml dịch lọc đầu. Pha loãng dịch lọc với dung dịch natri hydroxyd 0,1 M (TT) để thu được dung dịch có nồng độ tương đương với dung dịch chuẩn. Đo độ hấp thụ của dung dịch này và dung dịch chuẩn ở bước sóng cực đại khoảng 308 nm và cực tiểu khoảng 350 nm (Phụ lục 4.1), cốc đo dày 1 cm. Dùng dung dịch natri hydroxyd 0,1 M (TT) làm mẫu trắng. Tính hàm lượng albendazol, C12H15N3O2S, đã hòa tan theo cách tính trong phần Định lượng. Yêu cầu: Không được ít hơn 80 % (Q) lượng albendazol, C12H15N3O2S, so với lượng ghi trên nhãn được hòa tan trong 30 min..",
+            "answer_model": "Độ hòa tan của VIÊN NÉN ALBENDAZOL được thực hiện với thiết bị kiểu cánh khuấy, môi trường hòa tan là 900 ml dung dịch acid hydrocloric 0,1 M (TT), tốc độ quay 75 r/min, trong thời gian 30 min. Dung dịch methanol acid được chuẩn bị bằng cách lấy 50 ml methanol (TT) cho vào bình định mức 100 ml, thêm 2 ml acid hydrocloric (TT), pha loãng vừa đủ với methanol (TT) đến vạch. Dung dịch chuẩn được cân chính xác khoảng 90 mg albendazol chuẩn cho vào bình định mức 250 ml, thêm 10 ml dung dịch methanol acid, lắc để hòa tan, sau đó pha loãng với dung dịch acid hydrocloric 0,1 M (TT) vừa đủ đến vạch và lắc đều. Lấy 5,0 ml dung dịch này cho vào bình định mức 200 ml, pha loãng với dung dịch natri hydroxyd 0,1 M (TT) vừa đủ đến vạch, lắc đều. Cách tiến hành là lấy một phần dung dịch môi trường sau khi hòa tan, lọc, bỏ 20 ml dịch lọc đầu. Pha loãng dịch lọc với dung dịch natri hydroxyd 0,1 M (TT) để thu được dung dịch có nồng độ tương đương với dung dịch chuẩn. Đo độ hấp thụ của dung dịch này và dung dịch chuẩn ở bước sóng cực đại khoảng 308 nm và cực tiểu khoảng 350 nm (Phụ lục 4.1), cốc đo dày 1 cm. Dùng dung dịch natri hydroxyd 0,1 M (TT) làm mẫu trắng. Tính hàm lượng albendazol, C12H15N3O2S, đã hòa tan theo cách tính trong phần Định lượng. Yêu cầu là không được ít hơn 80 % (Q) lượng albendazol, C12H15N3O2S, so với lượng ghi trên nhãn được hòa tan trong 30 min.",
+            "scores": {
+                "bleu": 0.8356444808061011,
+                "rouge": 0.867796605169549,
+                "meteor": 0.9333070791915062
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của ALIMEMAZIN TARTRAT là gì?",
+            "answer_ground_truth": "Công thức hóa học của ALIMEMAZIN TARTRAT là C18H22N2S.C4H6O6.",
+            "answer_model": "C18H22N2S.C4H6O6 là công thức hóa học của ALIMEMAZIN TARTRAT.",
+            "scores": {
+                "bleu": 0.5773502691896257,
+                "rouge": 0.7999999950000002,
+                "meteor": 0.7687074829931974
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của ALIMEMAZIN TARTRAT là gì?",
+            "answer_ground_truth": "Tên Latin của ALIMEMAZIN TARTRAT là Alimemazini tartras.",
+            "answer_model": "Tên Latin của ALIMEMAZIN TARTRAT là Alimemazini tartras.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9990234375
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "ALIMEMAZIN TARTRAT có độ hòa tan ra sao?",
+            "answer_ground_truth": "ALIMEMAZIN TARTRAT có độ hòa tan không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.029642151188002917,
+                "rouge": 0.1333333285333335,
+                "meteor": 0.05208333333333333
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Công thức hóa học của VIÊN NÉN ALIMEMAZIN là gì?",
+            "answer_ground_truth": "Công thức hóa học của VIÊN NÉN ALIMEMAZIN là C18H22N2S.C4H6O6.",
+            "answer_model": "Công thức hóa học của VIÊN NÉN ALIMEMAZIN là C18H22N2S.C4H6O6.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9995
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "Tên Latin của VIÊN NÉN ALIMEMAZIN là gì?",
+            "answer_ground_truth": "Tên Latin của VIÊN NÉN ALIMEMAZIN là Tabellae Alimemazini.",
+            "answer_model": "Tên Latin của VIÊN NÉN ALIMEMAZIN là Tabellae Alimemazini.",
+            "scores": {
+                "bleu": 1.0,
+                "rouge": 0.999999995,
+                "meteor": 0.9993141289437586
+            }
+        },
+        {
+            "type": "1-hop",
+            "question": "VIÊN NÉN ALIMEMAZIN có độ hòa tan ra sao?",
+            "answer_ground_truth": "VIÊN NÉN ALIMEMAZIN có độ hòa tan Thiết bị: Kiểu giỏ quay. Môi trường hòa tan: 500 ml dung dịch acid hydrocloric 0,01 M (TT). Tốc độ quay: 100 r/min. Thời gian: 45 min. Cách tiến hành: Sau thời gian hòa tan quy định, hút dịch hòa tan, lọc. Pha loãng nếu cần với môi trường hòa tan. Đo độ hấp thụ của dung dịch thử ở bước sóng cực đại khoảng 254 nm (Phụ lục 4.1), sử dụng cốc đo dày 1 cm, mẫu trắng là môi trường hòa tan, so sánh với dung dịch chuẩn alimemazin tartrat có cùng nồng độ pha trong môi trường hòa tan. Yêu cầu: Không được ít hơn 75 % (Q) lượng alimemazin tartrat so với lượng ghi trên nhãn được hòa tan trong 45 min..",
+            "answer_model": "Độ hòa tan của VIÊN NÉN ALIMEMAZIN được thực hiện với thiết bị kiểu giỏ quay, môi trường hòa tan là 500 ml dung dịch acid hydrocloric 0,01 M (TT), tốc độ quay 100 r/min trong 45 min. Sau thời gian hòa tan, hút dịch, lọc, pha loãng nếu cần và đo độ hấp thụ ở bước sóng cực đại khoảng 254 nm, so sánh với dung dịch chuẩn alimemazin tartrat. Yêu cầu không được ít hơn 75 % (Q) lượng alimemazin tartrat so với lượng ghi trên nhãn được hòa tan trong 45 min.",
+            "scores": {
+                "bleu": 0.44722394093390383,
+                "rouge": 0.6551724088730347,
+                "meteor": 0.5954285990712073
+            }
+        }
+    ],
+    "2_hop_data": [
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C14H18N6O2.1 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C14H18N6O2.1 là ABACAVIR SULFAT, có tên Latin là Abacaviri sulfas.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Abacaviri sulfas có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Abacaviri sulfas là ABACAVIR SULFAT, có công thức hóa học C14H18N6O2.1.",
+            "answer_model": "Công thức hóa học của Abacaviri sulfas là C14H18N6O2.1.",
+            "scores": {
+                "bleu": 0.25637355642829546,
+                "rouge": 0.38461537988165684,
+                "meteor": 0.4808063271604939
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là ACEBUTOLOL HYDROCLORID, có tên Latin là Acebutololi hydrochloridum.",
+            "answer_model": "Không có hoạt chất nào không có thông tin tên Latin.",
+            "scores": {
+                "bleu": 0.19278864722709152,
+                "rouge": 0.4444444397805213,
+                "meteor": 0.3304973821989529
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acebutololi hydrochloridum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acebutololi hydrochloridum là ACEBUTOLOL HYDROCLORID, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.0055986791750362004,
+                "rouge": 0.08695651788279792,
+                "meteor": 0.026881720430107527
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C19H15NO6 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C19H15NO6 là ACENOCOUMAROL, có tên Latin là Acenocoumarolum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acenocoumarolum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acenocoumarolum là ACENOCOUMAROL, có công thức hóa học C19H15NO6.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Acenocoumarolum là C19H15NO6.",
+            "scores": {
+                "bleu": 0.6474177582715527,
+                "rouge": 0.5384615334615386,
+                "meteor": 0.8476629204558992
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C19H15NO6 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C19H15NO6 là VIÊN NÉN ACENOCOUMAROL, có tên Latin là Tabellae Acenocoumaroli.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Acenocoumaroli có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Acenocoumaroli là VIÊN NÉN ACENOCOUMAROL, có công thức hóa học C19H15NO6.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C4H6N4O3S2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C4H6N4O3S2 là ACETAZOLAMID, có tên Latin là Acetazolamidum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acetazolamidum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acetazolamidum là ACETAZOLAMID, có công thức hóa học C4H6N4O3S2.",
+            "answer_model": "Công thức hóa học của hoạt chất Acetazolamidum là C4H6N4O3S2.",
+            "scores": {
+                "bleu": 0.2929821432670198,
+                "rouge": 0.34782608204158794,
+                "meteor": 0.5934440187313751
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C4H6N4O3S2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C4H6N4O3S2 là VIÊN NÉN ACETAZOLAMID, có tên Latin là Tabulettae Acetazolamidi.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabulettae Acetazolamidi có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabulettae Acetazolamidi là VIÊN NÉN ACETAZOLAMID, có công thức hóa học C4H6N4O3S2.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Tabulettae Acetazolamidi là C4H6N4O3S2.",
+            "scores": {
+                "bleu": 0.5871422516524183,
+                "rouge": 0.5333333283555556,
+                "meteor": 0.7729447711287906
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C5H9NO3S có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C5H9NO3S là ACETYLCYSTEIN, có tên Latin là Acetylcystein.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acetylcystein có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acetylcystein là ACETYLCYSTEIN, có công thức hóa học C5H9NO3S.",
+            "answer_model": "Công thức hóa học của Acetylcystein là C5H9NO3S.",
+            "scores": {
+                "bleu": 0.23633855037802431,
+                "rouge": 0.3809523762358277,
+                "meteor": 0.47024404167261313
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C5H9NO3S có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C5H9NO3S là BỘT PHA HỖN DỊCH ACETYLCYSTEIN, có tên Latin là Pulveres Acetylcysteini.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Pulveres Acetylcysteini có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Pulveres Acetylcysteini là BỘT PHA HỖN DỊCH ACETYLCYSTEIN, có công thức hóa học C5H9NO3S.",
+            "answer_model": "Hoạt chất có tên Latin là Pulveres Acetylcysteini có công thức hóa học là C5H9NO3S.",
+            "scores": {
+                "bleu": 0.6351371229539173,
+                "rouge": 0.8387096725494276,
+                "meteor": 0.7619373219373219
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C5H9NO3S có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C5H9NO3S là NANG ACETYLCYSTEIN, có tên Latin là Capsulae Acetylcysteini.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Capsulae Acetylcysteini có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Capsulae Acetylcysteini là NANG ACETYLCYSTEIN, có công thức hóa học C5H9NO3S.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C8H11N5O3 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C8H11N5O3 là ACICLOVIR, có tên Latin là Aciclovirum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Aciclovirum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Aciclovirum là ACICLOVIR, có công thức hóa học C8H11N5O3.",
+            "answer_model": "Công thức hóa học của hoạt chất Aciclovirum là C8H11N5O3.",
+            "scores": {
+                "bleu": 0.2929821432670198,
+                "rouge": 0.34782608204158794,
+                "meteor": 0.5934440187313751
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C8H11N5O3 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C8H11N5O3 là KEM ACICLOVIR, có tên Latin là Cremoris Acicloviri.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Cremoris Acicloviri có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Cremoris Acicloviri là KEM ACICLOVIR, có công thức hóa học C8H11N5O3.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C8H11N5O3 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C8H11N5O3 là VIÊN NÉN ACICLOVIR, có tên Latin là Tabellae Acicloviri.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Acicloviri có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Acicloviri là VIÊN NÉN ACICLOVIR, có công thức hóa học C8H11N5O3.",
+            "answer_model": "Hoạt chất có tên Latin là Tabellae Acicloviri có công thức hóa học là C8H11N5O3.",
+            "scores": {
+                "bleu": 0.7257272464024342,
+                "rouge": 0.8965517191914388,
+                "meteor": 0.8394224733207784
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C9H8O4 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C9H8O4 là ACID ACETYLSALICYLIC, có tên Latin là Acidum acetylsalicylicum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidum acetylsalicylicum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidum acetylsalicylicum là ACID ACETYLSALICYLIC, có công thức hóa học C9H8O4.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Acidum acetylsalicylicum là C9H8O4.",
+            "scores": {
+                "bleu": 0.6276193134277607,
+                "rouge": 0.5517241329369797,
+                "meteor": 0.8143525267249756
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C9H8O4 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C9H8O4 là VIÊN NÉN ACID ACETYLSALICYLIC, có tên Latin là Tabellae Acidi acetylsalicylici.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Acidi acetylsalicylici có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Acidi acetylsalicylici là VIÊN NÉN ACID ACETYLSALICYLIC, có công thức hóa học C9H8O4.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C9H8O4 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C9H8O4 là VIÊN NÉN BAO TAN TRONG RUỘT ACID, có tên Latin là Tabellae Acidi acetylsalicylici.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Acidi acetylsalicylici có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Acidi acetylsalicylici là VIÊN NÉN BAO TAN TRONG RUỘT ACID, có công thức hóa học C9H8O4.",
+            "answer_model": "Hoạt chất có tên Latin là Tabellae Acidi acetylsalicylici có công thức hóa học là C9H8O4.",
+            "scores": {
+                "bleu": 0.5774855978661344,
+                "rouge": 0.7999999952000001,
+                "meteor": 0.7118834080717489
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C9H8O4 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C9H8O4 là VIÊN NÉN ASPIRIN VÀ CAFEIN, có tên Latin là Tabellae Aspirini et Coffeini.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Aspirini et Coffeini có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Aspirini et Coffeini là VIÊN NÉN ASPIRIN VÀ CAFEIN, có công thức hóa học C9H8O4.",
+            "answer_model": "C9H8O4 là công thức hóa học của hoạt chất có tên Latin là Tabellae Aspirini et Coffeini.",
+            "scores": {
+                "bleu": 0.5151735447537727,
+                "rouge": 0.4999999950617285,
+                "meteor": 0.6104651162790697
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C6H13NO2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C6H13NO2 là ACID AMINOCAPROIC, có tên Latin là Acidum Aminocaproicum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidum Aminocaproicum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidum Aminocaproicum là ACID AMINOCAPROIC, có công thức hóa học C6H13NO2.",
+            "answer_model": "Hoạt chất có tên Latin là Acidum Aminocaproicum có công thức hóa học là C6H13NO2.",
+            "scores": {
+                "bleu": 0.7757582337858295,
+                "rouge": 0.9285714235969389,
+                "meteor": 0.8843915343915343
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C6H8O6 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C6H8O6 là ACID ASCORBIC, có tên Latin là Acidum Ascorbicum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidum Ascorbicum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidum Ascorbicum là ACID ASCORBIC, có công thức hóa học C6H8O6.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Acidum Ascorbicum là C6H8O6.",
+            "scores": {
+                "bleu": 0.6276193134277607,
+                "rouge": 0.5517241329369797,
+                "meteor": 0.8143525267249756
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C6H8O6 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C6H8O6 là THUỐC TIÊM ACID ASCORBIC, có tên Latin là Injectio Acidi ascorbici.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Injectio Acidi ascorbici có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Injectio Acidi ascorbici là THUỐC TIÊM ACID ASCORBIC, có công thức hóa học C6H8O6.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Injectio Acidi ascorbici là C6H8O6.",
+            "scores": {
+                "bleu": 0.5731818565496263,
+                "rouge": 0.5454545404958678,
+                "meteor": 0.7511337868480726
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C6H8O6 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C6H8O6 là VIÊN NÉN ACID ASCORBIC, có tên Latin là Tabellae Acidi ascorbici.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Acidi ascorbici có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Acidi ascorbici là VIÊN NÉN ACID ASCORBIC, có công thức hóa học C6H8O6.",
+            "answer_model": "C6H8O6 là công thức hóa học của hoạt chất có tên Latin là Tabellae Acidi ascorbici.",
+            "scores": {
+                "bleu": 0.5224354475633186,
+                "rouge": 0.48484847988980717,
+                "meteor": 0.611490158193455
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C7H6O2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C7H6O2 là ACID BENZOIC, có tên Latin là Acidum benzoicum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidum benzoicum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidum benzoicum là ACID BENZOIC, có công thức hóa học C7H6O2.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Acidum benzoicum là C7H6O2.",
+            "scores": {
+                "bleu": 0.6276193134277607,
+                "rouge": 0.5517241329369797,
+                "meteor": 0.8143525267249756
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C7H6O2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C7H6O2 là THUỐC MỠ BENZOSALICYLIC, có tên Latin là Unguentum Benzosalicylici.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Unguentum Benzosalicylici có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Unguentum Benzosalicylici là THUỐC MỠ BENZOSALICYLIC, có công thức hóa học C7H6O2.",
+            "answer_model": "Hoạt chất có tên Latin là Unguentum Benzosalicylici có công thức hóa học là C7H6O2.",
+            "scores": {
+                "bleu": 0.7257272464024342,
+                "rouge": 0.8965517191914388,
+                "meteor": 0.8394224733207784
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là ACID BORIC, có tên Latin là Acidum boricum.",
+            "answer_model": "Không có hoạt chất nào có tên Latin không có thông tin.",
+            "scores": {
+                "bleu": 0.2527891147041412,
+                "rouge": 0.3703703657064472,
+                "meteor": 0.3584747942386831
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidum boricum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidum boricum là ACID BORIC, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.0055986791750362004,
+                "rouge": 0.08695651788279792,
+                "meteor": 0.026881720430107527
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là DUNG DỊCH ACID BORIC 3 %, có tên Latin là Solutio Acidi borici 3 %.",
+            "answer_model": "Không có hoạt chất nào có tên Latin không có thông tin.",
+            "scores": {
+                "bleu": 0.1410652104730066,
+                "rouge": 0.3030302988062443,
+                "meteor": 0.26991043330912606
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Solutio Acidi borici 3 % có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Solutio Acidi borici 3 % là DUNG DỊCH ACID BORIC 3 %, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.001743446744769793,
+                "rouge": 0.0689655139595721,
+                "meteor": 0.020080321285140562
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là THUỐC MỠ ACID BORIC 10 %, có tên Latin là Unguentum Acidi borici 10 %.",
+            "answer_model": "Không có hoạt chất nào không có thông tin tên Latin.",
+            "scores": {
+                "bleu": 0.10202632420232349,
+                "rouge": 0.3636363594123049,
+                "meteor": 0.2485236220472441
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Unguentum Acidi borici 10 % có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Unguentum Acidi borici 10 % là THUỐC MỠ ACID BORIC 10 %, có công thức hóa học không có thông tin.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Unguentum Acidi borici 10 % không được cung cấp.",
+            "scores": {
+                "bleu": 0.448606429265814,
+                "rouge": 0.5116279020010818,
+                "meteor": 0.5542270674904943
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C6H8O7 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C6H8O7 là ACID CITRIC NGẬM MỘT PHÂN TỬ NƯỚC, có tên Latin là Acidum citricum monohydricum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidum citricum monohydricum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidum citricum monohydricum là ACID CITRIC NGẬM MỘT PHÂN TỬ NƯỚC, có công thức hóa học C6H8O7.",
+            "answer_model": "Hoạt chất có tên Latin là Acidum citricum monohydricum có công thức hóa học là C6H8O7.",
+            "scores": {
+                "bleu": 0.5774855978661344,
+                "rouge": 0.7999999952000001,
+                "meteor": 0.7118834080717489
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C19H19N7O6 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C19H19N7O6 là ACID FOLIC, có tên Latin là Acidum folicum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidum folicum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidum folicum là ACID FOLIC, có công thức hóa học C19H19N7O6.",
+            "answer_model": "Công thức hóa học của hoạt chất Acidum folicum là C19H19N7O6.",
+            "scores": {
+                "bleu": 0.31260127667472093,
+                "rouge": 0.3846153797337278,
+                "meteor": 0.5902439024390245
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C19H19N7O6 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C19H19N7O6 là VIÊN NÉN ACID FOLIC, có tên Latin là Tabellae Acidi folici.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Acidi folici có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Acidi folici là VIÊN NÉN ACID FOLIC, có công thức hóa học C19H19N7O6.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là ACID HYDROCLORIC, có tên Latin là Acidum hydrochloricum.",
+            "answer_model": "Không có hoạt chất nào không có thông tin tên Latin.",
+            "scores": {
+                "bleu": 0.19278864722709152,
+                "rouge": 0.4444444397805213,
+                "meteor": 0.3304973821989529
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidum hydrochloricum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidum hydrochloricum là ACID HYDROCLORIC, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.0055986791750362004,
+                "rouge": 0.08695651788279792,
+                "meteor": 0.026881720430107527
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là ACID HYDROCLORIC LOÃNG, có tên Latin là Acidum hydrochloricum dilutum.",
+            "answer_model": "Không có hoạt chất nào không có thông tin tên Latin.",
+            "scores": {
+                "bleu": 0.1607380971973541,
+                "rouge": 0.4137930989298454,
+                "meteor": 0.3020334928229665
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidum hydrochloricum dilutum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidum hydrochloricum dilutum là ACID HYDROCLORIC LOÃNG, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.004011628926770871,
+                "rouge": 0.07999999635200017,
+                "meteor": 0.024509803921568627
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C15H15NO2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C15H15NO2 là ACID MEFENAMIC, có tên Latin là Acid mefenamic.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acid mefenamic có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acid mefenamic là ACID MEFENAMIC, có công thức hóa học C15H15NO2.",
+            "answer_model": "Công thức hóa học của hoạt chất Acid mefenamic là C15H15NO2.",
+            "scores": {
+                "bleu": 0.31260127667472093,
+                "rouge": 0.3846153797337278,
+                "meteor": 0.5716463414634148
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C15H15NO2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C15H15NO2 là VIÊN NÉN ACID MEFENAMIC, có tên Latin là Tabellae Acidi mefenamici.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Acidi mefenamici có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Acidi mefenamici là VIÊN NÉN ACID MEFENAMIC, có công thức hóa học C15H15NO2.",
+            "answer_model": "Hoạt chất có tên Latin là Tabellae Acidi mefenamici có công thức hóa học là C15H15NO2.",
+            "scores": {
+                "bleu": 0.6965805967510915,
+                "rouge": 0.8749999950781251,
+                "meteor": 0.8099489795918368
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là ACID METHACRYLIC VÀ METHYL, có tên Latin là Acidi methacrylici et methylis methacrylatis polymerisatum (1 : 2).",
+            "answer_model": "Không có hoạt chất nào có tên Latin không có thông tin.",
+            "scores": {
+                "bleu": 0.11940912268324815,
+                "rouge": 0.27777777376543217,
+                "meteor": 0.2521141410030299
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidi methacrylici et methylis methacrylatis polymerisatum (1 : 2) có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidi methacrylici et methylis methacrylatis polymerisatum (1 : 2) là ACID METHACRYLIC VÀ METHYL, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.001249234180945507,
+                "rouge": 0.06249999695312515,
+                "meteor": 0.018726591760299626
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C12H12N2O3 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C12H12N2O3 là ACID NALIDIXIC, có tên Latin là Acid nalidixic.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acid nalidixic có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acid nalidixic là ACID NALIDIXIC, có công thức hóa học C12H12N2O3.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Acid nalidixic là C12H12N2O3.",
+            "scores": {
+                "bleu": 0.6276193134277607,
+                "rouge": 0.5517241329369797,
+                "meteor": 0.7812499999999999
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C12H12N2O3 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C12H12N2O3 là VIÊN NÉN ACID NALIDIXIC, có tên Latin là Tabellae Acidi nalidixici.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Acidi nalidixici có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Acidi nalidixici là VIÊN NÉN ACID NALIDIXIC, có công thức hóa học C12H12N2O3.",
+            "answer_model": "Công thức hóa học của hoạt chất Tabellae Acidi nalidixici là C12H12N2O3.",
+            "scores": {
+                "bleu": 0.2997710138109929,
+                "rouge": 0.39999999520000007,
+                "meteor": 0.5591425619834711
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C6H5NO2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C6H5NO2 là ACID NICOTINIC, có tên Latin là Acidum nicotinicum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidum nicotinicum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidum nicotinicum là ACID NICOTINIC, có công thức hóa học C6H5NO2.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Acidum nicotinicum là C6H5NO2.",
+            "scores": {
+                "bleu": 0.6276193134277607,
+                "rouge": 0.5517241329369797,
+                "meteor": 0.8143525267249756
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là ACID METHACRYLIC VÀ ETHYL ACRYLAT, có tên Latin là Acidi methacrylici et ethylis acrylatis polymerisatint (1 : 1).",
+            "answer_model": "Không có hoạt chất nào có tên Latin không có thông tin.",
+            "scores": {
+                "bleu": 0.10986169638051008,
+                "rouge": 0.27027026632578527,
+                "meteor": 0.24406794501357146
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidi methacrylici et ethylis acrylatis polymerisatint (1 : 1) có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidi methacrylici et ethylis acrylatis polymerisatint (1 : 1) là ACID METHACRYLIC VÀ ETHYL ACRYLAT, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.0010574539042790658,
+                "rouge": 0.060606057630854145,
+                "meteor": 0.018115942028985508
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là DỊCH PHÂN TÁN 30 % CỦA ACID METHACRYLIC, có tên Latin là Acidi methacrylici et ethyls acrylatis polymerisati 1 : 1 dispersio 30 per centum.",
+            "answer_model": "Không có hoạt chất nào không có thông tin tên Latin.",
+            "scores": {
+                "bleu": 0.041105418562309676,
+                "rouge": 0.2857142820861678,
+                "meteor": 0.1835029069767442
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidi methacrylici et ethyls acrylatis polymerisati 1 : 1 dispersio 30 per centum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidi methacrylici et ethyls acrylatis polymerisati 1 : 1 dispersio 30 per centum là DỊCH PHÂN TÁN 30 % CỦA ACID METHACRYLIC, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.0003292945549335794,
+                "rouge": 0.05263157628808878,
+                "meteor": 0.014749262536873156
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là ACID METHACRYLIC VÀ METHYL, có tên Latin là Acidi methacrylici et methylis methacrylatis polymerisatum (I : I).",
+            "answer_model": "Không có hoạt chất nào có tên Latin không có thông tin.",
+            "scores": {
+                "bleu": 0.11940912268324815,
+                "rouge": 0.27777777376543217,
+                "meteor": 0.2521141410030299
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidi methacrylici et methylis methacrylatis polymerisatum (I : I) có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidi methacrylici et methylis methacrylatis polymerisatum (I : I) là ACID METHACRYLIC VÀ METHYL, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.001249234180945507,
+                "rouge": 0.06249999695312515,
+                "meteor": 0.018726591760299626
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C7H6O3 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C7H6O3 là ACID SALICYLIC, có tên Latin là Acidum salicylicium.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidum salicylicium có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidum salicylicium là ACID SALICYLIC, có công thức hóa học C7H6O3.",
+            "answer_model": "Hoạt chất có tên Latin là Acidum salicylicium có công thức hóa học là C7H6O3.",
+            "scores": {
+                "bleu": 0.7757582337858295,
+                "rouge": 0.9285714235969389,
+                "meteor": 0.8843915343915343
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C8H15NO2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C8H15NO2 là ACID TRANEXAMIC, có tên Latin là Acidum tranexamicum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Acidum tranexamicum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Acidum tranexamicum là ACID TRANEXAMIC, có công thức hóa học C8H15NO2.",
+            "answer_model": "Hoạt chất có tên Latin là Acidum tranexamicum có công thức hóa học là C8H15NO2.",
+            "scores": {
+                "bleu": 0.7757582337858295,
+                "rouge": 0.9285714235969389,
+                "meteor": 0.8843915343915343
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C8H15NO2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C8H15NO2 là NANG ACID TRANEXAMIC, có tên Latin là Capsulae Acidi tranexamici.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Capsulae Acidi tranexamici có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Capsulae Acidi tranexamici là NANG ACID TRANEXAMIC, có công thức hóa học C8H15NO2.",
+            "answer_model": "Hoạt chất có tên Latin là Capsulae Acidi tranexamici có công thức hóa học là C8H15NO2.",
+            "scores": {
+                "bleu": 0.7415061854312328,
+                "rouge": 0.9032258014984391,
+                "meteor": 0.8489304812834224
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C8H15NO2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C8H15NO2 là VIÊN NÉN ACID TRANEXAMIC, có tên Latin là Tabellae Acidi tranexamici.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Acidi tranexamici có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Acidi tranexamici là VIÊN NÉN ACID TRANEXAMIC, có công thức hóa học C8H15NO2.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Tabellae Acidi tranexamici là C8H15NO2.",
+            "scores": {
+                "bleu": 0.5731818565496263,
+                "rouge": 0.5454545404958678,
+                "meteor": 0.7511337868480726
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C9H13NO3 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C9H13NO3 là ADRENALIN, có tên Latin là Adrenalinum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Adrenalinum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Adrenalinum là ADRENALIN, có công thức hóa học C9H13NO3.",
+            "answer_model": "Hoạt chất có tên Latin là Adrenalinum có công thức hóa học là C9H13NO3.",
+            "scores": {
+                "bleu": 0.8165960774177071,
+                "rouge": 0.959999995008,
+                "meteor": 0.9286399123407754
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C9H13NO3.C4H6O6 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C9H13NO3.C4H6O6 là ADRENALIN ACID TARTRAT, có tên Latin là Adrenalinum Acidum Tartratis.",
+            "answer_model": "Tên Latin của hoạt chất là Adrenalinum Acidum Tartratis.",
+            "scores": {
+                "bleu": 0.16459649390395278,
+                "rouge": 0.44444444000000005,
+                "meteor": 0.4327256944444444
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Adrenalinum Acidum Tartratis có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Adrenalinum Acidum Tartratis là ADRENALIN ACID TARTRAT, có công thức hóa học C9H13NO3.C4H6O6.",
+            "answer_model": "Hoạt chất có tên Latin là Adrenalinum Acidum Tartratis có công thức hóa học là C9H13NO3.C4H6O6.",
+            "scores": {
+                "bleu": 0.7415061854312328,
+                "rouge": 0.9090909041322315,
+                "meteor": 0.8489304812834224
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C9H13NO3 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C9H13NO3 là THUỐC TIÊM ADRENALIN, có tên Latin là Injectio Adrenalini.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Injectio Adrenalini có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Injectio Adrenalini là THUỐC TIÊM ADRENALIN, có công thức hóa học C9H13NO3.",
+            "answer_model": "Hoạt chất có tên Latin là Injectio Adrenalini có công thức hóa học là C9H13NO3.",
+            "scores": {
+                "bleu": 0.7257272464024342,
+                "rouge": 0.8965517191914388,
+                "meteor": 0.8394224733207784
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C12H15N3O2S có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C12H15N3O2S là ALBENDAZOL, có tên Latin là Albendazolum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Albendazolum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Albendazolum là ALBENDAZOL, có công thức hóa học C12H15N3O2S.",
+            "answer_model": "Hoạt chất có tên Latin là Albendazolum có công thức hóa học là C12H15N3O2S.",
+            "scores": {
+                "bleu": 0.8165960774177071,
+                "rouge": 0.959999995008,
+                "meteor": 0.9286399123407754
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C12H15N3O2S có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C12H15N3O2S là VIÊN NÉN ALBENDAZOL, có tên Latin là Tabellae Albendazoli.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Albendazoli có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Albendazoli là VIÊN NÉN ALBENDAZOL, có công thức hóa học C12H15N3O2S.",
+            "answer_model": "Công thức hóa học của Tabellae Albendazoli là C12H15N3O2S.",
+            "scores": {
+                "bleu": 0.22941313808356617,
+                "rouge": 0.319999995392,
+                "meteor": 0.45550073099415206
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C18H22N2S.C4H6O6 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C18H22N2S.C4H6O6 là ALIMEMAZIN TARTRAT, có tên Latin là Alimemazini tartras.",
+            "answer_model": "Không tìm thấy trong DB.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Alimemazini tartras có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Alimemazini tartras là ALIMEMAZIN TARTRAT, có công thức hóa học C18H22N2S.C4H6O6.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Alimemazini tartras là C18H22N2S.C4H6O6.",
+            "scores": {
+                "bleu": 0.6276193134277607,
+                "rouge": 0.5806451562955255,
+                "meteor": 0.8143525267249756
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C18H22N2S.C4H6O6 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C18H22N2S.C4H6O6 là VIÊN NÉN ALIMEMAZIN, có tên Latin là Tabellae Alimemazini.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Alimemazini có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Alimemazini là VIÊN NÉN ALIMEMAZIN, có công thức hóa học C18H22N2S.C4H6O6.",
+            "answer_model": "C18H22N2S.C4H6O6 là công thức hóa học của hoạt chất có tên Latin là Tabellae Alimemazini.",
+            "scores": {
+                "bleu": 0.5299962446009642,
+                "rouge": 0.5624999950195313,
+                "meteor": 0.610679535467671
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C5H4N4O có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C5H4N4O là ALOPURINOL, có tên Latin là Allopurinolum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Allopurinolum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Allopurinolum là ALOPURINOL, có công thức hóa học C5H4N4O.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Allopurinolum là C5H4N4O.",
+            "scores": {
+                "bleu": 0.6474177582715527,
+                "rouge": 0.5384615334615386,
+                "meteor": 0.8476629204558992
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C5H4N4O có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C5H4N4O là VIÊN NÉN ALLOPURINOL, có tên Latin là Tabellae Allopurinoli.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Allopurinoli có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Allopurinoli là VIÊN NÉN ALLOPURINOL, có công thức hóa học C5H4N4O.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Tabellae Allopurinoli là C5H4N4O.",
+            "scores": {
+                "bleu": 0.5871422516524183,
+                "rouge": 0.5333333283555556,
+                "meteor": 0.7729447711287906
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C20H25N.C6H8O7 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C20H25N.C6H8O7 là ALVERIN CITRAT, có tên Latin là Alverini citras.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Alverini citras có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Alverini citras là ALVERIN CITRAT, có công thức hóa học C20H25N.C6H8O7.",
+            "answer_model": "Hoạt chất có tên Latin là Alverini citras có công thức hóa học là C20H25N.C6H8O7.",
+            "scores": {
+                "bleu": 0.7757582337858295,
+                "rouge": 0.9333333283555556,
+                "meteor": 0.8843915343915343
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C20H25N.C6H8O7 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C20H25N.C6H8O7 là NANG ALVERIN, có tên Latin là Capsulae Alverini.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Capsulae Alverini có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Capsulae Alverini là NANG ALVERIN, có công thức hóa học C20H25N.C6H8O7.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Capsulae Alverini là C20H25N.C6H8O7.",
+            "scores": {
+                "bleu": 0.6276193134277607,
+                "rouge": 0.5806451562955255,
+                "meteor": 0.8143525267249756
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là AMBROXOL HYDROCLORID, có tên Latin là Ambroxoli hydrochloridum.",
+            "answer_model": "Không có hoạt chất nào không có thông tin tên Latin.",
+            "scores": {
+                "bleu": 0.19278864722709152,
+                "rouge": 0.4444444397805213,
+                "meteor": 0.3304973821989529
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Ambroxoli hydrochloridum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Ambroxoli hydrochloridum là AMBROXOL HYDROCLORID, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.0055986791750362004,
+                "rouge": 0.08695651788279792,
+                "meteor": 0.026881720430107527
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là NANG AMBROXOL HYDROCLORID, có tên Latin là Capsulae Ambroxoli hydrochloridi.",
+            "answer_model": "Không có hoạt chất nào không có thông tin tên Latin.",
+            "scores": {
+                "bleu": 0.1607380971973541,
+                "rouge": 0.4137930989298454,
+                "meteor": 0.3020334928229665
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Capsulae Ambroxoli hydrochloridi có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Capsulae Ambroxoli hydrochloridi là NANG AMBROXOL HYDROCLORID, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.004011628926770871,
+                "rouge": 0.07999999635200017,
+                "meteor": 0.024509803921568627
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là VIÊN NÉN AMBROXOL HYDROCLORID, có tên Latin là Tabellae Ambroxoli hydrochloridi.",
+            "answer_model": "Không có hoạt chất nào không có thông tin tên Latin.",
+            "scores": {
+                "bleu": 0.14677007168475195,
+                "rouge": 0.3999999955555556,
+                "meteor": 0.2895642201834862
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Ambroxoli hydrochloridi có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Ambroxoli hydrochloridi là VIÊN NÉN AMBROXOL HYDROCLORID, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.0033957705735540885,
+                "rouge": 0.07692307337278123,
+                "meteor": 0.023474178403755867
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C22H43N5O13 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C22H43N5O13 là AMIKACIN, có tên Latin là Amikacinum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Amikacinum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Amikacinum là AMIKACIN, có công thức hóa học C22H43N5O13.",
+            "answer_model": "Hoạt chất có tên Latin là Amikacinum có công thức hóa học là C22H43N5O13.",
+            "scores": {
+                "bleu": 0.8165960774177071,
+                "rouge": 0.959999995008,
+                "meteor": 0.9286399123407754
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C22H43N5O13 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C22H43N5O13 là THUỐC TIÊM AMIKACIN, có tên Latin là Injectio Amikacini.",
+            "answer_model": "Không tìm thấy trong DB.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Injectio Amikacini có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Injectio Amikacini là THUỐC TIÊM AMIKACIN, có công thức hóa học C22H43N5O13.",
+            "answer_model": "C22H43N5O13",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.11764705771626299,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C7H8N4O2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C7H8N4O2 là AMINOPHYLLIN, có tên Latin là Aminophyllinum Theophyllinum ethylenediaminum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Aminophyllinum Theophyllinum ethylenediaminum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Aminophyllinum Theophyllinum ethylenediaminum là AMINOPHYLLIN, có công thức hóa học C7H8N4O2.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Aminophyllinum Theophyllinum ethylenediaminum là C7H8N4O2.",
+            "scores": {
+                "bleu": 0.6913892937894366,
+                "rouge": 0.5999999950000001,
+                "meteor": 0.8711374095989479
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C2H8N2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C2H8N2 là THUỐC TIÊM AMINOPHYLIN, có tên Latin là Injectio Aminophyllini.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Injectio Aminophyllini có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Injectio Aminophyllini là THUỐC TIÊM AMINOPHYLIN, có công thức hóa học C2H8N2.",
+            "answer_model": "Hoạt chất có tên Latin là Injectio Aminophyllini có công thức hóa học là C2H8N2.",
+            "scores": {
+                "bleu": 0.7257272464024342,
+                "rouge": 0.8965517191914388,
+                "meteor": 0.8394224733207784
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C7H8N4O2 có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C7H8N4O2 là VIÊN NÉN AMINOPHYLIN, có tên Latin là Tabellae Aminophyllini.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Aminophyllini có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Aminophyllini là VIÊN NÉN AMINOPHYLIN, có công thức hóa học C7H8N4O2.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C25H29I2NO3. có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C25H29I2NO3. là AMIODARON HYDROCLORID, có tên Latin là Amiodaroni hydrochloridum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Amiodaroni hydrochloridum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Amiodaroni hydrochloridum là AMIODARON HYDROCLORID, có công thức hóa học C25H29I2NO3..",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Amiodaroni hydrochloridum là C25H29I2NO3.",
+            "scores": {
+                "bleu": 0.6008997440271595,
+                "rouge": 0.5517241329369797,
+                "meteor": 0.7625387433079741
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C25H29I2NO3. có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C25H29I2NO3. là VIÊN NÉN AMIODARON, có tên Latin là Tabellae Amiodaroni.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Amiodaroni có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Amiodaroni là VIÊN NÉN AMIODARON, có công thức hóa học C25H29I2NO3..",
+            "answer_model": "Công thức hóa học của Tabellae Amiodaroni là C25H29I2NO3.",
+            "scores": {
+                "bleu": 0.21239529438966132,
+                "rouge": 0.319999995392,
+                "meteor": 0.4045828857858933
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C20H23N. có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C20H23N. là AMITRIPTYLIN HYDROCLORID, có tên Latin là Amitriptylini hydrochloridum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Amitriptylini hydrochloridum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Amitriptylini hydrochloridum là AMITRIPTYLIN HYDROCLORID, có công thức hóa học C20H23N..",
+            "answer_model": "Hoạt chất có tên Latin là Amitriptylini hydrochloridum có công thức hóa học là C20H23N..",
+            "scores": {
+                "bleu": 0.7757582337858295,
+                "rouge": 0.9285714235969389,
+                "meteor": 0.8843915343915343
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C20H23N. có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C20H23N. là VIÊN NÉN AMITRIPTYLIN, có tên Latin là Tabellae Amitriptylini.",
+            "answer_model": "Không tìm thấy trong DB.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Amitriptylini có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Amitriptylini là VIÊN NÉN AMITRIPTYLIN, có công thức hóa học C20H23N..",
+            "answer_model": "Hoạt chất có tên Latin là Tabellae Amitriptylini có công thức hóa học là C20H23N.",
+            "scores": {
+                "bleu": 0.7011191295061553,
+                "rouge": 0.8965517191914388,
+                "meteor": 0.7870690649141012
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C6H6O3S có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C6H6O3S là AMLODIPIN BESILAT, có tên Latin là Amlodipini besilas.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Amlodipini besilas có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Amlodipini besilas là AMLODIPIN BESILAT, có công thức hóa học C6H6O3S.",
+            "answer_model": "Hoạt chất có tên Latin là Amlodipini besilas có công thức hóa học là C6H6O3S.",
+            "scores": {
+                "bleu": 0.7757582337858295,
+                "rouge": 0.9285714235969389,
+                "meteor": 0.8843915343915343
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là VIÊN NÉN AMLODIPIN, có tên Latin là Tabellae Amlodipini.",
+            "answer_model": "Không có hoạt chất nào có tên Latin không có thông tin.",
+            "scores": {
+                "bleu": 0.23257721306263646,
+                "rouge": 0.35714285255102046,
+                "meteor": 0.3424236840488913
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Amlodipini có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Amlodipini là VIÊN NÉN AMLODIPIN, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.0047391796051938035,
+                "rouge": 0.0833333295833335,
+                "meteor": 0.02564102564102564
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là AMODIAQUIN HYDROCLORID, có tên Latin là Amodiaquini hydrochloridum.",
+            "answer_model": "Không có hoạt chất nào không có thông tin tên Latin.",
+            "scores": {
+                "bleu": 0.19278864722709152,
+                "rouge": 0.4444444397805213,
+                "meteor": 0.3304973821989529
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Amodiaquini hydrochloridum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Amodiaquini hydrochloridum là AMODIAQUIN HYDROCLORID, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.0055986791750362004,
+                "rouge": 0.08695651788279792,
+                "meteor": 0.026881720430107527
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là VIÊN NÉN AMODIAQUIN HYDROCLORID, có tên Latin là Tabellae Amodiaquini hydrochloridi.",
+            "answer_model": "Không có hoạt chất nào có tên Latin không có thông tin.",
+            "scores": {
+                "bleu": 0.19687236048351234,
+                "rouge": 0.33333332888888895,
+                "meteor": 0.31427927166131125
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Tabellae Amodiaquini hydrochloridi có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Tabellae Amodiaquini hydrochloridi là VIÊN NÉN AMODIAQUIN HYDROCLORID, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.0033957705735540885,
+                "rouge": 0.07692307337278123,
+                "meteor": 0.023474178403755867
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là AMONI CLORID, có tên Latin là Ammonii chloridum.",
+            "answer_model": "Không có hoạt chất nào không có thông tin tên Latin.",
+            "scores": {
+                "bleu": 0.19278864722709152,
+                "rouge": 0.4444444397805213,
+                "meteor": 0.3304973821989529
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Ammonii chloridum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Ammonii chloridum là AMONI CLORID, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.0055986791750362004,
+                "rouge": 0.08695651788279792,
+                "meteor": 0.026881720430107527
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học không có thông tin có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học không có thông tin là AMOXICILIN NATRI, có tên Latin là Amoxicillin natricum.",
+            "answer_model": "Không có hoạt chất nào không có thông tin tên Latin.",
+            "scores": {
+                "bleu": 0.19278864722709152,
+                "rouge": 0.4444444397805213,
+                "meteor": 0.3304973821989529
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Amoxicillin natricum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Amoxicillin natricum là AMOXICILIN NATRI, có công thức hóa học không có thông tin.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0.0055986791750362004,
+                "rouge": 0.08695651788279792,
+                "meteor": 0.026881720430107527
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C16H19N3O5S có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C16H19N3O5S là BỘT PHA TIÊM AMOXICILIN, có tên Latin là Amoxicillini pro Injectione.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Amoxicillini pro Injectione có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Amoxicillini pro Injectione là BỘT PHA TIÊM AMOXICILIN, có công thức hóa học C16H19N3O5S.",
+            "answer_model": "Hoạt chất có tên Latin là Amoxicillini pro Injectione có công thức hóa học là C16H19N3O5S.",
+            "scores": {
+                "bleu": 0.6965805967510915,
+                "rouge": 0.8749999950781251,
+                "meteor": 0.8099489795918368
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C16H19N3O5S có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C16H19N3O5S là BỘT PHA TIÊM AMOXICILIN VÀ ACID CLAVULANIC, có tên Latin là Amoxicillini et Acidi clavulanici pulvis pro injectione.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Amoxicillini et Acidi clavulanici pulvis pro injectione có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Amoxicillini et Acidi clavulanici pulvis pro injectione là BỘT PHA TIÊM AMOXICILIN VÀ ACID CLAVULANIC, có công thức hóa học C16H19N3O5S.",
+            "answer_model": "Hoạt chất có tên Latin là Amoxicillini et Acidi clavulanici pulvis pro injectione có công thức hóa học là C16H19N3O5S.",
+            "scores": {
+                "bleu": 0.6466661410106516,
+                "rouge": 0.8372092974580855,
+                "meteor": 0.7574144486692015
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có công thức hóa học C16H19N3O5S có tên Latin là gì?",
+            "answer_ground_truth": "Hoạt chất có công thức hóa học C16H19N3O5S là AMOXICILIN TRIHYDRAT, có tên Latin là Amoxicillinum trihydricum.",
+            "answer_model": "Tôi không biết câu trả lời.",
+            "scores": {
+                "bleu": 0,
+                "rouge": 0.0,
+                "meteor": 0.0
+            }
+        },
+        {
+            "type": "2-hop",
+            "question": "Hoạt chất có tên Latin là Amoxicillinum trihydricum có công thức hóa học là gì?",
+            "answer_ground_truth": "Hoạt chất có tên Latin là Amoxicillinum trihydricum là AMOXICILIN TRIHYDRAT, có công thức hóa học C16H19N3O5S.",
+            "answer_model": "Công thức hóa học của hoạt chất có tên Latin là Amoxicillinum trihydricum là C16H19N3O5S.",
+            "scores": {
+                "bleu": 0.6276193134277607,
+                "rouge": 0.5517241329369797,
+                "meteor": 0.8143525267249756
+            }
+        }
+    ]
+}

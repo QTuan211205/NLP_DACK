@@ -1,3 +1,17 @@
-BLEU: 0.0
-ROUGE: 0.0
-METEOR: 0.0
+BÁO CÁO KẾT QUẢ BENCHMARK (PHÂN LOẠI HOP)
+Thời gian chạy: Tue Jan  6 16:28:03 2026
+==================================================
+
+1. KẾT QUẢ 1-HOP (Số mẫu: 150)
+   - BLEU Score    : 0.6507
+   - ROUGE-L Score : 0.6835
+   - METEOR Score  : 0.6972
+
+--------------------------------------------------
+
+2. KẾT QUẢ 2-HOP (Số mẫu: 150)
+   - BLEU Score    : 0.2239
+   - ROUGE-L Score : 0.2838
+   - METEOR Score  : 0.2976
+
+==================================================
